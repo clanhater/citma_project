@@ -1,0 +1,462 @@
+{% extends "core/base.html" %} {% block content %} {% load static %} {% load custom_filters %}
+
+<!-- Header Principal -->
+<header class="header-custom py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Contenido a la Izquierda -->
+      <div class="col-md-6">
+        <h1 class="display-4 fw-bold">
+          Bienvenidos a la Delegación Territorial del CITMA en Matanzas
+        </h1>
+        <p class="lead slogan mb-4">
+          Transformando el presente, preservando el futuro: ciencia e innovación
+          para el medio ambiente
+        </p>
+        <div class="d-flex gap-3">
+          <a href="{% url 'nosotros' %}" class="btn btn-primary rounded-pill">
+            Acerca de Nosotros <i class="fas fa-arrow-right"></i>
+          </a>
+          <a
+            href="#servicios"
+            class="btn btn-outline-primary rounded-pill"
+          >
+            Nuestros Servicios <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen a la Derecha -->
+      <div class="col-md-6 text-center">
+        <img
+          src="{% static 'images/banner.png' %}"
+          alt="Delegación CITMA Matanzas"
+          class="img-fluid rounded shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- Separador Zigzag -->
+  <div class="custom-shape-divider-bottom-1742914160">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="shape-fill"
+      ></path>
+    </svg>
+  </div>
+</header>
+
+<!-- Sección de Actividades Rectoras -->
+<section id="activities-section" class="py-5 bg-lighter">
+  <div class="container">
+    <!-- Encabezado de la Sección -->
+    <h2 class="text-center text-uppercase fw-bold mb-2">Actividades</h2>
+    <h1 class="display-4 text-center fw-bold mb-3">
+      Nuestras Actividades Rectoras
+    </h1>
+    <p class="lead text-center mb-5">
+      Impulsando el desarrollo sostenible en ciencia, medio ambiente y gestión
+      documental.
+    </p>
+
+    <!-- Tarjetas de Actividades -->
+    <div class="row g-4">
+      <!-- Tarjeta Ciencia -->
+      <div class="col-md-4">
+        <div
+          class="card border-0 shadow-sm h-100 text-center p-4 activity-card"
+          style="--activity-color: #0a309f; --activity-light: #e6f0ff"
+        >
+          <i class="fas fa-atom fa-3x activity-icon"></i>
+          <h3 class="card-title">Ciencia, Tecnología e Innovación</h3>
+          <p class="card-text">
+            Impulsando el conocimiento y la innovación tecnológica.
+          </p>
+          <div class="d-flex flex-column gap-2 mt-3">
+            <a
+              href="#programas-ciencia"
+              class="btn btn-outline-primary btn-sm activity-button"
+              >Programas <i class="fas fa-arrow-right"></i
+            ></a>
+            <a
+              href="#indicadores-ciencia"
+              class="btn btn-outline-primary btn-sm activity-button"
+              >Indicadores <i class="fas fa-arrow-right"></i
+            ></a>
+            <a
+              href="#incentivos-ciencia"
+              class="btn btn-outline-primary btn-sm activity-button"
+              >Incentivos <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta Medio Ambiente -->
+      <div class="col-md-4">
+        <div
+          class="card border-0 shadow-sm h-100 text-center p-4 activity-card"
+          style="--activity-color: #179040; --activity-light: #e6f7e6"
+        >
+          <i class="fas fa-tree fa-3x activity-icon"></i>
+          <h3 class="card-title">Medio Ambiente</h3>
+          <p class="card-text">
+            Protegiendo nuestro entorno para un futuro sostenible.
+          </p>
+          <div class="d-flex flex-column gap-2 mt-3">
+            <a
+              href="#programas-ambiente"
+              class="btn btn-outline-success btn-sm activity-button"
+              >Programas <i class="fas fa-arrow-right"></i
+            ></a>
+            <a
+              href="#indicadores-ambiente"
+              class="btn btn-outline-success btn-sm activity-button"
+              >Indicadores <i class="fas fa-arrow-right"></i
+            ></a>
+            <a
+              href="#incentivos-ambiente"
+              class="btn btn-outline-success btn-sm activity-button"
+              >Incentivos <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta Gestión Documental -->
+      <div class="col-md-4">
+        <div
+          class="card border-0 shadow-sm h-100 text-center p-4 activity-card"
+          style="--activity-color: #9e9ea0; --activity-light: #f7f7f7"
+        >
+          <i class="fas fa-file-alt fa-3x activity-icon"></i>
+          <h3 class="card-title">Gestión Documental</h3>
+          <p class="card-text">
+            Optimizando procesos con sistemas documentales eficientes.
+          </p>
+          <div class="d-flex flex-column gap-2 mt-3">
+            <a
+              href="#programas-gestion"
+              class="btn btn-outline-secondary btn-sm activity-button"
+              >Programas <i class="fas fa-arrow-right"></i
+            ></a>
+            <a
+              href="#indicadores-gestion"
+              class="btn btn-outline-secondary btn-sm activity-button"
+              >Indicadores <i class="fas fa-arrow-right"></i
+            ></a>
+            <a
+              href="#incentivos-gestion"
+              class="btn btn-outline-secondary btn-sm activity-button"
+              >Incentivos <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Separador Zigzag -->
+  <div class="custom-shape-divider-bottom-1742914160">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="shape-fill2"
+      ></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Sección de Noticias -->
+<section id="noticias-section" class="py-5" style="background-color: #e6f7e6; position: relative">
+  <div class="container">
+    <!-- Encabezado de la Sección -->
+    <h2 class="text-center text-uppercase fw-bold mb-2">Noticias</h2>
+    <h1 class="display-4 text-center fw-bold mb-3">Mantente Informado</h1>
+    <p class="lead text-center mb-5">
+      Descubre las últimas novedades sobre ciencia, medio ambiente y gestión
+      documental en Matanzas.
+    </p>
+
+    <!-- Carrusel de Noticias -->
+    <div class="row">
+      {% for noticia in page_obj %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 card2" style="max-height: 600px">
+          <!-- Altura máxima fija -->
+          <div class="position-relative">
+            <img
+              src="{{ noticia.imagen.url }}"
+              alt="{{ noticia.titulo }}"
+              class="card-img-top"
+              style="height: 250px; object-fit: cover"
+            />
+            <span class="badge bg-primary position-absolute top-0 end-0 m-2"
+              >{{ noticia.categoria }}</span
+            >
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h3 class="card-title">{{ noticia.titulo }}</h3>
+              <!-- Título más pequeño -->
+              <p class="card-text small">{{ noticia.descripcion }}</p>
+              <!-- Descripción truncada -->
+              <a
+                href="{% url 'detalle_noticia' noticia.id %}"
+                class="btn btn-primary btn-sm mt-3"
+                >Ver más</a
+              >
+            </div>
+            <hr class="my-2" />
+            <!-- Línea divisoria más pequeña -->
+            <div
+              class="d-flex justify-content-between align-items-center small"
+            >
+              <small class="text-muted">
+                Publicado el {{ noticia.fecha_publicacion|date:"d/m/Y" }}
+              </small>
+              <small class="text-muted">
+                <i class="fas fa-comments me-1"></i>{{ noticia.comentarios.count }} comentario(s)
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination justify-content-center mt-4">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <!-- Botón Anterior -->
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.previous_page_number }}#noticias"
+              aria-label="Previous"
+            >
+              <span aria-hidden="true">&laquo; Anterior</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&laquo; Anterior</span>
+          </li>
+          {% endif %}
+
+          <!-- Páginas Anteriores -->
+          {% if page_obj.number > 2 %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.number|add:'-2' }}#noticias">{{ page_obj.number|add:'-2' }}</a>
+          </li>
+          {% endif %} {% if page_obj.number > 1 %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.number|add:'-1' }}#noticias">{{ page_obj.number|add:'-1' }}</a>
+          </li>
+          {% endif %}
+
+          <!-- Página Actual -->
+          <li class="page-item active">
+            <a class="page-link" href="#">{{ page_obj.number }}</a>
+          </li>
+
+          <!-- Páginas Siguientes -->
+          {% if page_obj.number < page_obj.paginator.num_pages %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.number|add:'1' }}#noticias">{{ page_obj.number|add:'1' }}</a>
+          </li>
+          {% endif %} {% if page_obj.number < page_obj.paginator.num_pages|add:'-1' %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.number|add:'2' }}#noticias">{{ page_obj.number|add:'2' }}</a>
+          </li>
+          {% endif %}
+
+          <!-- Puntos Suspensivos -->
+          {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+          <li class="page-item disabled"><span class="page-link">...</span></li>
+          {% endif %}
+
+          <!-- Última Página -->
+          {% if page_obj.number != page_obj.paginator.num_pages %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.paginator.num_pages }}#noticias">{{ page_obj.paginator.num_pages }}</a>
+          </li>
+          {% endif %}
+
+          <!-- Botón Siguiente -->
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ page_obj.next_page_number }}"
+              aria-label="Next"
+            >
+              <span aria-hidden="true">Siguiente &raquo;</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Siguiente &raquo;</span>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- Separador Zigzag -->
+  <div class="custom-shape-divider-bottom-1742914160">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="shape-fill"
+      ></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Sección de Servicios -->
+<section id="servicios" class="py-5 bg-lighter position-relative">
+  <div class="container">
+    <!-- Encabezado de la Sección -->
+    <h2 class="text-center text-uppercase fw-bold mb-2">Servicios</h2>
+    <h1 class="display-4 text-center fw-bold mb-3">Descubre los servicios que ofrecemos</h1>
+    <p class="lead text-center mb-5">
+      Estamos aquí para ayudarte. Explora nuestros servicios y encuentra las soluciones que necesitas.
+    </p>
+
+    <!-- Contenedor de Tarjetas -->
+    <div class="row g-4">
+      {% for servicio in servicios %}
+      <div class="col-12 col-md-6 col-lg-{{ servicios|length|div:3|floatformat:'0' }}">
+        <div class="card h-100 border-0 shadow rounded-3 overflow-hidden text-center" style="background-color:rgb(237, 237, 238)">
+          <!-- Ícono Grande Centrado -->
+          <div class="py-5">
+            <i class="{{ servicio.icono }} fa-3x text-primary"></i>
+          </div>
+
+          <!-- Título del Servicio -->
+          <h5 class="fw-bold mb-3">{{ servicio.titulo }}</h5>
+
+          <!-- Descripción del Servicio -->
+          <p class="text-muted px-3">{{ servicio.descripcion }}</p>
+
+          <!-- Botón de Acceso -->
+          <div class="pb-4">
+            <a href="{{ servicio.enlace }}" class="btn btn-primary w-75 mx-auto">Acceder al Servicio</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Separador Zigzag -->
+  <div class="custom-shape-divider-bottom-1742914160">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="shape-fill3"
+      ></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Sección de Enlaces Útiles -->
+<section id="enlaces-utiles" class="py-5" style="background-color: #f7f7f7">
+  <div class="container">
+    <!-- Encabezado de la Sección -->
+    <h2 class="text-center text-uppercase fw-bold mb-2">Enlaces</>
+    <h1 class="display-4 text-center fw-bold mb-3">Enlaces Útiles</h1>
+    <p class="lead text-center mb-5">
+      Descubre sitios de interés que pueden ser útiles para ti.
+    </p>
+
+    <!-- Carrusel de Enlaces Útiles -->
+    <div class="swiper-container swiper-initialized swiper-horizontal">
+      <div class="swiper-wrapper">
+        {% for enlace in enlaces_utiles %}
+          <div class="swiper-slide">
+            <a href="{{ enlace.url }}" target="_blank" class="text-decoration-none d-block">
+              <div class="image-container">
+                <img src="{{ enlace.logo.url }}" alt="{{ enlace.nombre }}" class="img-fluid rounded shadow-sm">
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Controles de Navegación -->
+      <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="swiper-button-next" tabindex="0" role="button" aria-label="Siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Desplazarse automáticamente a la sección de noticias solo si se está paginando
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
+
+    // Si hay un hash '#noticias' en la URL, desplazarse a la sección de noticias
+    if (hash === "#noticias") {
+      const noticiasSection = document.getElementById("noticias-section");
+      if (noticiasSection) {
+        noticiasSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto', // Mostrar tantas imágenes como quepan en el ancho disponible
+      spaceBetween: 20, // Espaciado entre imágenes
+      loop: true, // Ciclo infinito
+      autoplay: {
+        delay: 5000, // Cambiar automáticamente cada 5 segundos
+        disableOnInteraction: false, // No detener el autoplay al interactuar
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
+
+{% endblock %}

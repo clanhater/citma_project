@@ -1,0 +1,111 @@
+{% extends "core/base.html" %} {% load static %} {% block content %}
+<!-- Contenido principal -->
+<main class="directivos-page">
+  <section class="directivos-content">
+    <h1 class="page-title">Primer Nivel de Dirección</h1>
+
+    <!-- Árbol Organizacional -->
+    <div class="organigrama">
+      <!-- Delegado Principal -->
+      <div class="nivel nivel-1">
+        <div class="persona">
+          <img
+            src="{% static 'images/delegado.jpg' %}"
+            alt="Foto del Delegado"
+          />
+          <h3>Oscar Luis García Martínez</h3>
+          <p><strong>Cargo:</strong> Delegado</p>
+          <p><i class="fas fa-phone-alt"></i> +53 52853540</p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:delegado@citmamtz.gob.cu"
+              >delegado@citmamtz.gob.cu</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Subdelegados y Director Administrativo -->
+      <div class="nivel nivel-2">
+        <div class="persona">
+          <img
+            src="{% static 'images/sub_d_ciencia_tecnologia_innovacion.jpg' %}"
+            alt="Foto del Subdelegado 1"
+          />
+          <h3>Elena Bon Torres</h3>
+          <p><strong>Cargo:</strong> Subdelegada de Ciencia, Tecnología e Innovación</p>
+          <p><i class="fas fa-phone-alt"></i> +53 53694138</p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:elena@citmamtz.gob.cu"
+              >elena@citmamtz.gob.cu</a
+            >
+          </p>
+          <p>
+            <i class="fab fa-twitter"></i>
+            <a href="https://twitter.com/elena_bon_citma" target="_blank"
+              >@elena_bon_citma</a
+            >
+          </p>
+        </div>
+        <div class="persona">
+          <img
+            src="{% static 'images/sub_d_medio_ambiente.jpg' %}"
+            alt="Foto del Subdelegado 2"
+          />
+          <h3>Nelvis Elaine Gómez Campos</h3>
+          <p><strong>Cargo:</strong> Subdelegada de Medio Ambiente</p>
+          <p><i class="fas fa-phone-alt"></i> +53 53428349</p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:bulsita@citmamtz.gob.cu"
+              >bulsita@citmamtz.gob.cu</a
+            >
+          </p>
+          <p>
+            <i class="fab fa-twitter"></i>
+            <a href="https://twitter.com/nelviselaine" target="_blank"
+              >@nelviselaine</a
+            >
+          </p>
+        </div>
+        <div class="persona">
+          <img
+            src="{% static 'images/sub_d_gesion_documental.jpg' %}"
+            alt="Foto del Subdelegado 3"
+          />
+          <h3>Danailen Ramirez</h3>
+          <p><strong>Cargo:</strong> Jefa del Departamento de Gestión Documental</p>
+          <p><i class="fas fa-phone-alt"></i> +53 59053050</p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:yaniela.farray@citmamtz.gob.cu"
+              >yaniela.farray@citmamtz.gob.cu</a
+            >
+          </p>
+        </div>
+        <div class="persona">
+          <img
+            src="{% static 'images/administrador.jpg' %}"
+            alt="Foto del Director Administrativo"
+          />
+          <h3>Carlos Fernández Torres</h3>
+          <p><strong>Cargo:</strong> Director Administrativo</p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:administrador@citmamtz.gob.cu"
+              >administrador@citmamtz.gob.cu</a
+            >
+          </p>
+          <p>
+            <i class="fab fa-twitter"></i>
+            <a href="https://twitter.com/administrador" target="_blank"
+              >@administrador</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

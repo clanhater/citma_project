@@ -1,0 +1,79 @@
+/* Página de Directivos */
+.directivos-page {
+  padding-top: 100px; /* Margen superior para evitar que el contenido se tape con el navbar */
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.directivos-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #0074d9;
+  margin-bottom: 40px;
+}
+
+.organigrama {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.nivel {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nivel-1 {
+  width: 100%;
+  justify-content: center;
+}
+
+.nivel-2 {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.persona {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.persona img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%; /* Imagen circular */
+  margin-bottom: 15px;
+}
+
+.persona h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.persona p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.persona a {
+  color: #0074d9;
+  text-decoration: none;
+}
+
+.persona a:hover {
+  text-decoration: underline;
+}

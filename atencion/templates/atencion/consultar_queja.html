@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main">
+  <section class="form-section">
+    <h2>Consultar Estado de Queja</h2>
+    <p>Ingrese el ID de su queja para ver su estado actual.</p>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_queja">ID de Queja:</label>
+        <input type="text" id="id_queja" name="id_queja" required />
+      </div>
+      <button type="submit" class="cta-button">Consultar</button>
+    </form>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main">
+  <section class="form-section">
+    <h2>Estado de la Queja</h2>
+    <p><strong>ID de Queja:</strong> {{ queja.id_queja }}</p>
+    <p><strong>Estado:</strong> {{ queja.estado }}</p>
+    <p><strong>Asunto:</strong> {{ queja.asunto }}</p>
+    <p><strong>Fecha de Registro:</strong> {{ queja.fecha_registro }}</p>
+  </section>
+</div>
+{% endblock %}

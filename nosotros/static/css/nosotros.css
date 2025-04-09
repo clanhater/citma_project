@@ -1,0 +1,313 @@
+/* Estilo general de la sección */
+.section-design {
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Encabezado de la sección */
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background-color: #198754; /* Verde Bootstrap */
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* Párrafo introductorio */
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.intro-text strong {
+  color: #198754; /* Verde Bootstrap */
+}
+
+.highlight {
+  color: #198754; /* Verde Bootstrap */
+  font-weight: bold;
+}
+
+/* Contenedor de áreas clave */
+.areas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Tarjetas de áreas clave */
+.area-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.area-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-large {
+  font-size: 2.5rem;
+  color: #198754; /* Verde Bootstrap */
+  margin-bottom: 15px;
+}
+
+.area-card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Título de la estructura interna */
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de la estructura interna */
+.structure-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Tarjetas de la estructura interna */
+.structure-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.structure-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-large {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+}
+
+.structure-card ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.structure-card li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Lista de funciones */
+.functions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.function-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.function-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-large {
+  font-size: 2.5rem;
+  color: #198754;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+}
+
+.function-item p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Contenedor Principal */
+.main-container {
+  display: flex;
+  position: relative;
+}
+
+/* Botón del Menú */
+.menu-toggle {
+  position: fixed;
+  top: 8%; /* Justo debajo del navbar/topbar */
+  left: 5px;
+  z-index: 1000;
+  background-color: #fd7e14; /* Naranja Bootstrap */
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.menu-toggle i {
+  font-size: 1.5rem;
+}
+
+/* Menú */
+.sidebar-menu {
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro semi-transparente */
+  color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar-menu {
+    position: fixed;
+    top: 60px; /* Ajusta este valor según la altura del navbar/topbar */
+    left: -300px; /* Oculto inicialmente */
+  }
+
+  .sidebar-menu.active {
+    transform: translateX(300px); /* Visible cuando está activo */
+  }
+}
+
+@media (min-width: 992px) {
+  /* En pantallas grandes, el menú siempre está visible */
+  .sidebar-menu {
+    position: fixed;
+    height: 100vh;
+  }
+
+  /* Ocultar el botón del menú en pantallas grandes */
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* Lista de Menú */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #fd7e14; /* Cambia de color al pasar el mouse */
+}
+
+.menu-item i {
+  font-size: 1.2rem;
+}
+
+.menu-item.active {
+  background-color: #fd7e14; /* Resalta la sección activa */
+  font-weight: bold;
+}
+
+/* Contenido Principal */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+  /* En pantallas pequeñas, ajusta el contenido cuando el menú está abierto */
+  .main-content.shifted {
+    margin-left: 300px;
+  }
+}

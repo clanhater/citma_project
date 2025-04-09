@@ -1,0 +1,107 @@
+{% extends "core/base.html" %} {% load static %} {% block content %}
+<div class="main">
+  <section class="intro-section">
+    <!-- Título y Slogan -->
+    <div class="header-content2">
+      <h1>Atención a la Población</h1>
+      <p class="slogan2">
+        A través de este espacio usted podrá expresar sus inquietudes,
+        sugerencias, denuncias o preguntas relacionadas con nuestras áreas
+        rectoras. Su voz es importante para nosotros.
+      </p>
+    </div>
+
+    <!-- Separador -->
+    <hr class="separator2" />
+
+    <!-- Datos de Contacto -->
+    <div class="contact-info2">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <p>planificacion@citmamtz.gob.cu</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <p>45 244964</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <p>Calle Milanés 17 entre Jovellanos y Matanzas, Matanzas, Cuba</p>
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <hr class="separator2" />
+
+    <!-- Explicación y Botones -->
+    <div class="instructions">
+      <p>
+        El Departamento de Atención a la Población del CITMA le da la bienvenida
+        a su plataforma de atención en línea. Aquí puede trasladar sus
+        opiniones, consultas o quejas de manera sencilla y segura.
+      </p>
+      <p>
+        Para realizar una nueva queja, complete el formulario haciendo clic en
+        el botón correspondiente. Si desea dar seguimiento al estado de una
+        queja previa, utilice el ID proporcionado para consultar su estado
+        actual.
+      </p>
+      <div class="buttons-container">
+        <a href="{% url 'atencion:formulario_queja' %}" class="cta-button"
+          >Realizar una Queja</a
+        >
+        <a href="{% url 'atencion:consultar_queja' %}" class="cta-button"
+          >Consultar Estado de Queja</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  {% if messages %}
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Mensaje</h2>
+      <div class="modal-body">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+      <button id="closeModalButton" class="cta-button">Aceptar</button>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!-- JavaScript para manejar el modal -->
+<script>
+  // Obtener elementos del DOM
+  const modal = document.getElementById("modal");
+  const closeModalButton = document.getElementById("closeModalButton");
+  const closeSpan = document.querySelector(".close");
+
+  // Función para cerrar el modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  // Cerrar el modal al hacer clic en el botón "Aceptar"
+  closeModalButton.addEventListener("click", closeModal);
+
+  // Cerrar el modal al hacer clic en la "X"
+  closeSpan.addEventListener("click", closeModal);
+
+  // Cerrar el modal al hacer clic fuera del contenido
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Mostrar el modal automáticamente si hay mensajes
+  if (modal) {
+    modal.style.display = "flex";
+  }
+</script>
+{% endblock %}

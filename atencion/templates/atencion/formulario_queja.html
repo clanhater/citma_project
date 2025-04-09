@@ -1,0 +1,125 @@
+{% extends "core/base.html" %} {% load static %} {% block content %}
+<div class="main">
+  <section class="form-section">
+    <h2>Atención a la Población</h2>
+    <p>
+      Complete el siguiente formulario para plantear su solicitud o inquietud.
+    </p>
+    <form id="attentionForm" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- Datos del promovente -->
+      <fieldset>
+        <legend>Datos del Promovente</legend>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="{{ form.nombre_apellidos.id_for_label }}"
+              >Nombre y Apellidos: <span>*</span></label
+            >
+            {{ form.nombre_apellidos }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.categoria.id_for_label }}"
+              >Categoría de la queja: <span>*</span></label
+            >
+            {{ form.categoria }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.telefono_movil.id_for_label }}"
+              >Teléfono móvil: <span>*</span></label
+            >
+            {{ form.telefono_movil }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.telefono_fijo.id_for_label }}"
+              >Teléfono fijo:</label
+            >
+            {{ form.telefono_fijo }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.correo_electronico.id_for_label }}"
+              >Correo electrónico: <span>*</span></label
+            >
+            {{ form.correo_electronico }}
+          </div>
+          <div class="form-group full-width">
+            <label for="{{ form.direccion.id_for_label }}"
+              >Dirección del promovente: <span>*</span></label
+            >
+            {{ form.direccion }}
+          </div>
+          <div class="form-group full-width">
+            <label>Fecha de registro:</label>
+            <input
+              id="date"
+              type="text"
+              value="{{ now }}"
+              readonly
+              style="background-color: #f0f0f0"
+            />
+          </div>
+          <div class="form-group full-width">
+            <label for="{{ form.asunto.id_for_label }}"
+              >Asunto que plantea (Interés de contacto): <span>*</span></label
+            >
+            {{ form.asunto }}
+            <p class="note">
+              IMPORTANTE: Sea respetuoso en su planteamiento evitando palabras
+              denigrantes, ofensivas, difamatorias, que estén fuera de contexto
+              o atenten contra la dignidad de una persona, entidad o grupo
+              social.
+            </p>
+          </div>
+          <div class="form-group full-width">
+            <label for="{{ form.evidencias.id_for_label }}"
+              >Adjuntar evidencias (Solo en caso de tenerlas):</label
+            >
+            {{ form.evidencias }}
+          </div>
+        </div>
+      </fieldset>
+      <!-- CAPTCHA -->
+      <div class="form-group captcha full-width">
+        <label>Verificación: <span>*</span></label>
+        <div class="captcha-container">
+          <span id="captchaText">Cargando...</span>
+          <button type="button" id="refreshCaptcha">↻</button>
+        </div>
+        <input
+          type="text"
+          id="captchaInput"
+          name="captcha"
+          required
+          placeholder="Ingrese el texto mostrado"
+        />
+      </div>
+      <!-- Botón Enviar -->
+      <div class="form-group full-width">
+        <button type="submit" class="cta-button">
+          <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script>
+  // Fecha automática
+  document.getElementById("date").value = new Date().toLocaleDateString();
+
+  // Simulación básica de CAPTCHA
+  const generateCaptcha = () => {
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let captcha = "";
+    for (let i = 0; i < 6; i++) {
+      captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    document.getElementById("captchaText").textContent = captcha;
+  };
+
+  document
+    .getElementById("refreshCaptcha")
+    .addEventListener("click", generateCaptcha);
+  generateCaptcha(); // Generar CAPTCHA al cargar la página
+</script>
+{% endblock %}

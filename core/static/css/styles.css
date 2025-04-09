@@ -1,0 +1,769 @@
+/* Variables globales */
+:root {
+  --color-primario:  #179040 ; /* Verde institucional */
+  --color-secundario:  #0a309f ; /* Azul corporativo */
+  --color-acento: #ffb400; /* Amarillo para destacados */
+  --color-texto: #333333; /* Color de texto principal */
+  --color-fondo: #f8f9fa; /* Color de fondo claro */
+  --color-ciencia:  #0a309f ; /* Azul para Ciencia */
+  --color-ambiente:  #179040 ; /* Verde para Medio Ambiente */
+  --color-gestion:  #9e9ea0 ; /* Gris para Gestión Documental */
+  --color-texto: #333; /* Color del texto */
+  --color-fondo: #fff; /* Fondo claro */
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: var(--color-texto);
+  line-height: 1.6;
+}
+
+/* Animaciones */
+.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Separador */
+.separator-section {
+  background: var(--color-primario); /* Verde institucional */
+  height: 10px; /* Altura reducida para un diseño limpio */
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .separator-section {
+    height: 8px; /* Altura más pequeña en móviles */
+  }
+}
+
+/* Franja superior de contacto */
+.top-bar {
+  background: linear-gradient(135deg, #1a3a1f, #2c5f2d);
+  color: #e0e0e0;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.contact-info span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-info span:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.contact-info a {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el ícono y el texto */
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  color: inherit; /* Hereda el color del texto del padre */
+  transition: all 0.3s ease; /* Transición suave para cambios de estilo */
+}
+
+.contact-info a:hover {
+  color: white; /* Cambia el color del texto al pasar el ratón */
+  background-color: #0074d9; /* Opcional: Cambia el fondo para resaltar */
+  border-radius: 5px; /* Opcional: Añade bordes redondeados */
+  padding: 5px 10px; /* Opcional: Añade relleno para mejorar la apariencia */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+}
+
+.contact-info i {
+  color: var(--color-acento);
+  font-size: 1.1em;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: var(--color-acento);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.social-icons a:hover {
+  background: var(--color-acento);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.separator {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 15px;
+}
+
+/* Ocultar la franja superior en pantallas pequeñas */
+@media (max-width: 768px) {
+  .top-bar {
+    display: none; /* Oculta la franja superior en móviles */
+  }
+}
+
+/* Barra de navegación */
+nav {
+  padding: 10px 5%; /* Espaciado reducido */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 55px; /* Ajustado para que esté siempre en la parte superior */
+  z-index: 1000;
+  transition: top 0.3s ease; /* Animación suave */
+}
+
+.logo img {
+  height: 40px; /* Altura ajustada para móviles */
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 20px; /* Espaciado entre enlaces */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--color-texto);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+  font-size: 0.9em; /* Más pequeño en móviles */
+}
+
+.nav-links a:hover {
+  color: var(--color-primario);
+}
+
+/* Botón de hamburguesa */
+.menu-toggle {
+  display: none; /* Oculto por defecto en pantallas grandes */
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-texto);
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  min-width: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(5px);
+}
+
+.dropdown-menu a {
+  padding: 10px 15px;
+  display: block;
+  font-size: 0.85em;
+  color: #555;
+}
+
+.dropdown-menu a:hover {
+  background: var(--color-fondo);
+  color: var(--color-primario);
+}
+
+.fa-chevron-down {
+  font-size: 0.7em;
+  margin-left: 5px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  /* Ocultar el menú principal y mostrar el botón de hamburguesa */
+  nav {
+    top: 0;
+  }
+
+  .nav-links {
+    display: none; /* Ocultar el menú por defecto */
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    position: absolute;
+    top: 60px; /* Debajo de la barra de navegación */
+    left: 0;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex; /* Mostrar el menú cuando esté activo */
+  }
+
+  .menu-toggle {
+    display: block; /* Mostrar el botón de hamburguesa */
+  }
+
+  /* Estilo para los enlaces en modo móvil */
+  .nav-links ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 1rem; /* Tamaño más grande para móviles */
+    padding: 10px 0;
+  }
+
+  /* Eliminar dropdowns en móviles */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .dropdown-menu a {
+    padding: 8px 0;
+  }
+}
+
+/* Header principal */
+.header {
+  height: 95vh; /* Altura inicial para pantallas grandes */
+  min-height: 400px; /* Altura mínima para pantallas pequeñas */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.header-content {
+  display: none;
+  max-width: 1200px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  color: white;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slogan {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  color: white;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  padding: 18px 45px;
+  font-size: 1.1rem;
+  background: var(--color-acento); /* Amarillo brillante */
+  color: black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 180, 0, 0.3);
+}
+
+.cta-button i {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+  transform: translateX(5px);
+}
+
+/* Estilo para la flecha animada */
+.scroll-indicator {
+  position: absolute;
+  bottom: 50px; /* Aumentamos la distancia desde el fondo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 60px;
+  display: none; /* Oculto por defecto en pantallas grandes */
+  animation: bounce 1.5s infinite; /* Animación de rebote */
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.scroll-indicator::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg);
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+  0%,
+  100% {
+    bottom: 50px; /* Coherente con la posición inicial */
+  }
+  50% {
+    bottom: 60px; /* Rebote hacia abajo */
+  }
+}
+
+/* Mostrar la flecha solo en móviles */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: block; /* Visible en móviles */
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    min-height: 300px; /* Altura mínima más pequeña */
+    background-position: left center; /* Muestra más la parte izquierda */
+    height: 100vh;
+  }
+
+  .header h1 {
+    font-size: 2.5rem; /* Tamaño de fuente más pequeño */
+    margin-bottom: 15px;
+  }
+
+  .slogan {
+    font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+    margin-bottom: 25px;
+  }
+
+  .cta-button {
+    padding: 15px 35px; /* Botón más pequeño */
+    font-size: 1rem;
+  }
+
+  .header-content {
+    display: block;
+  }
+}
+
+/* Contenedor de tarjetas */
+.cards-container {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: -120px; /* Ajustado para subir las tarjetas más arriba */
+  padding: 20px 0;
+}
+
+.card {
+  background: var(--color-fondo);
+  border-top: 4px solid; /* Borde superior dinámico */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* Colores específicos para cada tarjeta */
+.card.ciencia {
+  border-top-color: var(--color-ciencia);
+}
+.card.ambiente {
+  border-top-color: var(--color-ambiente);
+}
+.card.gestion {
+  border-top-color: var(--color-gestion);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card i {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.card.ciencia i {
+  color: var(--color-ciencia);
+}
+.card.ambiente i {
+  color: var(--color-ambiente);
+}
+.card.gestion i {
+  color: var(--color-gestion);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--color-texto);
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Contenedor de botones */
+.card-buttons {
+  display: flex;
+  flex-direction: column; /* Alineación vertical */
+  gap: 10px; /* Espaciado entre botones */
+}
+
+.card-buttons a {
+  padding: 5px 20px;
+  font-size: 0.9rem;
+  background: var(--color-acento); /* Color dinámico según la tarjeta */
+  color: black;
+  border: none;
+  border-radius: 50px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Colores específicos para los botones */
+.card.ciencia .card-buttons a {
+  background: var(--color-ciencia);
+}
+.card.ambiente .card-buttons a {
+  background: var(--color-ambiente);
+}
+.card.gestion .card-buttons a {
+  background: var(--color-gestion);
+}
+
+.card-buttons a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-buttons a i {
+  font-size: 0.9em;
+  transition: transform 0.3s ease;
+  margin: auto 0;
+}
+
+.card-buttons a:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 0px;
+  }
+  .card {
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+  }
+  .card i {
+    font-size: 40px;
+  }
+  .card h3 {
+    font-size: 1.3rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+  .card-buttons a {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Contenedor principal para las dos secciones */
+.sections-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 80px 5%;
+  background: white; /* Fondo blanco */
+}
+
+/* Estilo individual para cada sección */
+.section-side-by-side {
+  flex: 1; /* Cada sección ocupa la mitad del espacio */
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: 0 10px; /* Espaciado entre las secciones */
+}
+
+.section-side-by-side .icon-block i {
+  font-size: 80px; /* Tamaño del ícono */
+  color: var(--color-primario); /* Color verde institucional */
+}
+
+.section-side-by-side h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-texto);
+}
+
+.section-side-by-side p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.section-side-by-side .cta-button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  background: var(--color-acento); /* Botón amarillo brillante */
+  color: black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.section-side-by-side .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(255, 180, 0, 0.3);
+}
+
+.section-side-by-side .cta-button i {
+  font-size: 0.9em;
+  transition: transform 0.3s ease;
+}
+
+.section-side-by-side .cta-button:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sections-container {
+    flex-direction: column; /* Apilar secciones verticalmente */
+    padding: 40px 5%; /* Reducir padding en móviles */
+  }
+
+  .section-side-by-side {
+    flex: none; /* Desactivar flex-grow */
+    margin: 20px 0; /* Espaciado vertical entre secciones */
+    padding: 30px; /* Padding reducido */
+  }
+
+  .section-side-by-side .icon-block i {
+    font-size: 60px; /* Ícono más pequeño en móviles */
+  }
+
+  .section-side-by-side h2 {
+    font-size: 1.8rem; /* Título más pequeño en móviles */
+  }
+
+  .section-side-by-side p {
+    font-size: 0.9rem; /* Texto más pequeño en móviles */
+  }
+}
+
+/* Estilo general del footer */
+.footer {
+  color: white; /* Texto blanco para contraste */
+  padding: 40px 5%; /* Espaciado interno */
+}
+
+/* Primera franja (3 columnas) */
+.footer-top {
+  background: var(
+    --color-secundario
+  ); /* Fondo azul corporativo para la primera franja */
+  display: flex;
+  justify-content: center; /* Centrar las columnas */
+  gap: 60px; /* Espaciado entre las columnas */
+  padding: 20px 0;
+}
+
+.footer-column {
+  flex: 1;
+  text-align: center;
+  max-width: 300px; /* Ancho máximo para cada columna */
+  margin: auto 0;
+}
+
+.footer-column p {
+  font-size: 1rem; /* Letra más grande */
+  padding: 10px 0;
+  color: white; /* Texto blanco para contraste */
+}
+
+.footer-column .social-icons {
+  display: flex;
+  justify-content: center; /* Centrar íconos */
+  gap: 25px; /* Espaciado entre íconos */
+  margin-top: 15px; /* Espaciado adicional */
+}
+
+.footer-column .social-icons a {
+  color: white; /* Íconos blancos */
+  font-size: 2rem; /* Íconos más grandes */
+  transition: transform 0.3s ease;
+}
+
+.footer-column .social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo específico para el logo SVG */
+.footer-column img.logo-citma {
+  width: 150px; /* Tamaño del logo */
+  height: auto;
+  filter: brightness(0) invert(1); /* Cambia el color del logo a blanco */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+/* Segunda franja (copyright) */
+.footer-bottom {
+  background: #2c2c2c; /* Negro suave */
+  color: white;
+  padding: 15px 5%; /* Espaciado reducido */
+  display: flex;
+  justify-content: center; /* Centrar contenido */
+  align-items: center;
+  gap: 20px; /* Espaciado entre el texto y el logo */
+}
+
+.footer-bottom p {
+  font-size: 1rem; /* Letra más grande */
+  margin: 0;
+  color: white; /* Texto blanco para contraste */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

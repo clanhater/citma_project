@@ -1,0 +1,511 @@
+@media (max-width: 768px) {
+  #top-var {
+    display: none; /* Oculta la franja superior en móviles */
+  }
+
+  .custom-shape-divider-bottom-1742914756 svg {
+    height: 35px !important;
+  }
+}
+
+/* Efecto hover para dropdowns */
+.navbar .dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.navbar .dropdown-menu {
+  margin-top: 0; /* Elimina el espacio entre el botón y el menú */
+}
+
+/* Estilo para el logo del footer */
+.logo-footer {
+  max-height: 150px; /* Aumenta el tamaño del logo */
+  filter: brightness(0) invert(1); /* Convierte el logo a blanco */
+}
+
+/* Estilo general del header */
+.header-custom {
+  background-color: #e7f3ff; /* Fondo blanco para el header */
+}
+
+/* Título y eslogan */
+.header-custom h1 {
+  font-size: 2.5rem; /* Ajusta el tamaño del título */
+  color: #333; /* Color oscuro para el título */
+}
+
+.header-custom .slogan {
+  font-size: 1.25rem; /* Ajusta el tamaño del eslogan */
+  color: #555; /* Color gris para el eslogan */
+}
+
+/* Botones */
+.header-custom .btn {
+  transition: transform 0.3s ease;
+}
+
+.header-custom .btn:hover {
+  transform: translateY(-5px);
+}
+
+/* Imagen */
+.header-custom img {
+  max-width: 100%; /* La imagen se ajusta al ancho del contenedor */
+  height: auto; /* Mantener la proporción de aspecto */
+  border-radius: 15px; /* Bordes ligeramente redondeados */
+  margin: 10px 0;
+}
+
+/* Separación entre secciones */
+#services-section {
+  padding-top: 50px;
+}
+
+/* Estilo general de la sección */
+.activities-section {
+  background-color: #e7f3ff; /* Fondo azul claro */
+}
+
+/* Encabezado de la Sección */
+.activities-section h2 {
+  font-size: 1.5rem;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+.activities-section h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.activities-section .lead {
+  font-size: 1.25rem;
+  color: #555;
+}
+
+/* Tarjetas */
+.activities-section .card {
+  transition: transform 0.3s ease;
+}
+
+.activities-section .card:hover {
+  transform: translateY(-10px);
+}
+
+/* Íconos */
+.activities-section i {
+  transition: transform 0.3s ease;
+}
+
+.activities-section i:hover {
+  transform: scale(1.2);
+}
+
+/* Altura mínima del header */
+.header-custom {
+  min-height: 50vh; /* Aumentamos la altura del header */
+  background-color: #e7f3ff; /* Fondo azul claro del header */
+  position: relative;
+}
+
+/* Estilo del separador zigzag */
+.custom-shape-divider-bottom-1742914160 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1742914160 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 48px;
+}
+
+.custom-shape-divider-bottom-1742914160 .shape-fill {
+  fill: #fff;
+}
+
+.custom-shape-divider-bottom-1742914160 .shape-fill2 {
+  fill: #e6f7e6;
+}
+
+.custom-shape-divider-bottom-1742914160 .shape-fill3 {
+  fill: #f7f7f7;
+}
+
+/* Fondo más claro para la siguiente sección */
+.bg-lighter {
+  background-color: #fff; /* Tono más claro */
+}
+
+/* Variables de color */
+:root {
+  --color-ciencia: #0a309f;
+  --color-ambiente: #179040;
+  --color-gestion: #9e9ea0;
+}
+
+/* Estilo general de las tarjetas */
+#activities-section {
+  position: relative;
+  min-height: 75vh;
+}
+
+.activity-card {
+  background-color: var(--activity-light); /* Fondo claro */
+  border-radius: 15px; /* Bordes redondeados */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-10px); /* Efecto flotante */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra al hacer hover */
+}
+
+/* Íconos */
+.activity-icon {
+  color: var(--activity-color); /* Color base */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.activity-card:hover .activity-icon {
+  transform: scale(1.2); /* Escala al hacer hover */
+  color: darken(var(--activity-color), 10%); /* Tonalidad más oscura */
+}
+
+/* Botones */
+.activity-button {
+  color: var(--activity-color); /* Color base */
+  border-color: var(--activity-color); /* Borde */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.activity-button:hover {
+  background-color: var(--activity-color); /* Fondo al hacer hover */
+  color: white; /* Texto blanco */
+  transform: scale(1.05); /* Escala ligeramente */
+}
+
+/* Carrusel de Noticias */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card2:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo general de la sección */
+#noticias-section {
+  min-height: 75vh;
+}
+
+/* Tarjetas */
+#noticias-section .card {
+  transition: transform 0.3s ease;
+  max-height: 500px;
+}
+
+#noticias-section .card-footer {
+  padding: 0.75rem;
+  background-color: transparent;
+  border-top: none;
+}
+
+/* Imagen de la tarjeta */
+#noticias-section .card-img-top {
+  height: 150px; /* Altura fija para la imagen */
+  object-fit: cover; /* Recortar la imagen para que se ajuste */
+}
+
+/* Título de la tarjeta */
+#noticias-section .card-title {
+  font-size: clamp(
+    1rem,
+    2vw,
+    1rem
+  ); /* Escala dinámica según el ancho de la pantalla */
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Íconos */
+#noticias-section i {
+  color: #6c757d;
+}
+
+/* Paginación */
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Estilo general de las estrellas */
+.star-rating {
+  cursor: pointer;
+}
+
+.star-rating .star {
+  color: #ccc; /* Color inicial (gris claro) */
+  transition: color 0.3s ease;
+  font-size: 4rem;
+}
+
+.star-rating .star.selected,
+.star-rating .star:hover {
+  color: #ffc107; /* Color al seleccionar o pasar el mouse */
+}
+
+/* Formulario */
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card label {
+  font-weight: bold;
+}
+
+.card input[type="text"],
+.card input[type="email"],
+.card textarea {
+  border-radius: 5px;
+}
+
+.card button {
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+}
+
+/* Estilo general de los comentarios */
+#comentarios .card {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+#comentarios .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Respuestas */
+#comentarios .card.ms-4 {
+  margin-left: 2rem; /* Indentación visual para las respuestas */
+}
+
+/* Fondo y borde para respuestas */
+#comentarios .card[style*="background-color: #f8f9fa"] {
+  background-color: #f8f9fa !important;
+  border-left: 4px solid #0d6efd; /* Borde izquierdo para destacar respuestas */
+}
+
+/* Botón de responder */
+#comentarios .btn-outline-primary {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+}
+
+/* Formulario de respuesta */
+#comentarios .card.p-3 {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Estilo para las calificaciones */
+p strong {
+  color: #0d6efd;
+}
+
+/* Estilo para las estrellas en la esquina superior derecha */
+.position-absolute {
+  position: absolute !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.end-0 {
+  right: 0 !important;
+}
+
+.bg-primary {
+  background-color: #0d6efd !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.star-filled {
+  color: #ffc107; /* Color amarillo para las estrellas rellenas */
+  font-size: 2rem;
+}
+
+/* Estilo para los botones de compartir */
+.btn-outline-primary,
+.btn-outline-info,
+.btn-outline-success,
+.btn-outline-secondary {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Estilo para el botón de copiar */
+#copiarEnlaceBtn {
+  transition: all 0.3s ease; /* Transición suave para cambios visuales */
+}
+
+/* Cambio de color al copiar */
+#copiarEnlaceBtn.copiado {
+  background-color: #198754; /* Verde para indicar éxito */
+  border-color: #198754;
+  color: white;
+}
+
+/* Ícono de verificación */
+#copiarEnlaceBtn.copiado .fa-check {
+  display: inline-block;
+}
+
+/* Ocultar ícono de enlace al copiar */
+#copiarEnlaceBtn.copiado .fa-link {
+  display: none;
+}
+
+/* Estilo para la sección de servicios */
+#servicios {
+  min-height: 75vh;
+}
+
+#servicios .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#servicios .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#servicios i.fa-3x {
+  transition: color 0.3s ease;
+}
+
+#servicios .card:hover i.fa-3x {
+  color: #0d6efd; /* Cambio de color al pasar el mouse */
+}
+
+#servicios .btn-primary {
+  background-color: #0d6efd; /* Azul primario */
+  border-color: #0d6efd;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#servicios .btn-primary:hover {
+  background-color: #0b5ed7; /* Azul oscuro al pasar el mouse */
+  transform: scale(1.05); /* Efecto de agrandamiento */
+}
+
+/* Estilo general del carrusel */
+.swiper-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.swiper-slide {
+  flex: 0 0 auto;
+  width: 310px; /* Ancho fijo para cada ícono */
+  margin: auto;
+}
+
+.image-container {
+  width: 100%;
+  height: auto; /* Altura estándar para todas las imágenes */
+  overflow: hidden; /* Asegura que las imágenes no se salgan del contenedor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%; /* Imagen siempre ocupa el ancho completo */
+  height: auto; /* Mantener la proporción original */
+  object-fit: cover; /* Ajustar la imagen al contenedor sin deformarla */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.1); /* Agrandar al pasar el mouse */
+}
+
+/* Estilo de los controles de navegación */
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 50%; /* Mostrar 2 íconos por fila en pantallas medianas */
+  }
+}
+
+@media (max-width: 576px) {
+  .swiper-slide {
+    width: 100%; /* Mostrar 1 ícono por fila en pantallas pequeñas */
+  }
+}
+
+/* Segunda franja (copyright) */
+.footer-bottom {
+  color: white;
+  padding: 15px 5%; /* Espaciado reducido */
+  display: flex;
+  justify-content: center; /* Centrar contenido */
+  align-items: center;
+  gap: 20px; /* Espaciado entre el texto y el logo */
+}
+
+.footer-bottom p {
+  font-size: 1rem; /* Letra más grande */
+  margin: 0;
+  color: white; /* Texto blanco para contraste */
+}
