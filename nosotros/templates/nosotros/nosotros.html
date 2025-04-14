@@ -1,16 +1,49 @@
 {% extends "core/base.html" %} {% load static %} {% block content %}
 <!-- Contenedor Principal -->
 <div id="main-container" class="main-container">
-  <!-- Botón del Menú -->
+  <!-- Botón del Menú (Solo visible en pantallas pequeñas) -->
   <div id="menu-toggle" class="menu-toggle">
     <i class="fas fa-bars"></i>
   </div>
 
-  <!-- Menú -->
-  <nav id="sidebar-menu" class="sidebar-menu">
+  <!-- Menú Fijo (Visible en pantallas grandes) -->
+  <nav id="fixed-menu" class="fixed-menu">
     <ul class="menu-list">
       <li class="menu-item" data-section="vision">
-        <i class="fas fa-bullseye"></i> Visión
+        <i class="fas fa-eye"></i>
+        <span class="menu-label">Visión</span>
+      </li>
+      <li class="menu-item" data-section="mision">
+        <i class="fas fa-bullseye"></i>
+        <span class="menu-label">Misión</span>
+      </li>
+      <li class="menu-item" data-section="descripcion">
+        <i class="fas fa-info-circle"></i>
+        <span class="menu-label">Descripción</span>
+      </li>
+      <li class="menu-item" data-section="funciones-generales">
+        <i class="fas fa-tasks"></i>
+        <span class="menu-label">Funciones Generales</span>
+      </li>
+      <li class="menu-item" data-section="funciones-especificas">
+        <i class="fas fa-list-alt"></i>
+        <span class="menu-label">Funciones Específicas</span>
+      </li>
+      <!-- Agrega más opciones según sea necesario -->
+    </ul>
+  </nav>
+
+  <!-- Menú Offcanvas (Solo visible en pantallas pequeñas) -->
+  <nav id="offcanvas-menu" class="offcanvas-menu">
+    <div class="menu-header">
+      <span class="menu-title">Menú</span>
+      <div id="close-menu" class="close-menu">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <ul class="menu-list">
+      <li class="menu-item" data-section="vision">
+        <i class="fas fa-eye"></i> Visión
       </li>
       <li class="menu-item" data-section="mision">
         <i class="fas fa-bullseye"></i> Misión
@@ -24,7 +57,7 @@
       <li class="menu-item" data-section="funciones-especificas">
         <i class="fas fa-list-alt"></i> Funciones Específicas
       </li>
-      <!-- Agrega más secciones según sea necesario -->
+      <!-- Agrega más opciones según sea necesario -->
     </ul>
   </nav>
 
@@ -789,28 +822,35 @@
 <script>
   // Seleccionar elementos
   const menuToggle = document.getElementById("menu-toggle");
-  const sidebarMenu = document.getElementById("sidebar-menu");
+  const closeMenu = document.getElementById("close-menu");
+  const offcanvasMenu = document.getElementById("offcanvas-menu");
   const mainContent = document.getElementById("main-content");
+  const menuItems = document.querySelectorAll(".menu-item");
 
-  // Alternar el menú lateral
+  // Alternar el menú offcanvas
   menuToggle.addEventListener("click", () => {
-    sidebarMenu.classList.toggle("active");
-    mainContent.classList.toggle("shifted");
+    offcanvasMenu.classList.add("active");
+    mainContent.classList.add("shifted");
+  });
+
+  // Cerrar el menú al hacer clic en el botón de cierre
+  closeMenu.addEventListener("click", () => {
+    offcanvasMenu.classList.remove("active");
+    mainContent.classList.remove("shifted");
   });
 
   // Cerrar el menú al hacer clic fuera de él
   document.addEventListener("click", (event) => {
     if (
-      !sidebarMenu.contains(event.target) &&
+      !offcanvasMenu.contains(event.target) &&
       !menuToggle.contains(event.target)
     ) {
-      sidebarMenu.classList.remove("active");
+      offcanvasMenu.classList.remove("active");
       mainContent.classList.remove("shifted");
     }
   });
 
   // Navegar entre secciones
-  const menuItems = document.querySelectorAll(".menu-item");
   menuItems.forEach((item) => {
     item.addEventListener("click", () => {
       // Remover clase 'active' de todos los elementos
@@ -828,11 +868,9 @@
         section.scrollIntoView({ behavior: "smooth" });
       }
 
-      // Cerrar el menú después de hacer clic (en pantallas pequeñas)
-      if (window.innerWidth < 992) {
-        sidebarMenu.classList.remove("active");
-        mainContent.classList.remove("shifted");
-      }
+      // Cerrar el menú offcanvas después de hacer clic
+      offcanvasMenu.classList.remove("active");
+      mainContent.classList.remove("shifted");
     });
   });
 </script>

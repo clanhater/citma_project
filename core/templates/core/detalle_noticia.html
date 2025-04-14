@@ -303,7 +303,7 @@
   // Compartir en Facebook
   function compartirFacebook(event) {
     event.preventDefault();
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlActual)}`;
     window.open(facebookUrl, '_blank'); // Abre en una nueva pestaña
   }
 
