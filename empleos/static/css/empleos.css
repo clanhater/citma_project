@@ -127,33 +127,42 @@ h2 {
 .empleo-card {
   position: relative; /* Necesario para posicionar el ícono */
   background: white; /* Fondo blanco */
-  border: 2px solid #ddd; /* Borde predeterminado */
+  /* border: 2px solid #ddd; Borde predeterminado */
+  border: none;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #333; /* Color de texto normal */
 }
 
 /* Colores específicos para cada área */
 .empleo-card.ciencia {
-  border-color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+  border-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
+  background-color: var(--fondo-ciencia);
 }
 
 .empleo-card.medio-ambiente {
-  border-color: #2ecc40; /* Verde para Medio Ambiente */
+
+  border-color: var(--color-ambiente); /* Verde para Medio Ambiente */
+  background-color: var(--fondo-ambiente);
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .empleo-card.gestion-documental {
-  border-color: #aaaaaa; /* Gris para Gestión Documental */
+  border-color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion {
-  border-color: #ff851b; /* Naranja para Administración */
+  border: none;
+  /*border-color: #ff851b; /* Naranja para Administración */
+  background-color: #fff4c7;
 }
 
 .empleo-card.direccion {
-  border-color: #ff4136; /* Rojo para Dirección */
+  border-color: var(--color-direccion); /* Rojo para Dirección */
+  background-color: var(--fondo-direccion);
 }
 
 /* Títulos de las tarjetas */
@@ -163,15 +172,15 @@ h2 {
 }
 
 .empleo-card.ciencia h3 {
-  color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+  color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
 }
 
 .empleo-card.medio-ambiente h3 {
-  color: #2ecc40; /* Verde para Medio Ambiente */
+  color: var(--color-ambiente); /* Verde para Medio Ambiente */
 }
 
 .empleo-card.gestion-documental h3 {
-  color: #aaaaaa; /* Gris para Gestión Documental */
+  color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion h3 {
@@ -179,7 +188,7 @@ h2 {
 }
 
 .empleo-card.direccion h3 {
-  color: #ff4136; /* Rojo para Dirección */
+  color: var(--color-direccion); /* Rojo para Dirección */
 }
 
 /* Botones dentro de las tarjetas */
@@ -192,15 +201,15 @@ h2 {
 }
 
 .empleo-card.ciencia .cta-button {
-  background-color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+  background-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
 }
 
 .empleo-card.medio-ambiente .cta-button {
-  background-color: #2ecc40; /* Verde para Medio Ambiente */
+  background-color: var(--color-ambiente); /* Verde para Medio Ambiente */
 }
 
 .empleo-card.gestion-documental .cta-button {
-  background-color: #aaaaaa; /* Gris para Gestión Documental */
+  background-color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion .cta-button {
@@ -208,11 +217,12 @@ h2 {
 }
 
 .empleo-card.direccion .cta-button {
-  background-color: #ff4136; /* Rojo para Dirección */
+  background-color: var(--color-direccion); /* Rojo para Dirección */
 }
 
 .empleo-card .cta-button:hover {
   opacity: 0.9; /* Efecto hover suave */
+  box-shadow: none;
 }
 
 .empleo-card p {
