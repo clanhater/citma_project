@@ -1,0 +1,380 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Metadatos Open Graph -->
+    <meta property="og:title" content="{{ noticia.titulo }}" />
+    <meta property="og:description" content="{{ noticia.descripcion }}" />
+    <meta
+      property="og:image"
+      content="{{ request.build_absolute_uri|safe }}{{ noticia.imagen.url }}"
+    />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:type" content="article" />
+    <title>
+      {% block title %}Delegación Territorial CITMA Matanzas{% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Estilos Personalizados (opcional) -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/nosotros.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/empleos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/directivos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pagina_inicial_atencion.css' %}" />
+    
+  </head>
+  <body>
+    <!-- Franja Superior -->
+    <div class="bg-dark text-light py-2" id="top-var">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+          <span><i class="fas fa-phone-alt"></i> 45 244964</span>
+          <div class="vr"></div>
+          <a
+            href="mailto:planificacion@citmamtz.gob.cu?subject=Consulta%20desde%20el%20sitio%20web&body=Estimados,%0A%0AMe%20gustaría%20realizar%20la%20siguiente%20consulta:%0A"
+            class="text-light text-decoration-none"
+          >
+            <i class="fas fa-envelope"></i> planificacion@citmamtz.gob.cu
+          </a>
+        </div>
+        <div class="d-flex gap-4 p-1">
+          <a
+            href="https://www.facebook.com/citmadmatanzas?mibextid=ZbWKwL"
+            target="_blank"
+            rel="noopener"
+            class="text-light text-decoration-none"
+          >
+            <i class="fab fa-facebook-f fa-2x"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/citmamtz?igsh=MWlsbHUwNnFlNnh3bQ=="
+            target="_blank"
+            rel="noopener"
+            class="text-light text-decoration-none"
+          >
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a
+            href="https://x.com/matanzas_citma"
+            target="_blank"
+            rel="noopener"
+            class="text-light text-decoration-none"
+          >
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a
+            href="https://t.me/citmamatanzas"
+            target="_blank"
+            rel="noopener"
+            class="text-light text-decoration-none"
+          >
+            <i class="fab fa-telegram-plane fa-2x"></i>
+          </a>
+          <a
+            href="https://go.ivoox.com/sq/2487182"
+            target="_blank"
+            rel="noopener"
+            class="text-light text-decoration-none"
+          >
+            <i class="fas fa-podcast fa-2x"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Navegación -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light"
+      style="background-color: #e7f3ff !important"
+    >
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="{% url 'pagina_principal' %}">
+          <img
+            src="{% static 'images/logo.png' %}"
+            alt="Logo CITMA"
+            style="height: 40px"
+          />
+        </a>
+
+        <!-- Botón Toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú Colapsable -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Dropdown Delegación -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-building"></i> Delegación
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="{% url 'nosotros' %}"
+                    ><i class="fas fa-info-circle"></i> Nosotros</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'directivos' %}"
+                    ><i class="fas fa-users"></i> Directivos</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Dropdown Actividades Rectoras -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-layer-group"></i> Actividades Rectoras
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#ciencia"
+                    ><i class="fas fa-flask"></i> Ciencia</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#medio-ambiente"
+                    ><i class="fas fa-tree"></i> Medio Ambiente</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#gestion-documental"
+                    ><i class="fas fa-file-alt"></i> Gestión Documental</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Enlaces Individuales -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'empleos:lista_empleos' %}">
+                <i class="fas fa-briefcase"></i> Empleo
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{% url 'atencion:pagina_inicial_atencion' %}"
+              >
+                <i class="fas fa-handshake"></i> Atención a la Población
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenido Dinámico -->
+    <main>{% block content %}{% endblock %}</main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light">
+      <div class="container py-4">
+        <!-- Primera Franja: 3 Columnas -->
+        <div class="row gy-4">
+          <!-- Primera Columna: Información de Contacto -->
+          <div class="col-md-4">
+            <h5>Contacto</h5>
+            <p>
+              <i class="fas fa-envelope me-2"></i> planificacion@citmamtz.gob.cu
+            </p>
+            <p><i class="fas fa-phone me-2"></i> 45 244964</p>
+            <p>
+              <i class="fas fa-map-marker-alt me-2"></i> Calle Milanés 17 entre
+              Jovellanos y Matanzas, Matanzas, Cuba
+            </p>
+          </div>
+
+          <!-- Segunda Columna: Logo -->
+          <div class="col-md-4 text-center" style="margin: auto 0">
+            <img
+              src="{% static 'images/logo.png' %}"
+              alt="Logo CITMA"
+              class="logo-footer img-fluid"
+            />
+          </div>
+
+          <!-- Tercera Columna: Redes Sociales -->
+          <div class="col-md-4 text-center">
+            <h5>Síguenos</h5>
+            <div class="d-flex justify-content-center gap-4">
+              <a
+                href="https://www.facebook.com/citmadmatanzas?mibextid=ZbWKwL"
+                target="_blank"
+                rel="noopener"
+                class="text-light text-decoration-none"
+              >
+                <i class="fab fa-facebook-f fa-3x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/citmamtz?igsh=MWlsbHUwNnFlNnh3bQ=="
+                target="_blank"
+                rel="noopener"
+                class="text-light text-decoration-none"
+              >
+                <i class="fab fa-instagram fa-3x"></i>
+              </a>
+              <a
+                href="https://x.com/matanzas_citma"
+                target="_blank"
+                rel="noopener"
+                class="text-light text-decoration-none"
+              >
+                <i class="fab fa-twitter fa-3x"></i>
+              </a>
+              <a
+                href="https://t.me/citmamatanzas"
+                target="_blank"
+                rel="noopener"
+                class="text-light text-decoration-none"
+              >
+                <i class="fab fa-telegram-plane fa-3x"></i>
+              </a>
+              <a
+                href="https://go.ivoox.com/sq/2487182"
+                target="_blank"
+                rel="noopener"
+                class="text-light text-decoration-none"
+              >
+                <i class="fas fa-podcast fa-3x"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segunda Franja: Copyright -->
+        <div class="text-center border-top pt-3 mt-4 footer-bottom">
+          <p class="mb-0">
+            &copy; 2025 Delegación Territorial CITMA Matanzas. Todos los
+            derechos reservados.
+          </p>
+          <div class="country-logo">
+            <svg
+              width="80"
+              height="auto"
+              viewBox="0 0 423.33332 202.14167"
+              version="1.1"
+              id="svg1"
+              inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+              sodipodi:docname="Marca país Cuba.svg"
+              xml:space="preserve"
+              xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+              xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:svg="http://www.w3.org/2000/svg"
+            >
+              <namedview
+                id="namedview1"
+                pagecolor="#ffffff"
+                bordercolor="#000000"
+                borderopacity="0.25"
+                inkscape:showpageshadow="2"
+                inkscape:pageopacity="0.0"
+                inkscape:pagecheckerboard="0"
+                inkscape:deskcolor="#d1d1d1"
+                inkscape:document-units="mm"
+                inkscape:zoom="0.36391344"
+                inkscape:cx="409.43802"
+                inkscape:cy="762.54397"
+                inkscape:window-width="1920"
+                inkscape:window-height="1094"
+                inkscape:window-x="-11"
+                inkscape:window-y="-11"
+                inkscape:window-maximized="1"
+                inkscape:current-layer="layer1"
+                showguides="true"
+              >
+                <guide
+                  position="8.9104846,150.98712"
+                  orientation="1,0"
+                  id="guide2"
+                  inkscape:locked="false"
+                />
+                <guide
+                  position="169.81141,101.32076"
+                  orientation="1,0"
+                  id="guide3"
+                  inkscape:locked="false"
+                />
+              </namedview>
+              <defs id="defs1" />
+              <g inkscape:label="Capa 1" inkscape:groupmode="layer" id="layer1">
+                <path
+                  style="fill: #fff"
+                  d="m 215.90001,136.88276 c -5.5548,-0.83427 -9.74573,-2.29812 -13.49376,-4.71322 -9.80034,-6.31502 -15.30485,-18.10585 -15.339,-32.856612 -0.0274,-11.823292 3.53329,-21.393617 10.568,-28.404596 4.90063,-4.884106 10.14571,-7.606062 17.33871,-8.998013 2.86779,-0.554958 9.95706,-0.631549 13.62605,-0.147212 5.22341,0.689533 11.4194,2.41472 11.90042,3.313502 0.1614,0.301586 0.15833,1.803222 -0.008,4.144519 -0.14388,2.019369 -0.32934,4.827832 -0.41215,6.24103 -0.13157,2.24528 -0.21591,2.590191 -0.6685,2.733839 -0.28487,0.09041 -0.67625,0.033 -0.86974,-0.127582 -0.6412,-0.532147 -3.96182,-2.044928 -5.70822,-2.600501 -3.48882,-1.10988 -4.54541,-1.252356 -9.26042,-1.248724 -5.29518,0.0041 -6.62711,0.266624 -10.31875,2.03399 -4.9533,2.371387 -8.56918,7.700744 -9.97226,14.697859 -0.66236,3.303202 -0.66048,12.976561 0.003,16.287761 1.04154,5.19664 2.74255,8.60072 5.85071,11.70846 2.83734,2.83696 5.69061,4.20733 10.12218,4.86146 6.72251,0.99229 13.07757,-0.57333 19.30297,-4.75546 1.186,-0.79673 2.16645,-1.27924 2.42982,-1.19579 0.39933,0.12653 0.43445,0.766 0.36745,6.69174 -0.0449,3.97057 -0.18551,6.77273 -0.35691,7.11252 -0.35245,0.69871 -5.10245,2.99304 -8.12629,3.92512 -3.41696,1.05327 -6.89111,1.47183 -11.88004,1.43128 -2.43844,-0.0198 -4.73117,-0.0807 -5.09497,-0.13537 z m 46.0375,-0.24946 c -7.29502,-1.27166 -11.77382,-5.28754 -13.48828,-12.09415 -0.80663,-3.20245 -1.05757,-8.4864 -1.07053,-22.54228 -0.007,-7.130518 -0.12276,-14.571729 -0.25818,-16.536022 -0.1881,-2.728304 -0.17028,-3.642977 0.0755,-3.874458 0.19424,-0.182954 1.89423,-0.36771 4.29046,-0.466293 2.18282,-0.0898 5.2805,-0.237347 6.88375,-0.327878 2.40642,-0.135883 2.97225,-0.09561 3.24318,0.23084 0.25877,0.311797 0.27259,2.543853 0.0653,10.552336 -0.32118,12.410555 -0.33085,22.782795 -0.0235,25.166625 0.54719,4.24326 1.99238,6.59587 4.66637,7.59634 3.47538,1.30031 9.7795,0.20006 13.0213,-2.27258 l 0.8981,-0.68502 -0.12424,-17.62944 c -0.0811,-11.512265 -0.23238,-18.363315 -0.43592,-19.744424 -0.29582,-2.007245 -0.28426,-2.137195 0.22698,-2.551164 0.36668,-0.29692 1.06853,-0.440865 2.19822,-0.450836 0.91276,-0.0081 3.92175,-0.09443 6.68665,-0.191943 4.70779,-0.166033 5.05296,-0.145908 5.43457,0.316855 0.35451,0.429906 0.38334,1.371282 0.22179,7.241024 -0.24853,9.029431 -0.0661,35.108318 0.29043,41.518918 0.19791,3.55867 0.20115,5.22334 0.0105,5.41397 -0.41552,0.41552 -13.45579,0.79189 -13.92567,0.40193 -0.25497,-0.2116 -0.36603,-0.93621 -0.36603,-2.38805 0,-1.14635 -0.0718,-2.08427 -0.15956,-2.08427 -0.0878,0 -0.72892,0.5119 -1.42479,1.13755 -1.55731,1.40015 -3.70538,2.56428 -6.48544,3.51473 -1.86405,0.63728 -2.57454,0.73196 -5.95313,0.79332 -2.11005,0.0383 -4.13411,0.0178 -4.49791,-0.0456 z m 114.87372,-0.24942 c -1.97592,-0.42889 -5.66554,-2.1845 -6.79143,-3.23153 -2.20286,-2.04856 -3.86688,-4.839 -4.77326,-8.00444 -0.37332,-1.30378 -0.49068,-2.58379 -0.48517,-5.29166 0.006,-3.14489 0.0915,-3.82739 0.71179,-5.70929 0.89149,-2.70466 2.27445,-4.8394 4.44312,-6.85842 3.69312,-3.43827 9.49779,-5.48827 20.21185,-7.13809 2.61938,-0.403354 4.92716,-0.78033 5.12841,-0.83773 0.28349,-0.08086 0.33607,-0.521501 0.23341,-1.956284 -0.26446,-3.696156 -2.32212,-5.536609 -6.81702,-6.097422 -4.66851,-0.582472 -9.67784,0.336614 -15.54048,2.851284 -1.19845,0.514056 -2.34404,0.871319 -2.54575,0.793917 -0.30173,-0.115787 -0.34351,-1.070709 -0.23569,-5.387578 0.0721,-2.885766 0.24377,-5.463027 0.38155,-5.727248 0.34053,-0.653049 2.02879,-1.338213 5.57244,-2.261527 5.10787,-1.330876 6.5103,-1.491405 13.02938,-1.491405 6.40107,0 7.18465,0.104892 10.74349,1.438141 2.93916,1.1011 5.60135,3.327203 7.1572,5.984784 2.20176,3.760886 2.33705,5.082376 2.34144,22.871868 0.003,13.0335 0.26243,22.53705 0.66185,24.26493 0.0898,0.38828 -0.0212,0.66587 -0.33024,0.82623 -0.25597,0.13283 -3.56103,0.28642 -7.34457,0.34132 l -6.87917,0.0998 -0.043,-2.11667 c -0.0237,-1.16416 -0.0534,-2.21699 -0.0661,-2.33962 -0.0127,-0.12263 -0.64821,0.34292 -1.41219,1.03454 -1.67443,1.51584 -4.82232,3.03501 -7.85558,3.79112 -2.62861,0.65524 -6.86293,0.72256 -9.49622,0.15097 z m 14.56075,-12.12538 c 1.12068,-0.34796 2.5792,-0.95006 3.24115,-1.33798 l 1.20355,-0.70533 v -6.32323 c 0,-3.73658 -0.10349,-6.38719 -0.25297,-6.47958 -0.13914,-0.086 -1.89309,0.14662 -3.89768,0.51691 -10.11606,1.86863 -12.46415,3.43316 -12.71474,8.47175 -0.0907,1.82302 -0.0201,2.28135 0.5087,3.30375 0.7185,1.38918 2.28915,2.57009 4.09916,3.08199 1.76578,0.4994 5.26506,0.26279 7.81283,-0.52828 z m -79.28053,11.50535 -3.42418,-0.16489 0.0678,-31.08855 c 0.0655,-30.044627 -0.0767,-38.143992 -0.77765,-44.297285 -0.21222,-1.862928 -0.19688,-2.429491 0.0727,-2.686384 0.18794,-0.179053 3.45991,-0.833862 7.27105,-1.45513 5.89306,-0.960651 6.99391,-1.075992 7.36109,-0.77126 0.39396,0.326959 0.41496,1.619731 0.23993,14.770742 -0.20622,15.494921 -0.26924,14.705701 1.08005,13.524398 0.80203,-0.702173 4.00531,-2.251396 6.08542,-2.94313 1.63865,-0.544929 2.33992,-0.614478 6.08541,-0.603524 4.199,0.01228 4.25303,0.01997 6.66118,0.94804 3.07528,1.185178 4.98617,2.336194 7.13447,4.29743 3.91993,3.578588 6.73432,9.169251 7.63973,15.175973 0.79302,5.26113 0.34404,11.94592 -1.08472,16.15006 -3.58646,10.55323 -11.66352,16.94995 -23.59146,18.68352 -3.30895,0.48091 -15.01558,0.73954 -20.82088,0.45999 z m 15.04345,-10.88468 c 6.85515,-0.66656 11.86187,-3.65493 14.25884,-8.51072 2.75423,-5.57954 3.00436,-13.27924 0.59713,-18.381637 -1.14502,-2.427005 -2.60139,-3.866863 -5.13497,-5.076755 l -2.02568,-0.967352 -3.70417,0.0232 c -3.37369,0.02113 -3.90481,0.09234 -5.95313,0.798117 l -2.24895,0.774913 -0.0627,15.473764 c -0.0577,14.22145 -0.0268,15.50052 0.3813,15.80448 0.52373,0.39008 0.51895,0.39001 3.89238,0.062 z"
+                  id="path1"
+                  sodipodi:nodetypes="ssssssscssssssscsssssssssscscsssssscsscsssssssssssssssccssscsssssssssssssscsssccssssssscsssssssccsssssssssssssscccssscssccscc"
+                />
+                <path
+                  id="path2"
+                  style="fill: #fff"
+                  inkscape:transform-center-x="-46.220551"
+                  inkscape:transform-center-y="-0.61286638"
+                  transform="matrix(1.3344946,0.69570221,-1.2924567,0.71833031,0.11720943,-65.397489)"
+                  d="M 183.39271,182.55413 54.214961,49.174798 181.25282,55.852317 Z"
+                  sodipodi:nodetypes="cccc"
+                />
+                <path
+                  id="path3"
+                  style="fill: #2c2c2c"
+                  inkscape:transform-center-x="0.042313724"
+                  inkscape:transform-center-y="-4.2879247"
+                  transform="matrix(1.1524945,-0.12635367,0.12469975,1.1677803,0.0295355,15.254346)"
+                  d="M 65.282309,112.30727 44.412647,93.853679 20.162316,107.56497 31.263646,82.014265 10.729672,63.187852 38.460333,65.850243 50.019969,40.503591 56.05713,67.699741 83.735353,70.861062 59.735862,85.006816 Z"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </body>
+</html>

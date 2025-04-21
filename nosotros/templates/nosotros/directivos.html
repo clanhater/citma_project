@@ -1,0 +1,357 @@
+{% extends "core/base.html" %} {% load static %} {% block content %}
+<main class="directivos-page py-5">
+  <div class="container">
+    <section class="directivos-content">
+      <div class="page-header text-center mb-5">
+        <h1 class="page-title display-4 fw-bold text-primary">
+          Primer Nivel de Dirección
+        </h1>
+        <p class="page-subtitle lead text-muted">
+          Conozca a nuestro equipo de liderazgo
+        </p>
+      </div>
+
+      <div class="organigrama">
+        <!-- Delegado Principal -->
+        <div class="nivel nivel-1 mb-4">
+          <div class="d-flex justify-content-center">
+            <div class="persona card-delegado mx-auto">
+              <div
+                class="persona-img-container position-relative overflow-hidden"
+              >
+                <img
+                  src="{% static 'images/delegado.jpg' %}"
+                  alt="Foto del Delegado"
+                  class="persona-img w-100"
+                />
+                <div
+                  class="persona-overlay d-none d-lg-flex align-items-center justify-content-center"
+                >
+                  <div class="social-links d-flex">
+                    <a
+                      href="mailto:delegado@citmamtz.gob.cu"
+                      class="social-link text-white mx-2"
+                      ><i class="fas fa-envelope fa-lg"></i
+                    ></a>
+                    <a
+                      href="tel:+5352853540"
+                      class="social-link text-white mx-2"
+                      ><i class="fas fa-phone-alt fa-lg"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="persona-info p-4">
+                <h3 class="mb-2">Oscar Luis García Martínez</h3>
+                <p class="persona-cargo text-primary fw-bold mb-3">Delegado</p>
+                <div class="persona-contacto text-start">
+                  <p class="mb-2">
+                    <i class="fas fa-phone-alt text-primary me-2"></i>
+                    <a
+                      href="tel:+5352853540"
+                      class="text-decoration-none text-dark d-lg-none"
+                      >+53 52853540</a
+                    >
+                    <span class="d-none d-lg-inline">+53 52853540</span>
+                  </p>
+                  <p class="mb-2">
+                    <i class="fas fa-envelope text-primary me-2"></i>
+                    <a
+                      href="mailto:delegado@citmamtz.gob.cu"
+                      class="text-decoration-none text-dark d-lg-none"
+                      >delegado@citmamtz.gob.cu</a
+                    >
+                    <span class="d-none d-lg-inline"
+                      >delegado@citmamtz.gob.cu</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conexión visual -->
+        <div class="d-flex justify-content-center mb-4">
+          <div class="connection-line"></div>
+        </div>
+
+        <!-- Subdelegados y Director Administrativo -->
+        <div class="nivel nivel-2">
+          <div class="row justify-content-center g-4">
+            <!-- Subdelegada 1 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="persona h-100">
+                <div
+                  class="persona-img-container position-relative overflow-hidden"
+                >
+                  <img
+                    src="{% static 'images/sub_d_ciencia_tecnologia_innovacion.jpg' %}"
+                    alt="Subdelegada de Ciencia, Tecnología e Innovación"
+                    class="persona-img w-100"
+                  />
+                  <div
+                    class="persona-overlay d-none d-lg-flex align-items-center justify-content-center"
+                  >
+                    <div class="social-links d-flex">
+                      <a
+                        href="mailto:elena@citmamtz.gob.cu"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-envelope fa-lg"></i
+                      ></a>
+                      <a
+                        href="tel:+5353694138"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-phone-alt fa-lg"></i
+                      ></a>
+                      <a
+                        href="https://twitter.com/elena_bon_citma"
+                        target="_blank"
+                        class="social-link text-white mx-2"
+                        ><i class="fab fa-twitter fa-lg"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="persona-info p-4">
+                  <h3 class="mb-2">Elena Bon Torres</h3>
+                  <p class="persona-cargo text-primary fw-bold mb-3">
+                    Subdelegada de Ciencia, Tecnología e Innovación
+                  </p>
+                  <div class="persona-contacto text-start">
+                    <p class="mb-2">
+                      <i class="fas fa-phone-alt text-primary me-2"></i>
+                      <a
+                        href="tel:+5353694138"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >+53 53694138</a
+                      >
+                      <span class="d-none d-lg-inline">+53 53694138</span>
+                    </p>
+                    <p class="mb-2">
+                      <i class="fas fa-envelope text-primary me-2"></i>
+                      <a
+                        href="mailto:elena@citmamtz.gob.cu"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >elena@citmamtz.gob.cu</a
+                      >
+                      <span class="d-none d-lg-inline"
+                        >elena@citmamtz.gob.cu</span
+                      >
+                    </p>
+                    <p class="mb-0">
+                      <i class="fab fa-twitter text-primary me-2"></i>
+                      <a
+                        href="https://twitter.com/elena_bon_citma"
+                        target="_blank"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >@elena_bon_citma</a
+                      >
+                      <span class="d-none d-lg-inline">@elena_bon_citma</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subdelegada 2 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="persona h-100">
+                <div
+                  class="persona-img-container position-relative overflow-hidden"
+                >
+                  <img
+                    src="{% static 'images/sub_d_medio_ambiente.jpg' %}"
+                    alt="Subdelegada de Medio Ambiente"
+                    class="persona-img w-100"
+                  />
+                  <div
+                    class="persona-overlay d-none d-lg-flex align-items-center justify-content-center"
+                  >
+                    <div class="social-links d-flex">
+                      <a
+                        href="mailto:bulsita@citmamtz.gob.cu"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-envelope fa-lg"></i
+                      ></a>
+                      <a
+                        href="tel:+5353428349"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-phone-alt fa-lg"></i
+                      ></a>
+                      <a
+                        href="https://twitter.com/nelviselaine"
+                        target="_blank"
+                        class="social-link text-white mx-2"
+                        ><i class="fab fa-twitter fa-lg"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="persona-info p-4">
+                  <h3 class="mb-2">Nelvis Elaine Gómez Campos</h3>
+                  <p class="persona-cargo text-primary fw-bold mb-3">
+                    Subdelegada de Medio Ambiente
+                  </p>
+                  <div class="persona-contacto text-start">
+                    <p class="mb-2">
+                      <i class="fas fa-phone-alt text-primary me-2"></i>
+                      <a
+                        href="tel:+5353428349"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >+53 53428349</a
+                      >
+                      <span class="d-none d-lg-inline">+53 53428349</span>
+                    </p>
+                    <p class="mb-2">
+                      <i class="fas fa-envelope text-primary me-2"></i>
+                      <a
+                        href="mailto:bulsita@citmamtz.gob.cu"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >bulsita@citmamtz.gob.cu</a
+                      >
+                      <span class="d-none d-lg-inline"
+                        >bulsita@citmamtz.gob.cu</span
+                      >
+                    </p>
+                    <p class="mb-0">
+                      <i class="fab fa-twitter text-primary me-2"></i>
+                      <a
+                        href="https://twitter.com/nelviselaine"
+                        target="_blank"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >@nelviselaine</a
+                      >
+                      <span class="d-none d-lg-inline">@nelviselaine</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subdelegada 3 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="persona h-100">
+                <div
+                  class="persona-img-container position-relative overflow-hidden"
+                >
+                  <img
+                    src="{% static 'images/sub_d_gesion_documental.jpg' %}"
+                    alt="Jefa del Departamento de Gestión Documental"
+                    class="persona-img w-100"
+                  />
+                  <div
+                    class="persona-overlay d-none d-lg-flex align-items-center justify-content-center"
+                  >
+                    <div class="social-links d-flex">
+                      <a
+                        href="mailto:yaniela.farray@citmamtz.gob.cu"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-envelope fa-lg"></i
+                      ></a>
+                      <a
+                        href="tel:+5359053050"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-phone-alt fa-lg"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="persona-info p-4">
+                  <h3 class="mb-2">Danailen Ramirez</h3>
+                  <p class="persona-cargo text-primary fw-bold mb-3">
+                    Jefa del Departamento de Gestión Documental
+                  </p>
+                  <div class="persona-contacto text-start">
+                    <p class="mb-2">
+                      <i class="fas fa-phone-alt text-primary me-2"></i>
+                      <a
+                        href="tel:+5359053050"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >+53 59053050</a
+                      >
+                      <span class="d-none d-lg-inline">+53 59053050</span>
+                    </p>
+                    <p class="mb-0">
+                      <i class="fas fa-envelope text-primary me-2"></i>
+                      <a
+                        href="mailto:yaniela.farray@citmamtz.gob.cu"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >yaniela.farray@citmamtz.gob.cu</a
+                      >
+                      <span class="d-none d-lg-inline"
+                        >yaniela.farray@citmamtz.gob.cu</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Director Administrativo -->
+            <div class="col-lg-3 col-md-6">
+              <div class="persona h-100">
+                <div
+                  class="persona-img-container position-relative overflow-hidden"
+                >
+                  <img
+                    src="{% static 'images/administrador.jpg' %}"
+                    alt="Director Administrativo"
+                    class="persona-img w-100"
+                  />
+                  <div
+                    class="persona-overlay d-none d-lg-flex align-items-center justify-content-center"
+                  >
+                    <div class="social-links d-flex">
+                      <a
+                        href="mailto:administrador@citmamtz.gob.cu"
+                        class="social-link text-white mx-2"
+                        ><i class="fas fa-envelope fa-lg"></i
+                      ></a>
+                      <a
+                        href="https://twitter.com/administrador"
+                        target="_blank"
+                        class="social-link text-white mx-2"
+                        ><i class="fab fa-twitter fa-lg"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="persona-info p-4">
+                  <h3 class="mb-2">Carlos Fernández Torres</h3>
+                  <p class="persona-cargo text-primary fw-bold mb-3">
+                    Director Administrativo
+                  </p>
+                  <div class="persona-contacto text-start">
+                    <p class="mb-2">
+                      <i class="fas fa-envelope text-primary me-2"></i>
+                      <a
+                        href="mailto:administrador@citmamtz.gob.cu"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >administrador@citmamtz.gob.cu</a
+                      >
+                      <span class="d-none d-lg-inline"
+                        >administrador@citmamtz.gob.cu</span
+                      >
+                    </p>
+                    <p class="mb-0">
+                      <i class="fab fa-twitter text-primary me-2"></i>
+                      <a
+                        href="https://twitter.com/administrador"
+                        target="_blank"
+                        class="text-decoration-none text-dark d-lg-none"
+                        >@administrador</a
+                      >
+                      <span class="d-none d-lg-inline">@administrador</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock %}

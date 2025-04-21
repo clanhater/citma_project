@@ -1,0 +1,863 @@
+{% extends "core/base.html" %} {% load static %} {% block content %}
+<!-- Contenedor Principal -->
+<div id="main-container" class="main-container">
+  <!-- Botón del Menú (Solo visible en pantallas pequeñas) -->
+  <div id="menu-toggle" class="menu-toggle">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <!-- Menú Fijo (Visible en pantallas grandes) -->
+  <nav id="fixed-menu" class="fixed-menu">
+    <ul class="menu-list">
+      <li class="menu-item" data-section="vision">
+        <i class="fas fa-eye"></i>
+        <span class="menu-label">Visión</span>
+      </li>
+      <li class="menu-item" data-section="mision">
+        <i class="fas fa-bullseye"></i>
+        <span class="menu-label">Misión</span>
+      </li>
+      <li class="menu-item" data-section="descripcion">
+        <i class="fas fa-info-circle"></i>
+        <span class="menu-label">Descripción</span>
+      </li>
+      <li class="menu-item" data-section="funciones-generales">
+        <i class="fas fa-tasks"></i>
+        <span class="menu-label">Funciones Generales</span>
+      </li>
+      <li class="menu-item" data-section="funciones-especificas">
+        <i class="fas fa-list-alt"></i>
+        <span class="menu-label">Funciones Específicas</span>
+      </li>
+      <!-- Agrega más opciones según sea necesario -->
+    </ul>
+  </nav>
+
+  <!-- Menú Offcanvas (Solo visible en pantallas pequeñas) -->
+  <nav id="offcanvas-menu" class="offcanvas-menu">
+    <ul class="menu-list">
+      <li class="menu-item" data-section="vision">
+        <i class="fas fa-eye"></i> Visión
+      </li>
+      <li class="menu-item" data-section="mision">
+        <i class="fas fa-bullseye"></i> Misión
+      </li>
+      <li class="menu-item" data-section="descripcion">
+        <i class="fas fa-info-circle"></i> Descripción
+      </li>
+      <li class="menu-item" data-section="funciones-generales">
+        <i class="fas fa-tasks"></i> Funciones Generales
+      </li>
+      <li class="menu-item" data-section="funciones-especificas">
+        <i class="fas fa-list-alt"></i> Funciones Específicas
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Contenedor de Secciones -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Aquí irán las secciones -->
+        <section id="vision" class="section-design">
+          <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-eye me-2"></i>Visión</h2>
+            <div class="divider"></div>
+          </div>
+          <div class="section-content">
+            <!-- Párrafo Introductorio -->
+            <p class="intro-text">
+              Somos una organización con <strong>avances notables</strong> en la
+              provincia de Matanzas, contribuyendo a su
+              <span class="highlight">desarrollo sostenible</span> y el del país
+              a partir de la <em>proactividad</em> y el trabajo en equipo de sus
+              colaboradores con el propósito de dirigir y potenciar:
+            </p>
+
+            <!-- Áreas Clave -->
+            <div class="areas-container">
+              <div class="area-card">
+                <i class="fas fa-flask icon-large"></i>
+                <p>
+                  <span class="highlight"
+                    >Ciencia, Tecnología e Innovación</span
+                  >
+                </p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-tree icon-large"></i>
+                <p><span class="highlight">Medio Ambiente</span></p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-file-alt icon-large"></i>
+                <p>
+                  <span class="highlight">Gestión Documental</span> y
+                  <span class="highlight">Archivos</span>
+                </p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-copyright icon-large"></i>
+                <p><span class="highlight">Propiedad Industrial</span></p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-balance-scale icon-large"></i>
+                <p>
+                  <span class="highlight">Normalización</span>,
+                  <span class="highlight">Metrología</span> y
+                  <span class="highlight">Calidad</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="mision" class="section-design">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fas fa-bullseye me-2"></i>Misión
+            </h2>
+            <div class="divider"></div>
+          </div>
+          <div class="section-content">
+            <!-- Párrafo Introductorio -->
+            <p class="intro-text">
+              La misión de la Delegación es
+              <strong>promover, dirigir y controlar</strong> la aplicación de
+              las Políticas del Estado y el Gobierno en función de impulsar el
+              <span class="highlight"
+                >desarrollo socioeconómico sostenible</span
+              >
+              en la provincia, en materia de:
+            </p>
+
+            <!-- Áreas Clave -->
+            <div class="areas-container">
+              <div class="area-card">
+                <i class="fas fa-flask icon-large"></i>
+                <p>
+                  <span class="highlight">Ciencia</span>,
+                  <span class="highlight">Tecnología</span> e
+                  <span class="highlight">Innovación</span>;
+                </p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-tree icon-large"></i>
+                <p><span class="highlight">Medio Ambiente</span>;</p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-file-alt icon-large"></i>
+                <p>
+                  <span class="highlight">Gestión Documental</span> y
+                  <span class="highlight">Archivos</span>;
+                </p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-copyright icon-large"></i>
+                <p><span class="highlight">Propiedad Industrial</span></p>
+              </div>
+              <div class="area-card">
+                <i class="fas fa-balance-scale icon-large"></i>
+                <p>
+                  <span class="highlight">Normalización</span>,
+                  <span class="highlight">Metrología</span> y
+                  <span class="highlight">Calidad</span>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="descripcion" class="section-design">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fas fa-info-circle me-2"></i>Descripción
+            </h2>
+            <div class="divider"></div>
+          </div>
+          <div class="section-content">
+            <!-- Párrafos Introductorios -->
+            <p>
+              La
+              <span class="highlight"
+                >Unidad Presupuestada de Apoyo al Ministerio de Ciencia,
+                Tecnología y Medio Ambiente (Delegación Territorial del CITMA de
+                Matanzas)</span
+              >
+              se encuentra ubicada en
+              <em>Milanés No 28006, entre Matanzas y Jovellanos</em>, Provincia
+              de Matanzas.
+            </p>
+            <p>
+              Es una organización con un estrecho vínculo con los Organismos de
+              la Administración Central del Estado (<span class="highlight"
+                >OACEs</span
+              >) y la población matancera. Fue creada en
+              <span class="highlight">junio de 1997</span> mediante la
+              <span class="highlight">Resolución No 127/02</span> del Ministerio
+              de Ciencia, Tecnología y Medio Ambiente.
+            </p>
+            <p>
+              Tiene como función general la de
+              <span class="highlight">dirigir, controlar y promover</span> el
+              desarrollo sostenible medio ambiental y científico técnico en la
+              provincia. Coordinar y controlar el plan de investigaciones e
+              introducción de los logros de la provincia en el aparato central,
+              los institutos y otras dependencias del ministerio y demás
+              organismos, Unión de empresas, unidades presupuestadas,
+              organizaciones y entidades según proceda, promoviendo la
+              introducción de los resultados de la ciencia y la técnica y
+              haciendo una amplia divulgación de su significado.
+            </p>
+
+            <!-- Estructura Interna -->
+            <p class="section-subtitle">
+              <span class="highlight">Estructura Interna:</span>
+            </p>
+            <div class="structure-container">
+              <div class="structure-card">
+                <i class="fas fa-user-tie icon-large"></i>
+                <p><span class="highlight">Oficina del Delegado:</span></p>
+                <ul>
+                  <li><i class="fas fa-user-tie"></i> Delegado</li>
+                  <li>
+                    <i class="fas fa-chart-line"></i> Grupo de Gestión Integral
+                  </li>
+                  <li>
+                    <i class="fas fa-shield-alt"></i> Grupo de Defensa,
+                    Seguridad y Protección
+                  </li>
+                </ul>
+              </div>
+              <div class="structure-card">
+                <i class="fas fa-tree icon-large"></i>
+                <p>
+                  <span class="highlight"
+                    >Subdelegación de Medio Ambiente:</span
+                  >
+                </p>
+                <ul>
+                  <li><i class="fas fa-user-tie"></i> Subdelegado</li>
+                  <li>
+                    <i class="fas fa-tools"></i> Departamento de Instrumentos de
+                    Política Ambiental
+                  </li>
+                  <li>
+                    <i class="fas fa-globe-americas"></i> Departamento de
+                    Recursos Naturales, Ecosistemas Priorizados y Cambio
+                    Climático
+                  </li>
+                </ul>
+              </div>
+              <div class="structure-card">
+                <i class="fas fa-flask icon-large"></i>
+                <p>
+                  <span class="highlight"
+                    >Subdelegación de Ciencia, Tecnología e Innovación:</span
+                  >
+                </p>
+                <ul>
+                  <li><i class="fas fa-user-tie"></i> Subdelegado</li>
+                  <li>
+                    <i class="fas fa-project-diagram"></i> Departamento de
+                    Gestión de Sistemas de Programas y Proyectos
+                  </li>
+                  <li>
+                    <i class="fas fa-flask"></i> Departamento de Gestión de la
+                    Ciencia, la Tecnología y la Innovación
+                  </li>
+                </ul>
+              </div>
+              <div class="structure-card">
+                <i class="fas fa-chart-bar icon-large"></i>
+                <p>
+                  <span class="highlight"
+                    >Subdelegación de Organización, Control, Información y
+                    Análisis:</span
+                  >
+                </p>
+                <ul>
+                  <li><i class="fas fa-user-tie"></i> Subdelegado</li>
+                  <li>
+                    <i class="fas fa-chart-bar"></i> Departamento de
+                    Organización, Control, Información y Análisis
+                  </li>
+                  <li>
+                    <i class="fas fa-file-alt"></i> Departamento de Gestión
+                    Documental y Archivo
+                  </li>
+                </ul>
+              </div>
+              <div class="structure-card">
+                <i class="fas fa-building icon-large"></i>
+                <p>
+                  <span class="highlight"
+                    >Dirección Interna Administrativa:</span
+                  >
+                </p>
+                <ul>
+                  <li><i class="fas fa-user-tie"></i> Director Interno</li>
+                  <li><i class="fas fa-coins"></i> Grupo Económico</li>
+                  <li>
+                    <i class="fas fa-building"></i> Grupo de Administración y
+                    Servicios
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="funciones-generales" class="section-design">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fas fa-tasks me-2"></i>Funciones Generales
+            </h2>
+            <div class="divider"></div>
+          </div>
+          <div class="section-content">
+            <!-- Introducción -->
+            <p>
+              A continuación, se detallan las principales funciones generales de
+              la Delegación Territorial del CITMA en Matanzas:
+            </p>
+
+            <!-- Lista de Funciones -->
+            <ol class="functions-list">
+              <li class="function-item">
+                <i class="fas fa-balance-scale icon-large"></i>
+                <p>
+                  Ejecutar lo dispuesto en la
+                  <span class="highlight">Constitución de la República</span>,
+                  las leyes, decretos-leyes, decretos, resoluciones y demás
+                  disposiciones de los órganos de superior jerarquía y de las
+                  disposiciones legales que dicten los jefes de los
+                  <span class="highlight">OACE y entidades nacionales</span>.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-shield-alt icon-large"></i>
+                <p>
+                  Asegurar la
+                  <span class="highlight"
+                    >protección, cuidado y conservación</span
+                  >
+                  de la propiedad estatal bajo su responsabilidad.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-cogs icon-large"></i>
+                <p>
+                  Ejecutar y controlar la
+                  <span class="highlight">aplicación de las políticas</span>
+                  aprobadas, conforme a las exigencias del desarrollo integral
+                  de la economía y de la sociedad; coordinar con otros
+                  organismos, entidades y organizaciones la elaboración de
+                  propuestas de soluciones conjuntas.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-flag icon-large"></i>
+                <p>
+                  Asegurar y apoyar las actividades para la
+                  <span class="highlight">Defensa de la Patria</span>, así como
+                  en el cumplimiento de las medidas de la
+                  <span class="highlight">Defensa Civil</span>.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-chart-line icon-large"></i>
+                <p>
+                  Contribuir y participar en la elaboración de los planes de
+                  desarrollo económico y social; asegurar que los planes estén
+                  acordes con las políticas aprobadas por el
+                  <span class="highlight">Partido</span> y el
+                  <span class="highlight">Gobierno</span> y una vez aprobados,
+                  ejecutarlos.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-coins icon-large"></i>
+                <p>
+                  Ejecutar la elaboración del
+                  <span class="highlight">anteproyecto de presupuesto</span>
+                  de su entidad, y una vez aprobado, controlar y evaluar su
+                  ejecución y liquidación.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-lightbulb icon-large"></i>
+                <p>
+                  Presentar propuestas y contribuir a la elaboración de
+                  variantes fundamentadas de
+                  <span class="highlight">inversiones</span>, la ejecución y
+                  oportuna puesta en explotación; y evaluar y controlar el
+                  aprovechamiento eficiente de las capacidades instaladas.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-tree icon-large"></i>
+                <p>
+                  Cumplir con las disposiciones y medidas que deriven de la
+                  <span class="highlight">política ambiental nacional</span> y
+                  controlar su cumplimiento.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-flask icon-large"></i>
+                <p>
+                  Propiciar el
+                  <span class="highlight"
+                    >desarrollo científico y tecnológico</span
+                  >, así como la
+                  <span class="highlight"
+                    >ejecución de investigaciones y servicios
+                    científico-técnicos</span
+                  >
+                  para la elevación constante de la eficacia en las actividades
+                  que dirige; introduciendo los resultados de la ciencia y la
+                  innovación tecnológica.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-file-contract icon-large"></i>
+                <p>
+                  Ejecutar en lo que le compete, las
+                  <span class="highlight">normas técnicas</span> y aplicar los
+                  <span class="highlight">procedimientos establecidos</span>.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-users icon-large"></i>
+                <p>
+                  Ejercer la dirección del
+                  <span class="highlight">personal subordinado</span>,
+                  respetando sus derechos, así como contribuir a su desarrollo,
+                  autonomía e iniciativa.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-user-tie icon-large"></i>
+                <p>
+                  Gestionar la
+                  <span class="highlight">política de los cuadros</span> y
+                  controlar su aplicación; apoyar, controlar y ejecutar las
+                  actividades de formación y superación de sus subordinados.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-hand-holding-heart icon-large"></i>
+                <p>
+                  Gestionar, aplicar y evaluar, las
+                  <span class="highlight">políticas</span>
+                  laborales, salariales, de seguridad social y de protección e
+                  higiene del trabajo.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-handshake icon-large"></i>
+                <p>
+                  Coordinar y apoyar, las actividades que se realizan con el
+                  <span class="highlight"
+                    >sindicato y otras organizaciones políticas, sociales, y
+                    profesionales</span
+                  >
+                  relacionadas con las actividades que contribuyan a su
+                  desarrollo y al logro de sus objetivos.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-comment-alt icon-large"></i>
+                <p>
+                  Atender y dar respuesta a las quejas, planteamientos y
+                  peticiones que les dirijan los
+                  <span class="highlight">ciudadanos</span>.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-calendar-check icon-large"></i>
+                <p>
+                  Organizar los procesos para la elaboración de
+                  <span class="highlight"
+                    >los objetivos y la planificación</span
+                  >
+                  de actividades, así como la ejecución de las acciones de
+                  control para su cumplimiento; coordinar, elaborar y controlar
+                  el cumplimiento del Plan de Trabajo de la entidad que dirige,
+                  con las organizaciones que participan en este proceso.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-laptop-code icon-large"></i>
+                <p>
+                  Garantizar, en el cumplimiento de las actividades el empleo de
+                  las tecnologías de
+                  <span class="highlight"
+                    >la informática y las comunicaciones</span
+                  >, el nivel técnico y la calidad de su actividad, el
+                  incremento de la productividad del trabajo y el aumento de la
+                  eficiencia, mediante la mejor utilización de los recursos
+                  laborales, materiales y financieros.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-globe-americas icon-large"></i>
+                <p>
+                  Desarrollar relaciones propias de su actividad con otros
+                  <span class="highlight"
+                    >organismos, entidades e instituciones</span
+                  >, de acuerdo con las regulaciones establecidas en la
+                  legislación vigente.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-exclamation-triangle icon-large"></i>
+                <p>
+                  Ejecutar la elaboración de los
+                  <span class="highlight"
+                    >planes de acción, medidas de prevención, y guías</span
+                  >
+                  para el control interno y controlar su efectividad.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-lock icon-large"></i>
+                <p>
+                  Garantizar el control del cumplimiento de las medidas
+                  establecidas en materia de
+                  <span class="highlight"
+                    >secreto estatal y protección física</span
+                  >.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-database icon-large"></i>
+                <p>
+                  Organizar el registro, control y la movilización de los
+                  <span class="highlight">trabajadores</span>, así como el de
+                  los medios y equipos de la economía con que cuente; y
+                  salvaguardar el Patrimonio Documental de su unidad
+                  organizativa.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="funciones-especificas" class="section-design">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fas fa-list-alt me-2"></i>Funciones Específicas
+            </h2>
+            <div class="divider"></div>
+          </div>
+          <div class="section-content">
+            <!-- Introducción -->
+            <p>
+              A continuación, se detallan las funciones específicas de la
+              Delegación Territorial del CITMA:
+            </p>
+
+            <!-- Lista de Funciones -->
+            <ol class="functions-list">
+              <li class="function-item">
+                <i class="fas fa-cogs icon-large"></i>
+                <p>
+                  Dirigir y controlar las políticas
+                  <span class="highlight"
+                    >científicas, tecnológica e innovación</span
+                  >
+                  en correspondencia con el desarrollo económico y social del
+                  país, cumpliendo los objetivos, prioridades, líneas y
+                  programas que correspondan.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-project-diagram icon-large"></i>
+                <p>
+                  Dirigir y controlar el proceso de elaboración, ejecución y
+                  evaluación de los programas
+                  <span class="highlight"
+                    >nacionales de investigación científica</span
+                  >
+                  y de innovación tecnológica y asesorar metodológicamente los
+                  programas sectoriales, territoriales, institucionales y
+                  empresariales, así como perfeccionar los métodos de
+                  introducción de sus resultados.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-users icon-large"></i>
+                <p>
+                  Promover el desarrollo de investigaciones
+                  <span class="highlight">sociales y humanísticas</span> sobre
+                  los asuntos prioritarios de la vida de la sociedad y la
+                  introducción de sus resultados.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-handshake icon-large"></i>
+                <p>
+                  Promover y facilitar la participación de la comunidad
+                  <span class="highlight">científica</span> en la elaboración y
+                  evaluación de las estrategias y políticas de ciencia,
+                  tecnología e innovación.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-network-wired icon-large"></i>
+                <p>
+                  Dirigir y controlar el proceso de integración de los factores
+                  científicos, tecnológicos, productivos, de las Brigadas
+                  Técnicas Juveniles (<span class="highlight">BTJ</span>), la
+                  Asociación Nacional de Innovadores y Racionalizadores (<span
+                    class="highlight"
+                    >ANIR</span
+                  >), el Fórum de Ciencia y Técnica, las sociedades científicas
+                  y otros, en la generación y utilización de conocimientos
+                  científico-técnicos.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-globe-americas icon-large"></i>
+                <p>
+                  Dirigir y controlar las regulaciones y normativas para la
+                  transferencia de tecnologías
+                  <span class="highlight">nacionales</span> desde y hacia el
+                  exterior, así como para la exportación y comercialización o
+                  negociación con entidades extranjeras de proyectos de
+                  investigación-desarrollo, resultados científicos y tecnologías
+                  generadas en el país.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-chart-line icon-large"></i>
+                <p>
+                  Evaluar sistemáticamente la efectividad y eficiencia del
+                  sistema de
+                  <span class="highlight">ciencia, tecnología e innovación</span
+                  >; proponer las medidas necesarias para el desarrollo y
+                  perfeccionamiento de las entidades de ciencia, tecnología e
+                  innovación.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-binoculars icon-large"></i>
+                <p>
+                  Dirigir, controlar y evaluar la actividad de vigilancia y
+                  prospectivas <span class="highlight">tecnológicas</span> en el
+                  ámbito nacional y ejecutar dentro de ello, lo relativo a los
+                  aspectos estratégicos para el país y las tecnologías
+                  emergentes en el ámbito mundial.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-tree icon-large"></i>
+                <p>
+                  Dirigir y controlar el ordenamiento ambiental mediante la
+                  observancia de los requerimientos y las regulaciones
+                  ambientales en los planes de ordenamiento territorial, en
+                  coordinación con la autoridad competente, así como las
+                  actividades relacionadas con las áreas protegidas y las
+                  estrategias y programas de educación ambiental.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-cloud-sun icon-large"></i>
+                <p>
+                  Dirigir, controlar y evaluar la vigilancia meteorológica, del
+                  clima, de la composición química y de la contaminación general
+                  de la atmósfera; la vigilancia radiológica ambiental y el
+                  servicio sismológico, así como los estudios de riesgo de
+                  peligrosidad sísmica, tecnológica, meteorológica y
+                  radiológica.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-recycle icon-large"></i>
+                <p>
+                  Controlar las políticas aprobadas dirigidas al desarrollo de
+                  producciones limpias, aprovechamiento económico de los
+                  residuales, la promoción para el uso de las fuentes renovables
+                  de energía y la introducción de sistemas de certificación y
+                  otras formas de reconocimiento ambiental.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-seedling icon-large"></i>
+                <p>
+                  Proponer, dictar, supervisar y controlar la aplicación de
+                  medidas regulatorias, para la conservación y uso racional de
+                  los suelos, los recursos minerales, las aguas terrestres y
+                  marítimas, los bosques, la atmósfera, la flora y fauna y para
+                  la prevención de la contaminación en general.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-atom icon-large"></i>
+                <p>
+                  Dirigir y controlar la política a seguir en el uso pacífico de
+                  la energía nuclear y una vez aprobada, su ejecución y
+                  cumplimiento, especialmente en lo referido a la energética
+                  nuclear, las investigaciones y la aplicación de las técnicas
+                  nucleares y las radioisotópicas.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-newspaper icon-large"></i>
+                <p>
+                  Dirigir y controlar la política de información científica,
+                  tecnológica y ambiental; y una vez aprobada, dirigirla y
+                  controlarla; así como dirigir y controlar el registro de
+                  publicaciones científicas.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-bullhorn icon-large"></i>
+                <p>
+                  Dirigir y controlar la política en materia de comunicación
+                  social relacionada con la
+                  <span class="highlight"
+                    >ciencia, la tecnología, el medio ambiente</span
+                  >
+                  y el uso pacífico de la energía nuclear.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-user-graduate icon-large"></i>
+                <p>
+                  Dirigir y controlar la política de ingreso, movilidad y
+                  desarrollo del potencial humano vinculado a la actividad
+                  científico-técnica, así como proponer la política de su
+                  reconocimiento en el ámbito de su competencia, y una vez
+                  aprobadas, controlar y evaluar su cumplimiento.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-shield-alt icon-large"></i>
+                <p>
+                  Dirigir y controlar las políticas, estrategias y regulaciones
+                  en materia de
+                  <span class="highlight">seguridad biológica y química</span>;
+                  y supervisar las medidas que aseguren su cumplimiento.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-balance-scale icon-large"></i>
+                <p>
+                  Dirigir y controlar las normativas de ordenamiento jurídico de
+                  la propiedad industrial en diversas disciplinas, y una vez
+                  aprobadas, ejecutarlas y controlarlas, e implementar el
+                  Sistema Nacional de Propiedad Industrial aprobado.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-archive icon-large"></i>
+                <p>
+                  Dirigir y controlar la política en materia de archivos y
+                  conservación de la documentación de
+                  <span class="highlight">valor permanente</span> y, una vez
+                  aprobada, dirigirla y controlarla.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-check-double icon-large"></i>
+                <p>
+                  Dirigir y controlar el cumplimiento de las políticas
+                  nacionales de
+                  <span class="highlight"
+                    >Normalización, Metrología, Calidad y Acreditación</span
+                  >.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-utensils icon-large"></i>
+                <p>
+                  Controlar la coordinación relacionada con la actividad de la
+                  <span class="highlight">inocuidad de los alimentos</span>.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-university icon-large"></i>
+                <p>
+                  Atender a las filiales territoriales de la Academia de
+                  Ciencias de Cuba y encargarle las valoraciones y análisis que
+                  puedan demandar el territorio a instancias del Estado, el
+                  Gobierno u otras organizaciones.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-coins icon-large"></i>
+                <p>
+                  Promover el empleo efectivo de fondos para el desarrollo de
+                  las funciones que son competencias del Organismo, así como las
+                  diferentes fuentes de financiamiento de acuerdo a las
+                  <span class="highlight">prioridades establecidas</span>.
+                </p>
+              </li>
+              <li class="function-item">
+                <i class="fas fa-industry icon-large"></i>
+                <p>
+                  Atender las políticas aprobadas para las empresas de
+                  <span class="highlight">Alta Tecnología</span>; los organismos
+                  Genéticamente Modificados; los Parques Científicos y
+                  Tecnológicos y su integración con las universidades, entidades
+                  de Ciencia, Tecnología e Innovación (ECTI) y las empresas.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Seleccionar elementos
+  const menuToggle = document.getElementById("menu-toggle");
+  const offcanvasMenu = document.getElementById("offcanvas-menu");
+  const mainContent = document.getElementById("main-content");
+  const menuItems = document.querySelectorAll(".menu-item");
+
+  // Alternar el menú offcanvas
+  menuToggle.addEventListener("click", () => {
+    offcanvasMenu.classList.toggle("active");
+    mainContent.classList.toggle("shifted");
+  });
+
+  // Cerrar el menú al hacer clic fuera de él
+  document.addEventListener("click", (event) => {
+    if (
+      !offcanvasMenu.contains(event.target) &&
+      !menuToggle.contains(event.target)
+    ) {
+      offcanvasMenu.classList.remove("active");
+      mainContent.classList.remove("shifted");
+    }
+  });
+
+  // Navegar entre secciones
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      // Remover clase 'active' de todos los elementos
+      menuItems.forEach((el) => el.classList.remove("active"));
+
+      // Agregar clase 'active' al elemento seleccionado
+      item.classList.add("active");
+
+      // Obtener la sección correspondiente
+      const sectionId = item.getAttribute("data-section");
+      const section = document.getElementById(sectionId);
+
+      // Desplazamiento suave
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Cerrar el menú offcanvas después de hacer clic
+      offcanvasMenu.classList.remove("active");
+      mainContent.classList.remove("shifted");
+    });
+  });
+</script>
+{% endblock %}

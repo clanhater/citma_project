@@ -1,0 +1,76 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main">
+  <!-- Header -->
+  <header class="empleos-header">
+    <h1>Empleos Disponibles en la Delegación</h1>
+    <p class="slogan">Encuentra tu próxima oportunidad laboral con nosotros.</p>
+  </header>
+
+  <!-- Buscador -->
+  <section class="search-section">
+    <div class="search-container">
+      <form method="GET" id="searchForm">
+        <input
+          type="text"
+          name="q"
+          placeholder="Buscar empleos..."
+          value="{{ query }}"
+        />
+        <select name="area" id="areaFilter">
+          <option value="">Todas las áreas</option>
+          {% for value, label in areas %}
+            <option value="{{ value }}" {% if selected_area == value %}selected{% endif %}>
+              {{ label }}
+            </option>
+          {% endfor %}
+        </select>
+        <button type="submit">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Lista de Empleos -->
+  <section class="empleos-list">
+    <h2>Lista de Empleos</h2>
+    <div class="empleos-container">
+      {% if empleos %}
+        {% for empleo in empleos %}
+          <div class="empleo-card {% if empleo.area == 'ciencia' %}ciencia{% elif empleo.area == 'medio_ambiente' %}medio-ambiente{% elif empleo.area == 'gestion_documental' %}gestion-documental{% elif empleo.area == 'administracion' %}administracion{% else %}direccion{% endif %}">
+            <!-- Ícono en la esquina superior derecha -->
+            <div class="icon-container">
+              {% if empleo.area == 'ciencia' %}
+                <i class="fa-solid fa-atom" style="color: #0074D9;"></i>
+              {% elif empleo.area == 'medio_ambiente' %}
+                <i class="fa-solid fa-tree" style="color: #2ECC40;"></i>
+              {% elif empleo.area == 'gestion_documental' %}
+                <i class="fa-solid fa-file-alt" style="color: #AAAAAA;"></i>
+              {% elif empleo.area == 'administracion' %}
+                <i class="fa-solid fa-wrench" style="color: #FF851B;"></i>
+              {% else %}
+                <i class="fa-solid fa-compass" style="color: #FF4136;"></i>
+              {% endif %}
+            </div>
+            <h3>{{ empleo.titulo }}</h3>
+            <p><strong>Área:</strong> {{ empleo.get_area_display }}</p>
+            <p><strong>Ubicación:</strong> {{ empleo.ubicacion }}</p>
+            <p><strong>Tipo de Contrato:</strong> {{ empleo.tipo_contrato }}</p>
+            <a href="{% url 'empleos:detalle_empleo' empleo.pk %}" class="cta-button">Ver Detalles</a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No hay ofertas de empleo disponibles con estos criterios.</p>
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+<script>
+  // Filtrar automáticamente al cambiar el área
+  document.getElementById('areaFilter').addEventListener('change', function () {
+    document.getElementById('searchForm').submit();
+  });
+</script>
+{% endblock %}

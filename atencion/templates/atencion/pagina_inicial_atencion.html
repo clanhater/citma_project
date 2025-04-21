@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="atencion-populacion">
+  <section class="hero-section py-5">
+    <div class="container">
+      <!-- Encabezado -->
+      <div class="header-content text-center mb-4">
+        <h1 class="display-4 fw-bold text-primary mb-3">Atención a la Población</h1>
+        <p class="lead slogan-text">
+          Su voz es importante para nosotros. Exprese sus inquietudes, sugerencias, denuncias o preguntas.
+        </p>
+      </div>
+
+      <!-- Información de contacto -->
+      <div class="contact-info row justify-content-center mb-5">
+        <div class="col-md-4 contact-item text-center mb-4 mb-md-0">
+          <div class="contact-icon">
+            <i class="fas fa-envelope fa-2x"></i>
+          </div>
+          <a href="mailto:planificacion@citmamtz.gob.cu" class="contact-link">planificacion@citmamtz.gob.cu</a>
+        </div>
+        
+        <div class="col-md-4 contact-item text-center mb-4 mb-md-0">
+          <div class="contact-icon">
+            <i class="fas fa-phone fa-2x"></i>
+          </div>
+          <a href="tel:+5345244964" class="contact-link">45 244964</a>
+        </div>
+        
+        <div class="col-md-4 contact-item text-center">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt fa-2x"></i>
+          </div>
+          <p class="contact-text">Calle Milanés 17 entre Jovellanos y Matanzas, Matanzas, Cuba</p>
+        </div>
+      </div>
+
+      <!-- Separador -->
+      <div class="separador my-5">
+        <div class="line"></div>
+        <div class="icon"><i class="fas fa-comments"></i></div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Instrucciones y botones -->
+      <div class="instructions-container text-center">
+        <div class="instructions-text mb-5">
+          <p class="mb-4">
+            El Departamento de Atención a la Población del CITMA le da la bienvenida
+            a su plataforma de atención en línea. Aquí puede trasladar sus
+            opiniones, consultas o quejas de manera sencilla y segura.
+          </p>
+          <p>
+            Para realizar una nueva queja, complete el formulario haciendo clic en
+            el botón correspondiente. Si desea dar seguimiento al estado de una
+            queja previa, utilice el ID proporcionado para consultar su estado
+            actual.
+          </p>
+        </div>
+        
+        <div class="action-buttons d-flex flex-column flex-md-row justify-content-center gap-4">
+          <a href="" class="btn btn-primary btn-lg px-4 py-3">
+            <i class="fas fa-edit me-2"></i> Realizar una Queja
+          </a>
+          <a href="" class="btn btn-outline-primary btn-lg px-4 py-3">
+            <i class="fas fa-search me-2"></i> Consultar Estado de Queja
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

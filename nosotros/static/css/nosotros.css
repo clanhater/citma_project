@@ -1,0 +1,383 @@
+/* Estilo general de la sección */
+.section-design {
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Encabezado de la sección */
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background-color: #198754; /* Verde Bootstrap */
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* Párrafo introductorio */
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.intro-text strong {
+  color: #198754; /* Verde Bootstrap */
+}
+
+.highlight {
+  color: #198754; /* Verde Bootstrap */
+  font-weight: bold;
+}
+
+/* Contenedor de áreas clave */
+.areas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Tarjetas de áreas clave */
+.area-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.area-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-large {
+  font-size: 2.5rem;
+  color: #198754; /* Verde Bootstrap */
+  margin-bottom: 15px;
+}
+
+.area-card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Título de la estructura interna */
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de la estructura interna */
+.structure-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Tarjetas de la estructura interna */
+.structure-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.structure-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-large {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+}
+
+.structure-card ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.structure-card li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Lista de funciones */
+.functions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.function-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.function-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-large {
+  font-size: 2.5rem;
+  color: #198754;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+}
+
+.function-item p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Botón del Menú (Solo visible en pantallas pequeñas) */
+.menu-toggle {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 998;
+  color: #fd7e14; /* Naranja Bootstrap */
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.2);
+}
+
+.menu-toggle i {
+  font-size: 1.5rem;
+}
+
+/* Menú Fijo (Visible en pantallas grandes) */
+.fixed-menu {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 60px;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro semi-transparente */
+  color: #fff;
+  z-index: 999;
+  padding: 20px 0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-menu .menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fixed-menu .menu-item {
+  position: relative;
+  padding: 15px 0;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.fixed-menu .menu-item:hover {
+  background-color: #fd7e14; /* Cambia de color al pasar el mouse */
+  width: 250px; /* Expande el ancho para mostrar el texto */
+  text-align: justify;
+}
+
+.fixed-menu .menu-item i {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.fixed-menu .menu-label {
+  position: absolute;
+  left: 70px; /* Ajusta la posición del texto */
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fixed-menu .menu-item:hover .menu-label {
+  opacity: 1;
+}
+
+.fixed-menu .menu-item.active {
+  background-color: #fd7e14; /* Resalta la sección activa */
+}
+
+.fixed-menu .menu-item.active i {
+  transform: translateX(0); /* El ícono permanece en su lugar */
+}
+
+.fixed-menu .menu-item.active .menu-label {
+  opacity: 1;
+}
+
+/* Menú Offcanvas (Solo visible en pantallas pequeñas) */
+.offcanvas-menu {
+  display: block; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: -300px; /* Oculto inicialmente */
+  width: 300px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0); /* Fondo oscuro semi-transparente */
+  color: #fff;
+  z-index: 999;
+  transition: left 0.3s ease;
+  padding-top: 20px; /* Sin encabezado */
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.offcanvas-menu.active {
+  left: 0; /* Visible cuando está activo */
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #222;
+  color: #fff;
+  font-weight: bold;
+}
+
+.close-menu {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.offcanvas-menu .menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offcanvas-menu .menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.offcanvas-menu .menu-item:hover {
+  background-color: #fd7e14; /* Cambia de color al pasar el mouse */
+}
+
+.offcanvas-menu .menu-item i {
+  font-size: 1.2rem;
+}
+
+.offcanvas-menu .menu-item.active {
+  background-color: #fd7e14; /* Resalta la sección activa */
+  font-weight: bold;
+}
+
+/* Contenido Principal */
+.main-content {
+  padding: 20px;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 992px) {
+  /* En pantallas grandes, muestra el menú fijo */
+  .fixed-menu {
+    display: block;
+  }
+
+  /* Oculta el botón del menú y el offcanvas */
+  .menu-toggle,
+  .offcanvas-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  /* En pantallas pequeñas, muestra el botón del menú */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Ajusta el contenido principal cuando el offcanvas está abierto */
+  .main-content.shifted {
+    margin-left: 300px;
+  }
+}

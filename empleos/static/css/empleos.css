@@ -1,0 +1,296 @@
+/* Estilos generales */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 150px; /* Margen superior para evitar que el contenido se tape con el navbar */
+}
+
+h1,
+h2 {
+  color: #0074d9; /* Azul corporativo */
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #0074d9;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Header */
+.empleos-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.empleos-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.empleos-header .slogan {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Estilos para el buscador */
+.search-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.search-container {
+  display: inline-flex; /* Coloca los elementos en una sola línea */
+  align-items: center; /* Alinea verticalmente los elementos */
+  gap: 15px; /* Espacio entre los elementos */
+  padding: 15px 20px; /* Relleno interno para el contenedor */
+  background-color: white; /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombreado suave */
+}
+
+.search-container input[type="text"] {
+  width: 300px; /* Ancho del campo de texto */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search-container select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search-container button {
+  background-color: #0074d9; /* Color azul corporativo */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3; /* Cambio de color al pasar el ratón */
+}
+
+/* Lista de empleos */
+.empleos-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.empleos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Contenedor del ícono */
+.icon-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-container i {
+  font-size: 1.5rem; /* Tamaño del ícono */
+  opacity: 0.8; /* Transparencia ligera */
+}
+
+/* Estilo base para las tarjetas */
+.empleo-card {
+  position: relative; /* Necesario para posicionar el ícono */
+  background: white; /* Fondo blanco */
+  border: 2px solid #ddd; /* Borde predeterminado */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #333; /* Color de texto normal */
+}
+
+/* Colores específicos para cada área */
+.empleo-card.ciencia {
+  border-color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+}
+
+.empleo-card.medio-ambiente {
+  border-color: #2ecc40; /* Verde para Medio Ambiente */
+}
+
+.empleo-card.gestion-documental {
+  border-color: #aaaaaa; /* Gris para Gestión Documental */
+}
+
+.empleo-card.administracion {
+  border-color: #ff851b; /* Naranja para Administración */
+}
+
+.empleo-card.direccion {
+  border-color: #ff4136; /* Rojo para Dirección */
+}
+
+/* Títulos de las tarjetas */
+.empleo-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.empleo-card.ciencia h3 {
+  color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+}
+
+.empleo-card.medio-ambiente h3 {
+  color: #2ecc40; /* Verde para Medio Ambiente */
+}
+
+.empleo-card.gestion-documental h3 {
+  color: #aaaaaa; /* Gris para Gestión Documental */
+}
+
+.empleo-card.administracion h3 {
+  color: #ff851b; /* Naranja para Administración */
+}
+
+.empleo-card.direccion h3 {
+  color: #ff4136; /* Rojo para Dirección */
+}
+
+/* Botones dentro de las tarjetas */
+.empleo-card .cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.empleo-card.ciencia .cta-button {
+  background-color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+}
+
+.empleo-card.medio-ambiente .cta-button {
+  background-color: #2ecc40; /* Verde para Medio Ambiente */
+}
+
+.empleo-card.gestion-documental .cta-button {
+  background-color: #aaaaaa; /* Gris para Gestión Documental */
+}
+
+.empleo-card.administracion .cta-button {
+  background-color: #ff851b; /* Naranja para Administración */
+}
+
+.empleo-card.direccion .cta-button {
+  background-color: #ff4136; /* Rojo para Dirección */
+}
+
+.empleo-card .cta-button:hover {
+  opacity: 0.9; /* Efecto hover suave */
+}
+
+.empleo-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Detalle del empleo */
+.empleo-detail {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.empleo-detail h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.empleo-detail p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.empleo-detail strong {
+  color: #0074d9;
+}
+
+/* Formulario de solicitud */
+.solicitud-form {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.solicitud-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #0074d9;
+}
+
+.solicitud-form form {
+  display: grid;
+  gap: 15px;
+}
+
+.solicitud-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.solicitud-form input,
+.solicitud-form textarea,
+.solicitud-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.solicitud-form button {
+  background-color: #0074d9;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.solicitud-form button:hover {
+  background-color: #0056b3;
+}

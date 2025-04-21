@@ -1,0 +1,190 @@
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #003366;
+  --accent-color: #00a8e8;
+  --text-color: #333;
+  --light-gray: #f5f7fa;
+  --medium-gray: #e1e5eb;
+  --dark-gray: #6c757d;
+}
+
+/* Estilos generales */
+.directivos-page {
+  background-color: var(--light-gray);
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-title {
+  position: relative;
+  display: inline-block;
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.page-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+  font-weight: 400;
+}
+
+/* Estructura del organigrama */
+.connection-line {
+  width: 2px;
+  height: 40px;
+  background-color: var(--medium-gray);
+}
+
+/* Tarjetas de personas */
+.persona {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-delegado {
+  border: 2px solid var(--accent-color);
+  max-width: 320px;
+}
+
+.card-delegado .persona-cargo {
+  color: var(--accent-color);
+}
+
+/* Contenedor de imagen */
+.persona-img-container {
+  height: 200px;
+  position: relative;
+}
+
+.persona-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Información de la persona */
+.persona-info {
+  padding: 20px;
+}
+
+.persona h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.persona-cargo {
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.persona-contacto {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.persona-contacto p {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.persona-contacto i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Efecto hover para desktop */
+@media (min-width: 992px) {
+  .persona {
+    transition: transform 0.3s ease;
+  }
+
+  .persona:hover {
+    transform: translateY(-5px);
+  }
+
+  .persona-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 88, 179, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex !important;
+  }
+
+  .persona:hover .persona-overlay {
+    opacity: 1;
+  }
+
+  .social-link {
+    color: white;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .social-link:hover {
+    transform: translateY(-3px);
+    color: var(--accent-color);
+  }
+
+  .persona-contacto a {
+    pointer-events: none;
+  }
+}
+
+/* Estilos para móvil */
+@media (max-width: 991px) {
+  .persona-overlay {
+    display: none !important;
+  }
+
+  .persona-contacto a {
+    color: var(--dark-gray);
+    transition: color 0.2s ease;
+  }
+
+  .persona-contacto a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .persona {
+    max-width: 100%;
+  }
+}
