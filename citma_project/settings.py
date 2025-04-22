@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-m!(%g9bo!fzl$y$ohucghe893%_9=ir-9-f8ezojz45^00b++(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["citma-project.onrender.com", "localhost"]
 
 
 # Application definition
