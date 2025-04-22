@@ -56,6 +56,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "citma_project.urls"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TEMPLATES = [
     {
