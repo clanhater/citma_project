@@ -57,6 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "citma_project.urls"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_MANIFEST_STRICT = False  # Permite que WhiteNoise sirva media
 
 TEMPLATES = [
     {
