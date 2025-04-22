@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-m!(%g9bo!fzl$y$ohucghe893%_9=ir-9-f8ezojz45^00b++("
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["citma-project.onrender.com", "localhost"]
 
@@ -85,9 +85,11 @@ DATABASES = {
     }
 }
 
+
 # Ruta para archivos estáticos
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ¡Obligatorio para producción!
 
 # Ruta para archivos multimedia
 MEDIA_URL = "/media/"  # URL pública para acceder a los archivos
