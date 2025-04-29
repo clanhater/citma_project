@@ -2,41 +2,69 @@
 {% load static %}
 
 {% block content %}
+<script src="{% static 'javascript/solicitud_wizard.js' %}"></script>
 <div class="main">
+
   <section class="solicitud-form">
     <h2>Postulación para: {{ empleo.titulo }}</h2>
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      <div>
-        <label for="{{ form.nombre_apellidos.id_for_label }}">Nombre y Apellidos:</label>
-        {{ form.nombre_apellidos }}
+      <div class="tab-content">
+
+
+        <section class="tab-pane fade show active" id="personal">
+          <div>
+            <label for="{{ form.nombre_apellidos.id_for_label }}">Nombre y Apellidos:</label>
+            {{ form.nombre_apellidos }}
+          </div>
+          <div>
+            <label for="{{ form.telefono.id_for_label }}">Teléfono:</label>
+            {{ form.telefono }}
+          </div>
+          <div>
+            <label for="{{ form.correo_electronico.id_for_label }}">Correo Electrónico:</label>
+            {{ form.correo_electronico }}
+          </div>
+          <div>
+            <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
+            {{ form.direccion }}
+          </div>
+          <p id="error-msg"></p>
+          <div class="botones-container" id="first-button-area">
+            <button class="cta-button" id="next-btn">
+              Siguiente
+            </button>
+          </div>
+        </section>
+
+
+        <section class="tab-pane fade" id="experiencia">
+          <div>
+            <label for="{{ form.titulos.id_for_label }}">Títulos Académicos:</label>
+            {{ form.titulos }}
+          </div>
+          <div>
+            <label for="{{ form.experiencia_profesional.id_for_label }}">Experiencia Profesional:</label>
+            {{ form.experiencia_profesional }}
+          </div>
+          <div>
+            <label for="{{ form.curriculum.id_for_label }}">Currículum (Opcional):</label>
+            {{ form.curriculum }}
+          </div>
+          <div class="botones-container" id="last-button-area">
+            <button class="cta-button" id="previous-btn">
+              Anterior
+            </button>
+            <button type="submit" class="cta-button">
+              Enviar
+            </button>
+          </div>
+
+        </section>
+
       </div>
-      <div>
-        <label for="{{ form.telefono.id_for_label }}">Teléfono:</label>
-        {{ form.telefono }}
-      </div>
-      <div>
-        <label for="{{ form.correo_electronico.id_for_label }}">Correo Electrónico:</label>
-        {{ form.correo_electronico }}
-      </div>
-      <div>
-        <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
-        {{ form.direccion }}
-      </div>
-      <div>
-        <label for="{{ form.titulos.id_for_label }}">Títulos Académicos:</label>
-        {{ form.titulos }}
-      </div>
-      <div>
-        <label for="{{ form.experiencia_profesional.id_for_label }}">Experiencia Profesional:</label>
-        {{ form.experiencia_profesional }}
-      </div>
-      <div>
-        <label for="{{ form.curriculum.id_for_label }}">Currículum (Opcional):</label>
-        {{ form.curriculum }}
-      </div>
-      <button type="submit" class="cta-button">Enviar Solicitud</button>
+      
     </form>
   </section>
 </div>
-{% endblock %}
+  {% endblock %}

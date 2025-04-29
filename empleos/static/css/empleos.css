@@ -290,7 +290,7 @@ h2 {
   font-size: 1rem;
 }
 
-.solicitud-form button {
+/* .solicitud-form button {
   background-color: #0074d9;
   color: white;
   padding: 10px;
@@ -299,8 +299,34 @@ h2 {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
-}
+} */
 
 .solicitud-form button:hover {
   background-color: #0056b3;
+}
+
+text.disabled-button {
+  background: rgba(0, 0, 0, 0.205) !important;
+}
+
+.botones-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.empleo-card p strong {
+  color: rgb(71, 71, 71);
+}
+
+#first-button-area {
+  justify-content: end;
+}
+
+#error-msg {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: var(--bs-danger-text);
 }

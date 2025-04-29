@@ -50,9 +50,9 @@ def solicitar_empleo(request, pk):
                 request,
                 "Su solicitud ha sido enviada. Recibirá una respuesta en menos de 72 horas.",
             )
-            return redirect("empleos:detalle_empleo", pk=empleo.pk)
+            return redirect("empleos:lista_empleo")
     else:
         form = SolicitudEmpleoForm()
-    return render(
-        request, "empleos/solicitar_empleo.html", {"form": form, "empleo": empleo}
-    )
+        return render(
+            request, "empleos/solicitar_empleo.html", {"form": form, "empleo": empleo}
+        )
