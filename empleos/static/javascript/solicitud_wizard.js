@@ -11,35 +11,81 @@ document.addEventListener('DOMContentLoaded', () => {
   const direccion = document.querySelector('#id_direccion')
 
 
+  // Eventos de botones y campos ------------------------
+  nombreCompleto.addEventListener('blur', (e)=>{
+    const msgError = getErrorNomre(nombreCompleto.value);
+
+    if ( msgError != null){
+      showError(msgError);
+    } else {
+      reviewForError();
+    }
+  });
+
+  telefono.addEventListener('blur', (e)=>{
+    const msgError = getErrorTelefono(telefono.value);
+
+    if ( msgError ){
+      showError(msgError);
+    } else {
+      reviewForError();
+    }
+  });
+
+  correo.addEventListener('blur', (e)=>{
+    const msgError = getErrorCorreo(correo.value);
+
+    if ( msgError ){
+      showError(msgError);
+    } else {
+      reviewForError();
+    }
+  });
+
+  direccion.addEventListener('blur', (e)=>{
+    const msgError = getErrorDireccion(direccion.value);
+
+    if ( msgError ){
+      showError(msgError);
+    } else {
+      reviewForError();
+    }
+  });
+
+
+  function reviewForError() {
+    let msgError;
+    msgError = getErrorNomre(nombreCompleto.value);
+    if (msgError == null) msgError = getErrorTelefono(telefono.value);
+    if (msgError == null) msgError = getErrorCorreo(correo.value);
+    if (msgError == null) msgError = getErrorDireccion(direccion.value);
+
+    if (msgError != null){
+      showError(msgError);
+      console.log("Testing")
+    } else {
+      clearError();
+    }
+
+    return msgError
+  }
+
   nextBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    let is_valid = true;
+    let msgError = reviewForError();
 
-    if ( !validarNombre(nombreCompleto.value) ){
-      showError(nombreCompleto, "El nombre no está escrito correctamente.")
-      is_valid = false;
-
-    } else if ( !validarTelefono(telefono.value) ){
-      showError(nombreCompleto, "El numero telefónico no está escrito correctamente.")
-      is_valid = false;
-
-    } else if ( !validarCorreo(correo.value) ){
-      showError(nombreCompleto, "El correo electrónico no está escrito correctamente.")
-      is_valid = false;
-
-    } else if ( !validarDireccion(direccion.value) ){
-      showError(nombreCompleto, "La direccion no está escrita correctamente.")
-      is_valid = false;
-
+    
+    if (msgError != null){
+      showError(msgError);
+    } else if(!(
+        nombreCompleto.value && 
+        telefono.value && 
+        correo.value && 
+        direccion.value)){
+      showError("Todos estos campos son obligatorios.");
     } else {
-      clearError(nombreCompleto);
-      clearError(telefono);
-      clearError(correo);
-      clearError(direccion);
-    }
-
-    if (is_valid){
+      clearError();
       firstTab.classList.remove('show', 'active');
       secondTab.classList.add('show', 'active');
     }
@@ -54,59 +100,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function validarNombre(nombre) {
+
+ // Funciones de revision para cada campo -----------------
+
+
+function getErrorNomre(nombre) {
+  if(!nombre) return null; //No detectar error si esta vacio
   // Permite letras, espacios, acentos y caracteres especiales comunes en nombres
   const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$/;
-  return (
-      typeof nombre === 'string' &&
-      nombre.trim().length >= 2 &&  // Mínimo 2 caracteres
-      nombre.trim().length <= 200 && // Máximo 200 caracteres
-      regex.test(nombre.trim())
-  );
+
+  if(!regex.test(nombre.trim())) {
+  return "El nombre solo debe contener letras y espacios.";
+  } else if (nombre.trim().length <= 2){
+    return "El nombre es muy corto.";
+  } else if (nombre.trim().length > 200){
+    return "El nombre es demasiado largo."
+  } else {
+    return null;
+  }
 }
 
-function validarTelefono(telefono) {
+
+function getErrorTelefono(telefono) {
+  if(!telefono) return null; //No detectar error si esta vacio
   // Valida formatos internacionales, con o sin código de país
   const regex = /^(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{2,4}$/;
   const soloNumeros = telefono.replace(/[^0-9]/g, '');
-  return (
-      typeof telefono === 'string' &&
-      soloNumeros.length >= 7 &&    // Mínimo 7 dígitos (para teléfonos locales)
-      soloNumeros.length <= 15 &&   // Máximo 15 dígitos (incluyendo código país)
-      regex.test(telefono.trim())
-  );
+
+  if (/[a-zA-Z]/.test(telefono)){
+    return "El número telefónico no debe contener letras.";
+  } else if (soloNumeros.length <= 7) {
+    return "El número es demasiado corto.";
+  } else if (soloNumeros.length > 15) {
+    return "El número es demasiado largo.";
+  }else if (!regex.test(telefono.trim())){
+    return "El número está mal escrito.";
+  } else {
+    return null;
+  }
 }
 
-function validarCorreo(correo) {
+function getErrorCorreo(correo) {
+  if(!correo) return null; //No detectar error si esta vacio
   // Validación estándar de emails
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return (
-      typeof correo === 'string' &&
-      correo.trim().length <= 100 && // Longitud máxima razonable
-      regex.test(correo.trim()) &&
-      !correo.includes('..') &&      // Evita puntos consecutivos
-      correo.split('@')[0].length >= 1 // Parte antes del @ no vacía
-  );
+
+  if(correo.trim().length > 100){
+    return "El correo es demasiado largo."
+  } else if(correo.includes('@@')){
+    return "El correo tiene doble '@'."
+  } else if(correo.includes('..')) {
+    return "El correo contiene puntos consecutivos."
+  } else if(!correo.includes('@')){
+    return "El correo debe contener dominio(@)."
+  }else if (!correo.includes('.')){
+    "El dominio correo está mal escrito, no tiene punto '.'"
+  } else if (!regex.test(correo.trim())){
+    return "El correo está mal escrito."
+  } else {
+    return null;
+  }
 }
 
-function validarDireccion(direccion) {
+function getErrorDireccion(direccion) {
+  if(!direccion) return null; //No detectar error si esta vacio
   // Valida direcciones con letras, números, símbolos comunes y acentos
   const regex = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ\s#.,-]+$/;
-  return (
-      typeof direccion === 'string' &&
-      direccion.trim().length >= 5 &&  // Mínimo 5 caracteres
-      regex.test(direccion.trim()) &&
-      /[a-zA-Z]/.test(direccion)       // Debe contener al menos una letra
-  );
+
+  if (direccion.length < 5) {
+    return "La dirección es demasiado corta."
+  } else if(!/[a-zA-Z]/.test(direccion)){
+    return "La dirección debe contener letras."
+  } else if(!regex.test(direccion.trim())){
+    return "La dirección no puede contener carácteres especiales."
+  } else {
+    return null;
+  }
 }
 
-function showError(field, message) {
-  field.classList.add('is-invalid');
+function showError(message) {
   const errorElement = document.querySelector('#error-msg');
   errorElement.innerHTML = message;
 }
 
-function clearError(field) {
+function clearError() {
   const errorElement = document.querySelector('#error-msg');
   errorElement.innerHTML = '';
 }
