@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-4" style="padding: 20px;">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Solicitudes de Empleo</h2>
+        <div>
+            <a href="?mostrar_revisadas={% if mostrar_revisadas %}false{% else %}true{% endif %}" 
+               class="btn btn-{% if mostrar_revisadas %}primary{% else %}outline-secondary{% endif %}">
+               {% if mostrar_revisadas %}Ocultar revisadas{% else %}Mostrar revisadas{% endif %}
+            </a>
+        </div>
+    </div>
+
+    <div class="list-group">
+        {% for solicitud in solicitudes %}
+        <a href="{% url 'empleos:detalle_solicitud' solicitud.id %}" 
+   class="list-group-item list-group-item-action {% if not solicitud.revisado %}bg-warning bg-opacity-10{% endif %}" 
+   style="padding: 12px 20px;">            
+                <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ solicitud.nombre_apellidos }}</h5>
+                <small>{{ solicitud.fecha_solicitud|date:"d/m/Y H:i" }}</small>
+            </div>
+            <p class="mb-1">Postuló a: <strong>{{ solicitud.empleo.titulo }}</strong></p>
+            <small class="text-muted">
+                {% if solicitud.revisado %}
+                <span class="badge bg-success">Revisado</span>
+                {% else %}
+                <span class="badge bg-warning text-dark">Pendiente</span>
+                {% endif %}
+            </small>
+        </a>
+        {% empty %}
+        <div class="alert alert-info">No hay solicitudes {% if not mostrar_revisadas %}pendientes{% endif %}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

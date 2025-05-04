@@ -3,7 +3,7 @@ from .models import Empleo, SolicitudEmpleo
 
 @admin.register(Empleo)
 class EmpleoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'area', 'ubicacion', 'tipo_contrato','documento_detalles')
+    list_display = ('titulo', 'area', 'ubicacion', 'tipo_contrato','documento_detalles', 'activo')
     list_filter = ('area', 'tipo_contrato', 'ubicacion')
     search_fields = ('titulo', 'descripcion', 'requisitos')
     ordering = ('-salario',)  # Ordenar por fecha de publicación (más recientes primero)

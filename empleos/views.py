@@ -11,6 +11,8 @@ def lista_empleos(request):
 
     # Filtrar empleos según los parámetros
     empleos = Empleo.objects.all()
+    empleos = empleos.filter(activo = True)
+
     if query:
         empleos = empleos.filter(titulo__icontains=query) | empleos.filter(
             descripcion__icontains=query
@@ -56,3 +58,38 @@ def solicitar_empleo(request, pk):
         return render(
             request, "empleos/solicitar_empleo.html", {"form": form, "empleo": empleo}
         )
+
+# Parte de Recursos Humanos 
+def panel_rh(request):
+    context = {
+        'empleos_activos_count': Empleo.objects.filter(activo=True).count(),
+        'solicitudes_pendientes_count': SolicitudEmpleo.objects.filter(empleo__activo=True, revisado=False).count()
+    }
+    
+    return render(request, 'empleos/panel_RRHH.html', context)
+
+def lista_solicitudes(request):
+    mostrar_revisadas = request.GET.get('mostrar_revisadas', 'false') == 'true'
+    
+    solicitudes = SolicitudEmpleo.objects.select_related('empleo').filter(
+        empleo__activo=True
+    ).order_by('-fecha_solicitud')
+    
+    if not mostrar_revisadas:
+        solicitudes = solicitudes.filter(revisado=False)
+    
+    context = {
+        'solicitudes': solicitudes,
+        'mostrar_revisadas': mostrar_revisadas
+    }
+    return render(request, 'empleos/solicitudes.html', context)
+
+def detalle_solicitud(request, solicitud_id):
+    solicitud = get_object_or_404(SolicitudEmpleo.objects.select_related('empleo'), pk=solicitud_id)
+    
+    if request.method == 'POST' and 'marcar_revisado' in request.POST:
+        solicitud.revisado = True
+        solicitud.save()
+        return redirect('empleos:lista_solicitudes')
+    
+    return render(request, 'empleos/detalles_solicitud.html', {'solicitud': solicitud})
