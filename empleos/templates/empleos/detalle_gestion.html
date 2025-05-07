@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="main">
+  <header class="empleos-header">
+    <h1>Detalles de la Vacante</h1>
+    <p>Edita la información de la vacante seleccionada.</p>
+  </header>
+
+  <section class="empleo-detalle">
+    <form method="POST">
+      {% csrf_token %}
+      <div>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ empleo.titulo }}" required>
+      </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required>{{ empleo.descripcion }}</textarea>
+      </div>
+      <div>
+        <label for="tipo_contrato">Tipo de Contrato:</label>
+        <input type="text" id="tipo_contrato" name="tipo_contrato" value="{{ empleo.tipo_contrato }}">
+      </div>
+      <div>
+        <label for="salario">Salario:</label>
+        <input type="text" id="salario" name="salario" value="{{ empleo.salario }}">
+      </div>
+      <div>
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion" value="{{ empleo.ubicacion }}">
+      </div>
+      <div>
+        <label for="area">Área:</label>
+        <select id="area" name="area">
+          {% for value, label in empleo.AREAS %}
+            <option value="{{ value }}" {% if empleo.area == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="activo">Activo:</label>
+        <input type="checkbox" id="activo" name="activo" {% if empleo.activo %}checked{% endif %}>
+      </div>
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </section>
+</div>
+{% endblock %}

@@ -61,11 +61,11 @@
             <p><strong>Tipo de Contrato:</strong> {{ empleo.tipo_contrato }}</p>
             <div class="botones-container">
               {% if empleo.documento_detalles %}
-                <a href="/media/empleos/{{empleo.documento_detalles}}" class="cta-button">Descargar PDF</a>
+                <a href="/media/empleos/{{empleo.documento_detalles}}" class="cta-button empleo-activado">Descargar PDF</a>
               {% else %}
-                <text class="disabled-button cta-button">Sin detalles</text> 
+                <text class="cta-button empleo-desactivado">Sin detalles</text> 
               {% endif %}
-              <a href="{% url 'empleos:solicitar_empleo' empleo.pk %}" class="cta-button">Postularme</a>
+              <a href="{% url 'empleos:solicitar_empleo' empleo.pk %}" class="cta-button empleo-activado">Postularme</a>
             </div>
           </div>
         {% endfor %}

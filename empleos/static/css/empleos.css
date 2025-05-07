@@ -132,7 +132,7 @@ h2 {
   border: none;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #333; /* Color de texto normal */
 }
@@ -144,11 +144,8 @@ h2 {
 }
 
 .empleo-card.medio-ambiente {
-
   border-color: var(--color-ambiente); /* Verde para Medio Ambiente */
   background-color: var(--fondo-ambiente);
-  border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .empleo-card.gestion-documental {
@@ -157,7 +154,6 @@ h2 {
 
 .empleo-card.administracion {
   border: none;
-  /*border-color: #ff851b; /* Naranja para Administración */
   background-color: #fff4c7;
 }
 
@@ -203,22 +199,32 @@ h2 {
 
 .empleo-card.ciencia .cta-button {
   background-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
+  border-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
+  color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
 }
 
 .empleo-card.medio-ambiente .cta-button {
   background-color: var(--color-ambiente); /* Verde para Medio Ambiente */
+  border-color: var(--color-ambiente); /* Verde para Medio Ambiente */
+  color: var(--color-ambiente); /* Verde para Medio Ambiente */
 }
 
 .empleo-card.gestion-documental .cta-button {
   background-color: var(--color-gestion); /* Gris para Gestión Documental */
+  border-color: var(--color-gestion); /* Gris para Gestión Documental */
+  color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion .cta-button {
   background-color: #ff851b; /* Naranja para Administración */
+  border-color: #ff851b; /* Naranja para Administración */
+  color: #ff851b; /* Naranja para Administración */
 }
 
 .empleo-card.direccion .cta-button {
   background-color: var(--color-direccion); /* Rojo para Dirección */
+  border-color: var(--color-direccion); /* Rojo para Dirección */
+  color: var(--color-direccion); /* Rojo para Dirección */
 }
 
 .empleo-card .cta-button:hover {
@@ -332,4 +338,24 @@ text.disabled-button {
   margin-top: .25rem;
   font-size: .875em;
   color: var(--bs-danger-text);
+}
+
+.empleo-row-shape {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.empleo-card .cta-button.empleo-desactivado {
+  background-color: transparent;
+  border-style:solid;
+  border-width: 2px;
+  padding: 8px 20px;
+}
+.empleo-card .cta-button.empleo-activado {
+  color: white;
+}
+.card-inactive {
+  opacity: 0.7;
 }

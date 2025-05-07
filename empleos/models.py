@@ -15,7 +15,7 @@ class Empleo(models.Model):
     salario = models.CharField(max_length=100, blank=True, null=True)
     ubicacion = models.CharField(max_length=200)
     area = models.CharField(max_length=50, choices=AREAS)  # Campo para áreas
-    documento_detalles = models.FileField(null = True)
+    documento_detalles = models.FileField(null = True, blank=True)
     activo = models.BooleanField(default=True)
     
     def __str__(self):
