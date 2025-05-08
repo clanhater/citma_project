@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Empleo, SolicitudEmpleo
 from .forms import SolicitudEmpleoForm
+from django.core.files.storage import default_storage
 
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
@@ -88,8 +89,14 @@ def lista_solicitudes(request):
     return render(request, 'empleos/solicitudes.html', context)
 
 def detalle_solicitud(request, solicitud_id):
-    solicitud = get_object_or_404(SolicitudEmpleo.objects.select_related('empleo'), pk=solicitud_id)
+    solicitud = get_object_or_404(SolicitudEmpleo, pk=solicitud_id)
     
+    if solicitud.curriculum:
+        # Verificar si el archivo físico existe
+        if not default_storage.exists(solicitud.curriculum.name):
+            # Limpiar el campo si el archivo no existe
+            solicitud.curriculum.delete(save=True)
+
     if request.method == 'POST' and 'marcar_revisado' in request.POST:
         solicitud.revisado = True
         solicitud.save()

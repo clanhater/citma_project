@@ -1,17 +1,21 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div class="container mt-4" style="padding: 20px;">
-    <div class="d-flex justify-content-between mb-4">
-        <h2>Solicitudes de Empleo</h2>
-        <div>
-            <a href="?mostrar_revisadas={% if mostrar_revisadas %}false{% else %}true{% endif %}" 
-               class="btn btn-{% if mostrar_revisadas %}primary{% else %}outline-secondary{% endif %}">
-               {% if mostrar_revisadas %}Ocultar revisadas{% else %}Mostrar revisadas{% endif %}
-            </a>
-        </div>
+<div class="container mt-4" style="padding: 20px; min-height: 60vh;">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-primary order-1 order-md-0 mb-3 mb-md-0">
+            <i class="fas fa-arrow-left me-2"></i> Volver al Dashboard
+        </a>
+        
+        <h2 class="order-0 order-md-1 mb-3 mb-md-0 text-center mx-3">Solicitudes de Empleo</h2>
+        
+        <a href="?mostrar_revisadas={% if mostrar_revisadas %}false{% else %}true{% endif %}" 
+            class="btn {% if mostrar_revisadas %}btn-warning{% else %}btn-primary{% endif %} order-2 order-md-2">
+            <i class="fas {% if mostrar_revisadas %}fa-eye-slash{% else %}fa-eye{% endif %} me-2"></i>
+            {% if mostrar_revisadas %}Ocultar revisadas{% else %}Mostrar revisadas{% endif %}
+        </a>
     </div>
-
+    <hr>
     <div class="list-group">
         {% for solicitud in solicitudes %}
         <a href="{% url 'empleos:detalle_solicitud' solicitud.id %}" 
