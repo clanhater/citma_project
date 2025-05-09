@@ -98,7 +98,7 @@ def detalle_solicitud(request, solicitud_id):
             solicitud.curriculum.delete(save=True)
 
     if request.method == 'POST' and 'marcar_revisado' in request.POST:
-        solicitud.revisado = True
+        solicitud.revisado = not solicitud.revisado
         solicitud.save()
         return redirect('empleos:lista_solicitudes')
     
@@ -114,13 +114,13 @@ def lista_vacantes(request):
     return render(request, "empleos/lista_gestion.html", {"empleos": empleos})
 
 # @login_required
-def detalle_vacante(request, pk):
+def detalle_gestion(request, pk):
     # if not request.user.is_staff:
     #     return HttpResponseForbidden("No tienes permiso para acceder a esta página.")
-
     empleo = get_object_or_404(Empleo, pk=pk)
-
+    
     if request.method == "POST":
+        # Actualizar campos básicos
         empleo.titulo = request.POST.get("titulo", empleo.titulo)
         empleo.descripcion = request.POST.get("descripcion", empleo.descripcion)
         empleo.tipo_contrato = request.POST.get("tipo_contrato", empleo.tipo_contrato)
@@ -128,10 +128,20 @@ def detalle_vacante(request, pk):
         empleo.ubicacion = request.POST.get("ubicacion", empleo.ubicacion)
         empleo.area = request.POST.get("area", empleo.area)
         empleo.activo = "activo" in request.POST
+        
+        # Manejo del documento adjunto (parte clave)
+        if 'eliminar_documento' in request.POST:
+            # Caso 1: Eliminar documento existente
+            empleo.documento_detalles.delete(save=False)
+        elif 'documento_detalles' in request.FILES:
+            # Caso 2: Nuevo archivo subido
+            empleo.documento_detalles = request.FILES['documento_detalles']
+        # Caso 3: No se modifica el documento (no hacer nada)
+        
         empleo.save()
         return redirect("empleos:lista_vacantes")
 
-    return render(request, "empleos/detalle_vacante.html", {"empleo": empleo})
+    return render(request, "empleos/detalle_gestion.html", {"empleo": empleo})
 
 
 @require_POST

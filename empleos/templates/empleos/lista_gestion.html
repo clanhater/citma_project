@@ -4,10 +4,20 @@
 
 {% block content %}
 <div class="container mt-5">
-  <!-- Header -->
-  <header class="text-center mb-4">
-    <h1 class="display-4">Gestión de Vacantes</h1>
-    <p class="lead">Administra las vacantes disponibles en la delegación.</p>
+  <!-- Header con botón Atrás -->
+  <header class="mb-4 position-relative">
+    <!-- Botón Atrás alineado a la izquierda -->
+    <div class="lista-gestion-btn-atras position-absolute start-0 top-0">
+      <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-primary">
+        <i class="fas fa-arrow-left me-2"></i> Volver
+      </a>
+    </div>
+    
+    <!-- Título centrado -->
+    <div class="text-center px-5"> <!-- Añade padding horizontal para evitar superposición -->
+      <h1 class="display-4">Gestión de Vacantes</h1>
+      <p class="lead">Administra las vacantes disponibles en la delegación.</p>
+    </div>
   </header>
 
   <!-- Lista de Vacantes -->
@@ -40,7 +50,7 @@
               <p><strong>Municipio:</strong> {{ empleo.ubicacion }}</p>
             </div>
             <div class="botones-container">
-              <a href="{% url 'empleos:detalle_vacante' empleo.pk %}" class="cta-button {%if not empleo.activo %}empleo-desactivado{% else %}empleo-activado{% endif %}">
+              <a href="{% url 'empleos:detalle_gestion' empleo.pk %}" class="cta-button {%if not empleo.activo %}empleo-desactivado{% else %}empleo-activado{% endif %}">
                 Revisar
               </a>
               <a class="cta-button btn-toggle-activo {%if not empleo.activo %}empleo-desactivado{% else %}empleo-activado{% endif %}" 

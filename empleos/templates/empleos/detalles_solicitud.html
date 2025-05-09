@@ -4,17 +4,39 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            <div class="d-flex justify-content-between">
-                <h4>Solicitud de <i>{{ solicitud.nombre_apellidos }}</i></h4>
+            <div class="d-flex justify-content-between flex-column flex-md-row">
                 <a href="{% url 'empleos:lista_solicitudes' %}" class="btn btn-primary">
                     <i class="fas fa-arrow-left me-2"></i> Volver al listado
                 </a>            
+                <h4>Solicitud de <i>{{ solicitud.nombre_apellidos }}</i></h4>
+                <form method="post" style="padding: 0; margin: 0;">
+                    {% csrf_token %}
+                    <button type="submit" name="marcar_revisado" style="padding: 0; margin: 0; border: none; border-radius: 0;">
+                            {% if not solicitud.revisado %}
+                                <div href="#" class="btn btn-success">
+                                    <i class="fas fa-check me-2"></i> Marcar como revisado
+                                </div>  
+                            {% else %}
+                                <div href="#" class="btn btn-danger">
+                                    <i class="fas fa-times-circle me-2"></i> Marcar no revisado
+                                </div>  
+                            {% endif %}
+                        </button>
+                    </form>
             </div>
         </div>
         <div class="panel-container">
             <section>
                 <h5>Información Básica</h5>
-                <p><strong>Vacante:</strong> {{ solicitud.empleo.titulo  }}</p>
+                <div class="d-flex align-items-center gap-2">
+                    <p class="mb-0"><strong>Vacante:</strong> {{ solicitud.empleo.titulo }}</p>
+                    <a href="{% url 'empleos:detalle_gestion' solicitud.empleo.pk %}" 
+                       class="btn btn-sm btn-secondary"
+                       style="width: 24px; height: 24px; padding: 0; display: grid; justify-content: center; align-items: center; border-radius: 8px;"
+                       title="Ver detalles de la vacante">
+                        <i class="fas fa-external-link-alt fa-xs"></i>
+                    </a>
+                </div>
                 <p><strong>Teléfono:</strong> {{ solicitud.telefono }}</p>
                 <p><strong>Email:</strong> {{ solicitud.correo_electronico }}</p>
                 <p><strong>Dirección:</strong> {{ solicitud.direccion }}</p>
@@ -68,14 +90,6 @@
                 </div>
             </div>
 
-            {% if not solicitud.revisado %}
-            <form method="post" class="mt-4">
-                {% csrf_token %}
-                <button type="submit" name="marcar_revisado" class="btn btn-success">
-                    ✅ Marcar como revisado
-                </button>
-            </form>
-            {% endif %}
         </div>
 
     </div>

@@ -1,49 +1,163 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-<div class="main">
-  <header class="empleos-header">
-    <h1>Detalles de la Vacante</h1>
-    <p>Edita la información de la vacante seleccionada.</p>
-  </header>
 
-  <section class="empleo-detalle">
-    <form method="POST">
-      {% csrf_token %}
-      <div>
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" value="{{ empleo.titulo }}" required>
+<section class="empleo-detalle container my-4">
+  <form method="POST" class="bg-light p-4 rounded-3 shadow-sm">
+    {% csrf_token %}
+    
+    <h2 class="mb-4 text-primary">Editar Vacante</h2>
+    
+    <div class="row g-3 mb-4">
+      <!-- Columna izquierda -->
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="titulo" name="titulo" 
+                    value="{{ empleo.titulo }}" placeholder=" " required>
+            <label for="titulo">Título del puesto</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="descripcion" name="descripcion" 
+                      style="height: 120px" placeholder=" " required>{{ empleo.descripcion }}</textarea>
+            <label for="descripcion">Descripción del puesto</label>
+        </div>
+
+        <div class="documento-adjunto mb-4">
+          <label for="documento_input" class="form-label fw-bold">Documento adjunto</label>
+          
+          <!-- Grupo de input + botones -->
+          <div class="input-group">
+            <!-- Input de archivo (siempre visible) -->
+            <input type="file" 
+                   class="form-control" 
+                   id="documento_input" 
+                   name="documento_detalles"
+                   {% if not empleo.documento_detalles %}required{% endif %}>
+            
+            <!-- Botón de previsualización (solo si hay archivo) -->
+            {% if empleo.documento_detalles %}
+            <a href="{{ empleo.documento_detalles.url }}" 
+               target="_blank" 
+               class="btn btn-outline-primary" 
+               title="Previsualizar"
+               style="display: grid; align-items: center;">
+              <i class="fas fa-eye"></i>
+            </a>
+            {% endif %}
+            
+            <!-- Botón de eliminar (solo si hay archivo) -->
+            {% if empleo.documento_detalles %}
+            <button type="button" 
+                    class="btn btn-outline-danger" 
+                    id="eliminar_documento_btn"
+                    title="Eliminar documento">
+              <i class="fas fa-trash"></i>
+            </button>
+            {% endif %}
+          </div>
+          
+          <!-- Info del archivo actual (ocultable) -->
+          {% if empleo.documento_detalles %}
+          <div class="form-text" id="current_file_info">
+            <i class="fas fa-file-alt text-muted me-1"></i>
+            <span class="text-muted">Actual: {{ empleo.documento_detalles.name|cut:"documentos_detalles/" }}</span>
+            <input type="hidden" name="documento_actual" value="{{ empleo.documento_detalles.name }}">
+          </div>
+          {% endif %}
+        </div>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const eliminarBtn = document.getElementById('eliminar_documento_btn');
+          if (eliminarBtn) {
+            eliminarBtn.addEventListener('click', function() {
+              // 1. Limpiar el input de archivo
+              document.getElementById('documento_input').value = '';
+              
+              // 2. Ocultar la info del archivo actual
+              document.getElementById('current_file_info').style.display = 'none';
+              
+              // 3. Agregar campo hidden para indicar eliminación
+              const hiddenInput = document.createElement('input');
+              hiddenInput.type = 'hidden';
+              hiddenInput.name = 'eliminar_documento';
+              hiddenInput.value = 'true';
+              document.querySelector('form').appendChild(hiddenInput);
+              
+              // 4. Deshabilitar botones
+              this.disabled = true;
+              document.querySelector('[title="Previsualizar"]').classList.add('disabled');
+            });
+          }
+        });
+        </script>
       </div>
-      <div>
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" required>{{ empleo.descripcion }}</textarea>
+      
+        <!-- Columna derecha -->
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="ubicacion" name="ubicacion" 
+                    value="{{ empleo.ubicacion }}" placeholder=" ">
+              <label for="ubicacion">Ubicación</label>
+          </div>
+            <div class="form-floating mb-3">
+                <select class="form-select" id="area" name="area">
+                    {% for value, label in empleo.AREAS %}
+                        <option value="{{ value }}" {% if empleo.area == value %}selected{% endif %}>
+                            {{ label }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <label for="area">Área/Departamento</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="tipo_contrato" name="tipo_contrato" 
+                        value="{{ empleo.tipo_contrato }}" placeholder=" ">
+                <label for="tipo_contrato">Tipo de Contrato</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="salario" name="salario" 
+                        value="{{ empleo.salario }}" placeholder=" ">
+                <label for="salario">Salario</label>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="activo" name="activo" 
+                        {% if empleo.activo %}checked{% endif %}>
+                <label class="form-check-label mx-2" for="activo">Vacante activa</label>
+            </div>
+        </div>
       </div>
-      <div>
-        <label for="tipo_contrato">Tipo de Contrato:</label>
-        <input type="text" id="tipo_contrato" name="tipo_contrato" value="{{ empleo.tipo_contrato }}">
+
+      <div class="d-flex justify-content-between">
+          <a href="{% url 'empleos:lista_vacantes' %}" class="btn btn-secondary">
+              <i class="fas fa-times me-2"></i> Cancelar
+          </a>
+          <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save me-2"></i> Guardar Cambios
+          </button>
       </div>
-      <div>
-        <label for="salario">Salario:</label>
-        <input type="text" id="salario" name="salario" value="{{ empleo.salario }}">
-      </div>
-      <div>
-        <label for="ubicacion">Ubicación:</label>
-        <input type="text" id="ubicacion" name="ubicacion" value="{{ empleo.ubicacion }}">
-      </div>
-      <div>
-        <label for="area">Área:</label>
-        <select id="area" name="area">
-          {% for value, label in empleo.AREAS %}
-            <option value="{{ value }}" {% if empleo.area == value %}selected{% endif %}>{{ label }}</option>
-          {% endfor %}
-        </select>
-      </div>
-      <div>
-        <label for="activo">Activo:</label>
-        <input type="checkbox" id="activo" name="activo" {% if empleo.activo %}checked{% endif %}>
-      </div>
-      <button type="submit">Guardar Cambios</button>
-    </form>
-  </section>
+  </form>
+</section>
+
+<style>
+    .empleo-detalle .form-control:focus, 
+    .empleo-detalle .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .empleo-detalle .form-floating label {
+        color: #6c757d;
+    }
+    
+    .empleo-detalle .form-switch .form-check-input {
+        width: 3em;
+        height: 1.5em;
+    }
+</style>
 </div>
 {% endblock %}
