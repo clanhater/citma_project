@@ -8,6 +8,25 @@
   }
 }
 
+:root {
+  --color-primario:  #179040 ; /* Verde institucional */
+  --color-secundario:  #0a309f ; /* Azul corporativo */
+  --color-acento: #ffb400; /* Amarillo para destacados */
+  --color-texto: #333333; /* Color de texto principal */
+  --color-fondo: #f8f9fa; /* Color de fondo claro */
+  --color-ciencia:  #0a309f ; /* Azul para Ciencia */
+  --fondo-ciencia: hsl(244, 88%, 95%); /* verde claro para los fondos*/
+  --color-ambiente:  #179040 ; /* Verde para Medio Ambiente */
+  --fondo-ambiente: hsl(138, 68%, 90%); /* verde claro para los fondos*/
+  --color-gestion:  #9e9ea0 ; /* Gris para Gestión Documental */
+  --color-texto: #333; /* Color del texto */
+  --color-fondo: #fff; /* Fondo claro */
+  
+    /*Estos colores son provisionales, no oficiales*/
+    --color-direccion:hsl(3, 100%, 40%);
+    --fondo-direccion: hsl(3, 100%, 95%);
+}
+
 /* Efecto hover para dropdowns */
 .navbar .dropdown:hover > .dropdown-menu {
   display: block;

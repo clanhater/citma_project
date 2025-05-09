@@ -1,0 +1,97 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between flex-column flex-md-row">
+                <a href="{% url 'empleos:lista_solicitudes' %}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left me-2"></i> Volver al listado
+                </a>            
+                <h4>Solicitud de <i>{{ solicitud.nombre_apellidos }}</i></h4>
+                <form method="post" style="padding: 0; margin: 0;">
+                    {% csrf_token %}
+                    <button type="submit" name="marcar_revisado" style="padding: 0; margin: 0; border: none; border-radius: 0;">
+                            {% if not solicitud.revisado %}
+                                <div href="#" class="btn btn-success">
+                                    <i class="fas fa-check me-2"></i> Marcar como revisado
+                                </div>  
+                            {% else %}
+                                <div href="#" class="btn btn-danger">
+                                    <i class="fas fa-times-circle me-2"></i> Marcar no revisado
+                                </div>  
+                            {% endif %}
+                        </button>
+                    </form>
+            </div>
+        </div>
+        <div class="panel-container">
+            <section>
+                <h5>Información Básica</h5>
+                <div class="d-flex align-items-center gap-2">
+                    <p class="mb-0"><strong>Vacante:</strong> {{ solicitud.empleo.titulo }}</p>
+                    <a href="{% url 'empleos:detalle_gestion' solicitud.empleo.pk %}" 
+                       class="btn btn-sm btn-secondary"
+                       style="width: 24px; height: 24px; padding: 0; display: grid; justify-content: center; align-items: center; border-radius: 8px;"
+                       title="Ver detalles de la vacante">
+                        <i class="fas fa-external-link-alt fa-xs"></i>
+                    </a>
+                </div>
+                <p><strong>Teléfono:</strong> {{ solicitud.telefono }}</p>
+                <p><strong>Email:</strong> {{ solicitud.correo_electronico }}</p>
+                <p><strong>Dirección:</strong> {{ solicitud.direccion }}</p>
+            </section>
+
+            <div>
+                <h5>Estado:</h5>
+                <p>
+                    <strong>Fecha:</strong> {{ solicitud.fecha_solicitud|date:"d/m/Y H:i" }}<br>
+                    <strong>Estado:</strong> 
+                    <span class="badge bg-{% if solicitud.revisado %}success{% else %}warning text-dark{% endif %}">
+                        {% if solicitud.revisado %}Revisado{% else %}Pendiente{% endif %}
+                    </span>
+                </p>
+                <hr id="separador-curriculum">
+                <h5>
+                    Curriculum:
+                </h5>
+                <div class="documento-container">
+                    {% if solicitud.curriculum %}
+                      {% with extension=solicitud.curriculum.name|lower|slice:"-4:" %}
+                        <a href="{{ solicitud.curriculum.url }}" download class="documento-link">
+                          <i class="
+                            {% if '.pdf' in extension %}fas fa-file-pdf text-danger
+                            {% elif '.doc' in extension %}fas fa-file-word text-primary
+                            {% elif '.xls' in extension %}fas fa-file-excel text-success
+                            {% else %}fas fa-file-alt text-secondary
+                            {% endif %}"></i>
+                          Descargar CV ({{ solicitud.curriculum.size|filesizeformat }})
+                        </a>
+                      {% endwith %}
+                    {% else %}
+                      <span class="text-muted">
+                        <i class="fas fa-file-exclamation"></i> No hay archivo adjunto
+                      </span>
+                    {% endif %}
+                  </div>
+            </div>
+            
+            <div class="mb-4 mt-4">
+                <h5>Títulos Académicos:</h5>
+                <div class="panel-texto">
+                    {{ solicitud.titulos|linebreaks }}
+                </div>
+            </div>
+            
+            <div class="mb-4 mt-4">
+                <h5>Experiencia Profesional:</h5>
+                <div class="panel-texto">
+                    {{ solicitud.experiencia_profesional|linebreaks }}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

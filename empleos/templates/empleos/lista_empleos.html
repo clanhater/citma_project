@@ -38,26 +38,38 @@
     <div class="empleos-container">
       {% if empleos %}
         {% for empleo in empleos %}
-          <div class="empleo-card {% if empleo.area == 'ciencia' %}ciencia{% elif empleo.area == 'medio_ambiente' %}medio-ambiente{% elif empleo.area == 'gestion_documental' %}gestion-documental{% elif empleo.area == 'administracion' %}administracion{% else %}direccion{% endif %}">
+          <div class="empleo-card {% if empleo.area == 'ciencia' %}ciencia{% elif empleo.area == 'medio_ambiente' %}medio-ambiente{% elif empleo.area == 'gestion_documental' %}gestion-documental{% elif empleo.area == 'administracion' %}administracion{% else %}direccion{% endif %}"
+          style="display: flex; flex-direction: column; justify-content: space-between;">
             <!-- Ícono en la esquina superior derecha -->
             <div class="icon-container">
               {% if empleo.area == 'ciencia' %}
-                <i class="fa-solid fa-atom" style="color: #0074D9;"></i>
+                <i class="fa-solid fa-atom" style="color: var(--color-ciencia);"></i>
               {% elif empleo.area == 'medio_ambiente' %}
-                <i class="fa-solid fa-tree" style="color: #2ECC40;"></i>
+                <i class="fa-solid fa-tree" style="color: var(--color-ambiente);"></i>
               {% elif empleo.area == 'gestion_documental' %}
-                <i class="fa-solid fa-file-alt" style="color: #AAAAAA;"></i>
+                <i class="fa-solid fa-file-alt" style="color: var(--color-gestion);"></i>
               {% elif empleo.area == 'administracion' %}
                 <i class="fa-solid fa-wrench" style="color: #FF851B;"></i>
               {% else %}
-                <i class="fa-solid fa-compass" style="color: #FF4136;"></i>
+                <i class="fa-solid fa-compass" style="color: var(--color-direccion);"></i>
               {% endif %}
             </div>
-            <h3>{{ empleo.titulo }}</h3>
-            <p><strong>Área:</strong> {{ empleo.get_area_display }}</p>
-            <p><strong>Ubicación:</strong> {{ empleo.ubicacion }}</p>
-            <p><strong>Tipo de Contrato:</strong> {{ empleo.tipo_contrato }}</p>
-            <a href="{% url 'empleos:detalle_empleo' empleo.pk %}" class="cta-button">Ver Detalles</a>
+            <div>
+              <h3>{{ empleo.titulo }}</h3>
+              <p><strong>Descripción:</strong> {{ empleo.descripcion }}</p>
+              <p><strong>Área:</strong> {{ empleo.get_area_display }}</p>
+              <p><strong>Salario:</strong> {{ empleo.salario }}</p>
+              <p><strong>Municipio:</strong> {{ empleo.ubicacion }}</p>
+              <p><strong>Tipo de Contrato:</strong> {{ empleo.tipo_contrato }}</p>
+            </div>
+            <div class="botones-container">
+              {% if empleo.documento_detalles %}
+                <a href="/media/empleos/{{empleo.documento_detalles}}" class="cta-button empleo-activado">Descargar PDF</a>
+              {% else %}
+                <text class="cta-button empleo-desactivado">Sin detalles</text> 
+              {% endif %}
+              <a href="{% url 'empleos:solicitar_empleo' empleo.pk %}" class="cta-button empleo-activado">Postularme</a>
+            </div>
           </div>
         {% endfor %}
       {% else %}

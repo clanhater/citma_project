@@ -1,0 +1,12 @@
+Frontend:
+-HTML
+-CSS
+-JavaScript
+-Bootstrap
+
+Backend:
+-Python
+-Django Framework
+
+Base de datos:
+-SQLite
