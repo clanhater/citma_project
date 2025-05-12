@@ -7,12 +7,10 @@
   <!-- Header con botón Atrás -->
   <header class="mb-4 position-relative">
     <!-- Botón Atrás alineado a la izquierda -->
-    <div class="lista-gestion-btn-atras position-absolute start-0 top-0">
-      <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-primary">
-        <i class="fas fa-arrow-left me-2"></i> Volver
-      </a>
-    </div>
-    
+    <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-primary lista-gestion-btn-atras">
+      <i class="fas fa-arrow-left me-2"></i> Volver
+    </a>
+  
     <!-- Título centrado -->
     <div class="text-center px-5"> <!-- Añade padding horizontal para evitar superposición -->
       <h1 class="display-4">Gestión de Vacantes</h1>
