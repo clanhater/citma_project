@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Panel de Control - Recursos Humanos</h2>
+    
+    <div class="row justify-content-center">
+        <!-- Tarjeta de Empleos Activos -->
+        <div class="col-md-5 mb-4">
+            <a href="{% url 'empleos:lista_vacantes' %}" class="card text-decoration-none h-100">
+                <div class="card-body text-center py-4">
+                    <div class="mb-3">
+                        <i class="fas fa-briefcase fa-3x"></i>
+                    </div>
+                    <h3 class="card-title">Gestionar Empleos</h3>
+                    <div class="display-4">{{ empleos_activos_count }}</div>
+                    <p class="card-text">empleos activos</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <button class="btn btn-primary w-100">Administrar</button>
+                </div>
+            </a>
+        </div>
+
+        <!-- Tarjeta de Solicitudes Pendientes -->
+        <div class="col-md-5 mb-4">
+            <a href="{% url 'empleos:lista_solicitudes' %}" class="card text-decoration-none h-100">
+                <div class="card-body text-center py-4">
+                    <div class="mb-3">
+                        <i class="fas fa-file-alt fa-3x"></i>
+                    </div>
+                    <h3 class="card-title">Revisar Solicitudes</h3>
+                    <div class="display-4">{{ solicitudes_pendientes_count }}</div>
+                    <p class="card-text">solicitudes por revisar</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <button class="btn btn-primary text-white w-100">Revisar</button>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

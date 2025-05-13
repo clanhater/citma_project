@@ -11,13 +11,13 @@ class Empleo(models.Model):
 
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
-    requisitos = models.TextField()
     tipo_contrato = models.CharField(max_length=100)
     salario = models.CharField(max_length=100, blank=True, null=True)
     ubicacion = models.CharField(max_length=200)
     area = models.CharField(max_length=50, choices=AREAS)  # Campo para áreas
-    fecha_publicacion = models.DateTimeField(auto_now_add=True)
-
+    documento_detalles = models.FileField(null = True, blank=True)
+    activo = models.BooleanField(default=True)
+    
     def __str__(self):
         return self.titulo
 
@@ -37,6 +37,8 @@ class SolicitudEmpleo(models.Model):
     otras_actividades = models.TextField(blank=True, null=True)
     curriculum = models.FileField(upload_to='curriculums/', blank=True, null=True)
     fecha_solicitud = models.DateTimeField(auto_now_add=True)
+
+    revisado = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.nombre_apellidos} - {self.empleo.titulo}"

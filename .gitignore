@@ -1,0 +1,5 @@
+/.idea
+*.pyc
+mig.bat
+run.bat
+db.sqlite3

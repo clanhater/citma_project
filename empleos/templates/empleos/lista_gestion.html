@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% csrf_token %}
+
+{% block content %}
+<div class="container mt-5">
+  <!-- Header con botón Atrás -->
+  <header class="mb-4 position-relative">
+    <!-- Botón Atrás alineado a la izquierda -->
+    <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-primary lista-gestion-btn-atras">
+      <i class="fas fa-arrow-left me-2"></i> Volver
+    </a>
+  
+    <!-- Título centrado -->
+    <div class="text-center px-5"> <!-- Añade padding horizontal para evitar superposición -->
+      <h1 class="display-4">Gestión de Vacantes</h1>
+      <p class="lead">Administra las vacantes disponibles en la delegación.</p>
+    </div>
+  </header>
+
+  <!-- Lista de Vacantes -->
+  <section class="empleos-list">
+    <h2>Lista de Vacantes</h2>
+    <div class="empleos-container">
+      {% if empleos %}
+        {% for empleo in empleos %}
+          <div id="empleo-{{ empleo.pk }}" class="empleo-card {%if not empleo.activo %}card-inactive {% endif %}{% if empleo.area == 'ciencia' %}ciencia{% elif empleo.area == 'medio_ambiente' %}medio-ambiente{% elif empleo.area == 'gestion_documental' %}gestion-documental{% elif empleo.area == 'administracion' %}administracion{% else %}direccion{% endif %}">
+            <!-- Ícono en la esquina superior derecha -->
+            
+            <div class="empleo-content">
+              <h3 style="display: flex; flex-direction: row;">
+                {{ empleo.titulo }}
+                <div style="margin-left: 5px;">
+                  {% if empleo.area == 'ciencia' %}
+                    <i class="fa-solid fa-atom" style="color: var(--color-ciencia);"></i>
+                    {% elif empleo.area == 'medio_ambiente' %}
+                    <i class="fa-solid fa-tree" style="color: var(--color-ambiente);"></i>
+                    {% elif empleo.area == 'gestion_documental' %}
+                    <i class="fa-solid fa-file-alt" style="color: var(--color-gestion);"></i>
+                  {% elif empleo.area == 'administracion' %}
+                    <i class="fa-solid fa-wrench" style="color: #FF851B;"></i>
+                    {% else %}
+                    <i class="fa-solid fa-compass" style="color: var(--color-direccion);"></i>
+                    {% endif %}
+                </div>
+              </h3>
+              <p><strong>Área:</strong> {{ empleo.get_area_display }}</p>
+              <p><strong>Municipio:</strong> {{ empleo.ubicacion }}</p>
+            </div>
+            <div class="botones-container">
+              <a href="{% url 'empleos:detalle_gestion' empleo.pk %}" class="cta-button {%if not empleo.activo %}empleo-desactivado{% else %}empleo-activado{% endif %}">
+                Revisar
+              </a>
+              <a class="cta-button btn-toggle-activo {%if not empleo.activo %}empleo-desactivado{% else %}empleo-activado{% endif %}" 
+                data-empleo-id="{{empleo.pk}}"
+                data-accion="{% if empleo.activo %}desactivar{% else %}activar{% endif %}">
+                {% if empleo.activo %}Desactivar{% else %}Activar{% endif %}
+            </a>
+            </div>
+            <!-- <div>
+              Este div es para dar espacio a la derecha en el flex
+            </div> -->
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-center">No hay vacantes disponibles.</p>
+        {% endif %}
+    </div>
+    <script src="{% static 'javascript/estado_empleo.js' %}"></script>
+  </section>
+</div>
+{% endblock %}

@@ -10,7 +10,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  padding-top: 150px; /* Margen superior para evitar que el contenido se tape con el navbar */
+  /* padding-top: 150px; Margen superior para evitar que el contenido se tape con el navbar */
+  display: grid;
 }
 
 h1,
@@ -127,33 +128,38 @@ h2 {
 .empleo-card {
   position: relative; /* Necesario para posicionar el ícono */
   background: white; /* Fondo blanco */
-  border: 2px solid #ddd; /* Borde predeterminado */
+  /* border: 2px solid #ddd; Borde predeterminado */
+  border: none;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #333; /* Color de texto normal */
 }
 
 /* Colores específicos para cada área */
 .empleo-card.ciencia {
-  border-color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+  border-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
+  background-color: var(--fondo-ciencia);
 }
 
 .empleo-card.medio-ambiente {
-  border-color: #2ecc40; /* Verde para Medio Ambiente */
+  border-color: var(--color-ambiente); /* Verde para Medio Ambiente */
+  background-color: var(--fondo-ambiente);
 }
 
 .empleo-card.gestion-documental {
-  border-color: #aaaaaa; /* Gris para Gestión Documental */
+  border-color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion {
-  border-color: #ff851b; /* Naranja para Administración */
+  border: none;
+  background-color: #fff4c7;
 }
 
 .empleo-card.direccion {
-  border-color: #ff4136; /* Rojo para Dirección */
+  border-color: var(--color-direccion); /* Rojo para Dirección */
+  background-color: var(--fondo-direccion);
 }
 
 /* Títulos de las tarjetas */
@@ -163,15 +169,15 @@ h2 {
 }
 
 .empleo-card.ciencia h3 {
-  color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+  color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
 }
 
 .empleo-card.medio-ambiente h3 {
-  color: #2ecc40; /* Verde para Medio Ambiente */
+  color: var(--color-ambiente); /* Verde para Medio Ambiente */
 }
 
 .empleo-card.gestion-documental h3 {
-  color: #aaaaaa; /* Gris para Gestión Documental */
+  color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion h3 {
@@ -179,7 +185,7 @@ h2 {
 }
 
 .empleo-card.direccion h3 {
-  color: #ff4136; /* Rojo para Dirección */
+  color: var(--color-direccion); /* Rojo para Dirección */
 }
 
 /* Botones dentro de las tarjetas */
@@ -192,27 +198,38 @@ h2 {
 }
 
 .empleo-card.ciencia .cta-button {
-  background-color: #0074d9; /* Azul para Ciencia, Tecnología e Innovación */
+  background-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
+  border-color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
+  color: var(--color-ciencia); /* Azul para Ciencia, Tecnología e Innovación */
 }
 
 .empleo-card.medio-ambiente .cta-button {
-  background-color: #2ecc40; /* Verde para Medio Ambiente */
+  background-color: var(--color-ambiente); /* Verde para Medio Ambiente */
+  border-color: var(--color-ambiente); /* Verde para Medio Ambiente */
+  color: var(--color-ambiente); /* Verde para Medio Ambiente */
 }
 
 .empleo-card.gestion-documental .cta-button {
-  background-color: #aaaaaa; /* Gris para Gestión Documental */
+  background-color: var(--color-gestion); /* Gris para Gestión Documental */
+  border-color: var(--color-gestion); /* Gris para Gestión Documental */
+  color: var(--color-gestion); /* Gris para Gestión Documental */
 }
 
 .empleo-card.administracion .cta-button {
   background-color: #ff851b; /* Naranja para Administración */
+  border-color: #ff851b; /* Naranja para Administración */
+  color: #ff851b; /* Naranja para Administración */
 }
 
 .empleo-card.direccion .cta-button {
-  background-color: #ff4136; /* Rojo para Dirección */
+  background-color: var(--color-direccion); /* Rojo para Dirección */
+  border-color: var(--color-direccion); /* Rojo para Dirección */
+  color: var(--color-direccion); /* Rojo para Dirección */
 }
 
 .empleo-card .cta-button:hover {
   opacity: 0.9; /* Efecto hover suave */
+  box-shadow: none;
 }
 
 .empleo-card p {
@@ -252,6 +269,8 @@ h2 {
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  justify-self: center;
 }
 
 .solicitud-form h2 {
@@ -280,7 +299,7 @@ h2 {
   font-size: 1rem;
 }
 
-.solicitud-form button {
+/* .solicitud-form button {
   background-color: #0074d9;
   color: white;
   padding: 10px;
@@ -289,8 +308,98 @@ h2 {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
-}
+} */
 
 .solicitud-form button:hover {
   background-color: #0056b3;
+}
+
+text.disabled-button {
+  background: rgba(0, 0, 0, 0.205) !important;
+}
+
+.botones-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.empleo-card p strong {
+  color: rgb(71, 71, 71);
+}
+
+#first-button-area {
+  justify-content: end;
+}
+
+#error-msg {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: var(--bs-danger-text);
+}
+
+.empleo-row-shape {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.empleo-card .cta-button.empleo-desactivado {
+  background-color: transparent;
+  border-style:solid;
+  border-width: 2px;
+  padding: 8px 20px;
+}
+.empleo-card .cta-button.empleo-activado {
+  color: white;
+}
+.card-inactive {
+  opacity: 0.7;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) inset;
+}
+.panel-texto {
+  background-color: #e6e6e6;
+  border-radius: 20px;
+  padding: 20px;
+  height: 100%;
+}
+
+.panel-container {
+  display: grid;
+  gap: 16px; /* Espacio entre paneles */
+  padding: 20px;
+}
+
+.panel-container {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 2 columnas (tablet) */
+@media (max-width: 600px) {
+  .panel-container {
+    grid-template-columns: 1fr;
+  }
+  #separador-curriculum {
+    display: none;
+  }
+}
+
+
+.documento-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.lista-gestion-btn-atras {
+  width: 110px;
+  position: relative;
+  top: -20px;
 }
