@@ -4,7 +4,7 @@ from core.models import Comentario
 class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
-        fields = ['nombre', 'correo', 'texto', 'estrellas']
+        fields = ['nombre', 'correo', 'texto', 'estrellas', 'padre']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tu nombre'}),
             'correo': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'tu@email.com'}),

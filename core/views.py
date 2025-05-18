@@ -31,6 +31,8 @@ def detalle_noticia(request, pk):
             comentario = form.save(commit=False)
             comentario.noticia = noticia  # Asociar el comentario con la noticia
             comentario.save()
+            # comentario.padre = form.padre_id
+            print(comentario.padre)
             return redirect('detalle_noticia', pk=pk)
 
     return render(request, 'core/detalle_noticia.html', {
