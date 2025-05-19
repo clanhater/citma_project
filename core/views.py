@@ -4,6 +4,7 @@ from .models import EnlaceUtil, Noticia, Servicio
 from .forms import ComentarioForm
 
 
+
 def pagina_principal(request):
     # Ordenar las noticias por fecha y hora de publicación descendente
     noticias = Noticia.objects.all().order_by('-fecha_publicacion', '-hora_publicacion')
