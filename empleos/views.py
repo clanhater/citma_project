@@ -164,3 +164,5 @@ def cambiar_estado_empleo(request):
         'nuevo_estado': empleo.activo,
         'mensaje': f'Empleo {"activado" if empleo.activo else "desactivado"}'
     })
+
+

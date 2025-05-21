@@ -1,0 +1,145 @@
+{% extends "core/base.html" %} 
+{% block title %}Editor de Noticias{% endblock %}
+
+{% block content %} {% load static %}
+<div class="editor-container">
+    <div class="editor-header">
+        <h1>Editor de Noticias</h1>
+        <p>Crea y organiza los bloques de tu noticia</p>
+    </div>
+
+    <style>
+        /* Estilos básicos para el editor */
+        .editor-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .editor-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .editor-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        #save-news {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        #save-news:hover {
+            background: #27ae60;
+        }
+    
+        
+        .image-uploader {
+            margin: 10px 0;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            margin-top: 15px;
+            border-radius: 4px;
+            display: block;
+        }
+        
+        .image-placeholder {
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+
+        
+        .type-selector {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+
+        
+        .type-selector button:hover {
+            background: #3498db;
+            color: white;
+        }
+        .block-content{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+        }
+        /* Estilos para los controles del bloque */
+.block-controls {
+    display: flex;
+    justify-content: center; /* Centrar los botones */
+    gap: 10px;
+    padding: 8px;
+}
+
+.block-controls button {
+    border: none;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+/* Botones de movimiento (azules) */
+.btn-move-up, .btn-move-down {
+    background: #3498db;
+    color: white;
+}
+
+.btn-move-up:hover, .btn-move-down:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Botón de eliminar (rojo) */
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+    </style>
+    <!-- Contenedor principal de bloques -->
+    <div id="blocks-container">
+        <!-- Los bloques se generarán aquí dinámicamente -->
+    </div>
+    
+    <!-- Botón para guardar la noticia -->
+    <button id="save-news">Guardar Noticia</button>
+    <script type="module" src="{% static 'javascript/edicion_noticia/edicion_noticia.js' %}" ></script>
+
+</div>
+
+{% endblock %}

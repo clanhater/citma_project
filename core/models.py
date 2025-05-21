@@ -19,6 +19,20 @@ class Noticia(models.Model):
     def __str__(self):
         return self.titulo
 
+class Bloque(models.Model):
+    noticia = models.ForeignKey(Noticia, related_name='blocks', on_delete=models.CASCADE)
+    orden = models.PositiveIntegerField()
+    type = models.CharField(max_length=10, choices=[
+        ('title', 'Título'),
+        ('text', 'Texto'),
+        ('image', 'Imagen')
+    ])
+    contenido = models.TextField()
+    
+    class Meta:
+        ordering = ['orden']
+        unique_together = ('noticia', 'orden')
+
 
 class Comentario(models.Model):
     noticia = models.ForeignKey('Noticia', on_delete=models.CASCADE, related_name='comentarios')
