@@ -40,7 +40,8 @@ export function generateBlocksList(blocksData = []) {
     console.log(data.bloques)
     // Generar bloques iniciales
     let blockList = blocksData.map(blockData => {
-        return contentBlock(blockData.type, blockData.id, blockData.content);
+        console.log("Creando content block", blockData.orden);
+        return contentBlock(blockData.type, blockData.orden, blockData.id, blockData.content);
     });
     
 

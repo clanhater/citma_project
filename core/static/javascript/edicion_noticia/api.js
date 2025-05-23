@@ -8,26 +8,6 @@ function getCSRFToken() {
     return cookieValue || '';
 }
 
-
-export async function deleteBlock(noticiaId, bloqueId) {
-    const response = await fetch(url+"borrar_bloque", {
-        method: 'DELETE',
-        headers: {
-            'X-CSRFToken': getCSRFToken(),
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            noticia_id: noticiaId,
-            bloque_id: bloqueId
-        })
-    });
-
-    if (!response.ok) {
-        throw new Error('Error al eliminar el bloque');
-    }
-    return true;
-}
-
 export async function getNoticia(noticiaId) {
     try {
         const response = await fetch(url + `datos/${noticiaId}/`);
@@ -84,13 +64,13 @@ export async function insertarBloque(posicion, noticia_id, tipo = 'text') {
             },
             body: JSON.stringify({
                 noticia_id: noticia_id,
-                bloque_id: posicion,
+                orden: posicion,
                 type: tipo
             })
         });
 
         const data = await response.json();
-        console.log("id from api", data.orden);
+        console.log("id from api", data.order);
         if (!response.ok) {
             throw new Error(data.message || 'Error al insertar bloque');
         }
@@ -109,36 +89,48 @@ export async function insertarBloque(posicion, noticia_id, tipo = 'text') {
 }
 
 
-export async function intercambiarBloques(noticiaId, bloque1Id, bloque2Id) {
-    try {
-        const response = await fetch('/api/intercambiar-bloques/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCSRFToken()
-            },
-            body: JSON.stringify({
-                noticia_id: noticiaId,
-                bloque1_id: bloque1Id,
-                bloque2_id: bloque2Id
-            })
-        });
+export async function intercambiarBloques(noticiaId, bloque1Orden, bloque2Orden) {
+    const response = await fetch(url+'intercambiar_bloques', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: JSON.stringify({
+            noticia_id: noticiaId,
+            bloque1_orden: bloque1Orden,
+            bloque2_orden: bloque2Orden
+        })
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(data.message || 'Error al intercambiar bloques');
-        }
+    if (response.ok) {
+        return true;
+    } else {
+        console.error(data.message);
+        return false;
+    }
+}
 
-        return {
-            success: true,
-            data: data.data
-        };
-    } catch (error) {
-        console.error('Error intercambiando bloques:', error);
-        return {
-            success: false,
-            error: error.message
-        };
+
+export async function deleteBlock(noticiaId, bloqueId) {
+    const response = await fetch(url+"borrar_bloque", {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': getCSRFToken(),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            noticia_id: noticiaId,
+            orden: bloqueId
+        })
+    });
+
+    if (response.ok) {
+        return true;
+    } else {
+        console.error("No se pudo eliminar el bloque en la Base de datos");
+        return false
     }
 }

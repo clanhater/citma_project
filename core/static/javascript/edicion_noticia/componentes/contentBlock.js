@@ -1,14 +1,18 @@
+import deleteButton from "./deleteButton.js";
+import { actualizarContenido } from "../buttonEvents.js";
+import crearTextBlock from "./textBlock.js";
 /**
  * Crea un bloque con contenido inicial
  * @param {string} type - Tipo de bloque
  * @param {string} content - Contenido inicial
  * @returns {HTMLElement} - Elemento del bloque creado
  */
-export default function contentBlock(type, id, content = '') {
+export default function contentBlock(type, orden, id, content = '') {
     const block = document.createElement('div');
-    block.className = `block block-${type}`;
+    block.className = `block block-${type} block-content`;
     block.dataset.type = type;
-    
+    block.dataset.id = orden;
+
     // Contenido según tipo
     let contentHtml = '';
     switch(type) {
@@ -16,12 +20,12 @@ export default function contentBlock(type, id, content = '') {
             contentHtml = `
                 <h1 class="display-5 fw-bold mb-3" contenteditable="true">${content || 'Escribe el título aquí...'}</h1>
             `;
+            block.innerHTML = contentHtml;
             break;
             
         case 'text':
-            contentHtml = `
-                <p class="lead" contenteditable="true" >${content|| 'Escribe el texto aquí...'}</p>
-            `;
+            contentHtml = crearTextBlock(id, content);
+            block.append(contentHtml);
             break;
             
         case 'image':
@@ -32,24 +36,15 @@ export default function contentBlock(type, id, content = '') {
                     '<div class="image-placeholder">Selecciona una imagen</div>'}
                 </div>
             `;
+            block.innerHTML = contentHtml;
             break;
     }
     
-    // Estructura con controles a la derecha
-    block.innerHTML = `
-        <div id="${id}" class="block-content" data-id="${id}">
-            ${contentHtml}
-            <button type="button" 
-                    class="btn btn-outline-danger btn-delete" 
-                    title="Eliminar documento">
-              <i class="fas fa-trash"></i>
-            </button>
-        </div>
 
-    `;
-    
-    // Añadir eventos a los controles
-    // setupBlockControls(block);
+    // Estructura con controles a la derecha
+    const deletionButton = deleteButton(orden);
+    block.appendChild(deletionButton);
+
     return block;
 }
 

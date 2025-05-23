@@ -11,7 +11,7 @@ export default function createInsertButton(insersionId) {
     insertButton.dataset.insersionId = insersionId
 
     // Evento de click mejorado
-    insertButton.addEventListener('click', async (e) => {
+    insertButton.addEventListener('mouseup', async (e) => {
         e.preventDefault();
         const id = insertButton.dataset.insersionId;
         console.log(id);

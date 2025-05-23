@@ -10,7 +10,7 @@ export default function swapButton(previousBlockId, nextBlockId) {
     swapButton.dataset.nextId = nextBlockId;
     
     // Evento para intercambiar bloques
-    swapButton.addEventListener('click', (e) => {
+    swapButton.addEventListener('mouseup', (e) => {
         e.preventDefault();
         previousBlockId = swapButton.dataset.previousId;
         nextBlockId = swapButton.dataset.nextId;
