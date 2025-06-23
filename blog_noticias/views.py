@@ -37,7 +37,7 @@ def detalle_post(request, pk):
             comentario.save()
             # comentario.padre = form.padre_id
             print(comentario.padre)
-            return redirect('detalle_noticia', pk=pk)
+            return redirect('blog_noticias:leer', pk=pk)
 
     return render(request, 'blog_noticias/detalle_noticia.html', {
         'noticia': post,

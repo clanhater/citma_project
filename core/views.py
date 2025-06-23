@@ -38,18 +38,44 @@ def login_view(request):
 
 
 @login_required
-def redirigir_según_rol(request):
+def seleccionar_area_trabajo(request):
     user = request.user
+    opciones = []
+
+    if user.groups.filter(name="recursos humanos").exists():
+        opciones.append({
+            'nombre': 'Recursos Humanos',
+            'url': 'empleos:panel_RRHH',
+            'icono': 'fa-briefcase',
+            'color': 'primary',
+            'descripcion': 'Gestión de empleos y solicitudes'
+        })
+
+    if user.groups.filter(name="Noticias").exists():
+        opciones.append({
+            'nombre': 'Noticias',
+            'url': 'blog_noticias:gestion',
+            'icono': 'fa-newspaper',
+            'color': 'success',
+            'descripcion': 'Crear, editar y gestionar publicaciones'
+        })
 
     if user.is_superuser:
-        # Mostrar plantilla con opciones
-        return render(request, 'core/seleccion_area_trabajo.html')
+        opciones.append({
+            'nombre': 'Administrador',
+            'url': 'admin:index',
+            'icono': 'fa-cogs',
+            'color': 'dark',
+            'descripcion': 'Administración avanzada del sistema'
+        })
 
-    elif user.groups.filter(name="recursos humanos").exists():
-        return redirect('empleos:panel_RRHH')
+    # Redirigir automáticamente si solo hay una opción
+    if len(opciones) == 1:
+        return redirect(opciones[0]['url'])
 
-    elif user.groups.filter(name="noticias").exists():
-        return redirect('blog_noticias:gestion')
+    # Mostrar plantilla de selección si hay más de una
+    elif opciones:
+        return render(request, 'core/seleccion_area_trabajo.html', {'opciones': opciones})
 
-    # Si no tiene grupo conocido
-    return render(request, 'core/sin_rol.html', status=403)
+    # Si no tiene acceso a ningún área
+    return render(request, 'core/sin_permiso.html', status=403)
