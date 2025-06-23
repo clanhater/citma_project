@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     "nosotros",
     "empleos",
     "atencion",
+    'ckeditor',
+    'ckeditor_uploader',
+    "blog_noticias",
 ]
 
 MIDDLEWARE = [
@@ -92,6 +95,15 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # Ruta para archivos multimedia
 MEDIA_URL = "/media/"  # URL pública para acceder a los archivos
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Carpeta donde se guardarán los archivos
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Gmail

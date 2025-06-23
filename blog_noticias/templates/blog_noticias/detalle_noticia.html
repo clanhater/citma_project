@@ -64,8 +64,11 @@
 
   <!-- Título y Contenido Completo -->
   <h1 class="display-5 fw-bold mb-3">{{ noticia.titulo }}</h1>
-  <p class="lead">{{ noticia.texto_completo }}</p>
-
+  <hr>
+    <div>
+        {{ post.content|safe }}
+    </div>
+    
   <!-- Sección de Comentarios -->
   <div class="mt-5">
     <h3 class="mb-4">

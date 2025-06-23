@@ -1,5 +1,15 @@
 from django import forms
-from core.models import Comentario
+from .models import Comentario, Post
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = [
+            'titulo', 'descripcion', 'categoria',
+            'imagen', 'content'
+        ]
+
 
 class ComentarioForm(forms.ModelForm):
     class Meta:

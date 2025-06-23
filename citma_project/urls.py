@@ -25,6 +25,9 @@ urlpatterns = [
     path('delegacion/', include('nosotros.urls')),  # URLs de nosotros
     path('atencion/', include('atencion.urls')),  # URLs de atencion
     path('empleos/', include('empleos.urls')),  # URLs de empleos
+
+    path('noticias/', include('blog_noticias.urls')), # app de noticias del servidor
+    path('ckeditor/', include('ckeditor_uploader.urls')), # libreria para subir los blogs
 ]
 
 if settings.DEBUG:
