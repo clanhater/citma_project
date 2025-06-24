@@ -5,8 +5,14 @@
 <div class="container mt-5">
     {% if request.user.is_superuser or request.user.groups.count > 1 %}
         <div class="mb-3">
-            <a href="{% url 'acceso_rol' %}" class="btn btn-outline-secondary btn-sm">
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">
             <i class="fas fa-arrow-left me-1"></i> Cambiar de área
+            </a>
+        </div>
+    {% else %}
+        <div class="mb-3">
+            <a href="{% url 'logout' %}" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left me-1"></i> Cerrar Sesión
             </a>
         </div>
     {% endif %}

@@ -40,7 +40,8 @@
     <link rel="stylesheet" href="{% static 'css/nosotros.css' %}" />
     <link rel="stylesheet" href="{% static 'css/empleos.css' %}" />
     <link rel="stylesheet" href="{% static 'css/directivos.css' %}" />
-    
+    {% block extracss %}
+    {% endblock %}
   </head>
   <body>
     <!-- Franja Superior -->
@@ -146,17 +147,18 @@
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="{% url 'nosotros' %}"
-                    ><i class="fas fa-info-circle"></i> Nosotros</a
-                  >
+                    ><i class="fas fa-info-circle"></i> Nosotros
+                  </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{% url 'directivos' %}"
-                    ><i class="fas fa-users"></i> Directivos</a
-                  >
+                    ><i class="fas fa-users"></i> Directivos
+                  </a>
                 </li>
               </ul>
             </li>
 
+            {% if actividades_rectoras_quitame_cuando_este_implementado %}
             <!-- Dropdown Actividades Rectoras -->
             <li class="nav-item dropdown">
               <a
@@ -171,28 +173,59 @@
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="#ciencia"
-                    ><i class="fas fa-flask"></i> Ciencia</a
-                  >
+                    ><i class="fas fa-flask"></i> Ciencia
+                  </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#medio-ambiente"
-                    ><i class="fas fa-tree"></i> Medio Ambiente</a
-                  >
+                    ><i class="fas fa-tree"></i> Medio Ambiente
+                  </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#gestion-documental"
-                    ><i class="fas fa-file-alt"></i> Gestión Documental</a
-                  >
+                    ><i class="fas fa-file-alt"></i> Gestión Documental
+                  </a>
                 </li>
               </ul>
             </li>
+            {% endif %}
 
             <!-- Enlaces Individuales -->
+            {% with user_groups=user.groups.all %}
+            {% if 'recursos humanos' in user_groups|join:', ' %}
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-briefcase"></i> Empleos
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'empleos:lista_empleos' %}"
+                      ><i class="fa-solid fa-list-check mx-1"></i>Lista Pública
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'empleos:panel_RRHH' %}"
+                      ><i class="fa-solid fa-screwdriver-wrench mx-1"></i>Gestión
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'empleos:lista_empleos' %}">
                 <i class="fas fa-briefcase"></i> Empleo
               </a>
             </li>
+            {% endif %}
+          {% endwith %}
+
+          {% if para_que_no_aparezca_esta_seccion %}
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -200,6 +233,14 @@
               >
                 <i class="fas fa-handshake"></i> Atención a la Población
               </a>
+            </li>
+            {% endif %}
+            <li class="mx-2">
+              {% if user.is_authenticated  %}
+                <a href="{% url 'dashboard' %}" class="btn btn-success shadow">Área de Trabajo</a>
+              {% else %}
+                <a href="{% url 'login' %}" class="btn btn-success shadow">Acceso Restringido</a>
+              {% endif %}
             </li>
           </ul>
         </div>

@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
 <div class="container my-5">
+  <div class="mb-3">
+    <a href="{% url 'logout' %}" class="btn btn-secondary btn-sm">
+    <i class="fas fa-arrow-left me-1"></i> Cerrar Sesión
+    </a>
+  </div>
   <h3 class="mb-4 text-center">¿A dónde deseas ir?</h3>
   <div class="row g-4 justify-content-center">
     {% for opcion in opciones %}
@@ -17,5 +22,8 @@
     </div>
     {% endfor %}
   </div>
+
+    
+
 </div>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Empleo, SolicitudEmpleo
 from .forms import SolicitudEmpleoForm
 from django.core.files.storage import default_storage
+from django.contrib.auth.decorators import login_required
 
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
@@ -63,7 +64,9 @@ def solicitar_empleo(request, pk):
             request, "empleos/solicitar_empleo.html", {"form": form, "empleo": empleo}
         )
 
+
 # Parte de Recursos Humanos 
+@login_required
 def panel_rh(request):
     context = {
         'empleos_activos_count': Empleo.objects.filter(activo=True).count(),
@@ -72,6 +75,7 @@ def panel_rh(request):
     
     return render(request, 'empleos/panel_RRHH.html', context)
 
+@login_required
 def lista_solicitudes(request):
     mostrar_revisadas = request.GET.get('mostrar_revisadas', 'false') == 'true'
     
@@ -88,6 +92,7 @@ def lista_solicitudes(request):
     }
     return render(request, 'empleos/solicitudes.html', context)
 
+@login_required
 def detalle_solicitud(request, solicitud_id):
     solicitud = get_object_or_404(SolicitudEmpleo, pk=solicitud_id)
     
@@ -105,7 +110,7 @@ def detalle_solicitud(request, solicitud_id):
     return render(request, 'empleos/detalles_solicitud.html', {'solicitud': solicitud})
 
 
-# @login_required
+@login_required
 def lista_vacantes(request):
     # if not request.user.is_staff:
     #     return HttpResponseForbidden("No tienes permiso para acceder a esta página.")
@@ -113,7 +118,7 @@ def lista_vacantes(request):
     empleos = Empleo.objects.all()
     return render(request, "empleos/lista_gestion.html", {"empleos": empleos})
 
-# @login_required
+@login_required
 def detalle_gestion(request, pk):
     # if not request.user.is_staff:
     #     return HttpResponseForbidden("No tienes permiso para acceder a esta página.")
@@ -129,15 +134,10 @@ def detalle_gestion(request, pk):
         empleo.area = request.POST.get("area", empleo.area)
         empleo.activo = "activo" in request.POST
         
-        # Manejo del documento adjunto (parte clave)
-        if 'eliminar_documento' in request.POST:
-            # Caso 1: Eliminar documento existente
-            empleo.documento_detalles.delete(save=False)
-        elif 'documento_detalles' in request.FILES:
-            # Caso 2: Nuevo archivo subido
-            empleo.documento_detalles = request.FILES['documento_detalles']
-        # Caso 3: No se modifica el documento (no hacer nada)
-        
+        archivo = request.FILES.get('documento_detalles')
+        if archivo:
+            empleo.documento_detalles = archivo
+
         empleo.save()
         return redirect("empleos:lista_vacantes")
 

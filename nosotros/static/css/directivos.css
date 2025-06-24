@@ -1,6 +1,5 @@
 /* Página de Directivos */
 .directivos-page {
-  padding-top: 100px; /* Margen superior para evitar que el contenido se tape con el navbar */
   background-color: #f9f9f9;
   min-height: 100vh;
 }

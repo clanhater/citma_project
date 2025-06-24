@@ -1,5 +1,10 @@
 {% extends "core/base.html" %} {% load static %} {% block content %}
 <!-- Contenedor Principal -->
+<div class="mt-3" style="margin-left: 100px;">
+  <a href="{% url 'pagina_principal' %}" class="btn btn-secondary btn-sm">
+  <i class="fas fa-arrow-left me-1"></i> Volver al inicio
+  </a>
+</div>
 <div id="main-container" class="main-container">
   <!-- Botón del Menú (Solo visible en pantallas pequeñas) -->
   <div id="menu-toggle" class="menu-toggle">

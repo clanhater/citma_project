@@ -1,6 +1,25 @@
 {% extends "core/base.html" %} {% block content %} {% load static %}
 
 <div class="container py-5">
+  
+  
+  <div class="d-flex">
+    <div class="mb-3">
+      <a href="{% url 'pagina_principal' %}" class="btn btn-secondary btn-sm">
+      <i class="fas fa-arrow-left me-1"></i> Volver al inicio
+      </a>
+    </div>
+    {% with user_groups=user.groups.all %}
+      {% if 'recursos humanos' in user_groups|join:', ' %}
+      <div class="mb-3 mx-2">
+        <a href="{% url 'blog_noticias:editar' noticia.id %}" class="btn btn-warning btn-sm">
+          <i class="fas fa-arrow-left me-1"></i> Editar Noticia
+        </a>
+    </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+
   <!-- Imagen Grande -->
   <div class="text-center mb-4">
     <img

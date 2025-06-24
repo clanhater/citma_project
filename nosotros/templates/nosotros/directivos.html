@@ -1,5 +1,10 @@
 {% extends "core/base.html" %} {% load static %} {% block content %}
 <!-- Contenido principal -->
+<div class="mt-3 mx-5">
+  <a href="{% url 'pagina_principal' %}" class="btn btn-secondary btn-sm">
+  <i class="fas fa-arrow-left me-1"></i> Volver al inicio
+  </a>
+</div>
 <main class="directivos-page">
   <section class="directivos-content">
     <h1 class="page-title">Primer Nivel de Dirección</h1>

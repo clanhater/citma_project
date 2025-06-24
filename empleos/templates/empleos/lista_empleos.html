@@ -3,8 +3,25 @@
 
 {% block content %}
 <div class="main">
+  <div class="d-flex mt-3 mb-5">
+    <div class="mx-2">
+      <a href="{% url 'pagina_principal' %}" class="btn btn-secondary btn-sm">
+      <i class="fas fa-arrow-left me-1"></i> Volver al inicio
+    </a>
+    </div>
+    {% with user_groups=user.groups.all %}
+      {% if 'recursos humanos' in user_groups|join:', ' %}
+        <div class="mx-2">
+          <a href="{% url 'empleos:lista_vacantes' %}" class="btn btn-warning btn-sm">
+            <i class="fa-solid fa-screwdriver-wrench mx-1"></i> Cambiar a lista de gestión
+          </a>
+        </div>
+        {% endif %}
+    {% endwith %}
+  </div>
+
   <!-- Header -->
-  <header class="empleos-header">
+      <header class="empleos-header">
     <h1>Empleos Disponibles en la Delegación</h1>
     <p class="slogan">Encuentra tu próxima oportunidad laboral con nosotros.</p>
   </header>

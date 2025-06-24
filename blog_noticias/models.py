@@ -35,7 +35,7 @@ class Comentario(models.Model):
 
     def __str__(self):
         if self.texto:
-            return f"Comentario por {self.nombre} en {self.noticia.titulo}"
+            return f"Comentario por {self.nombre} en {self.post.titulo}"
         elif self.estrellas:
-            return f"{self.estrellas} estrellas por {self.nombre} en {self.noticia.titulo}"
+            return f"{self.estrellas} estrellas por {self.nombre} en {self.post.titulo}"
         return f"Entrada sin contenido por {self.nombre}"

@@ -1,4 +1,9 @@
-{% extends "core/base.html" %} {% load static %} {% block content %}
+{% extends "core/base.html" %} {% load static %} 
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'css/registrar_queja.css' %}" />
+{% endblock %}
+
+{% block content %}
 <div class="main">
   <section class="form-section">
     <h2>Atención a la Población</h2>

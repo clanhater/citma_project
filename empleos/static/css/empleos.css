@@ -324,13 +324,12 @@ text.disabled-button {
   margin-top: 20px;
   justify-content: space-between;
 }
+.botones-container .cta-button{
+  border: none;
+}
 
 .empleo-card p strong {
   color: rgb(71, 71, 71);
-}
-
-#first-button-area {
-  justify-content: end;
 }
 
 #error-msg {

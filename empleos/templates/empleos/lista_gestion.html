@@ -4,13 +4,20 @@
 
 {% block content %}
 <div class="container mt-5">
+  <div class="d-flex mt-3 mb-5">
+    <div class="mx-2">
+      <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-secondary btn-sm">
+      <i class="fas fa-arrow-left me-1"></i> Volver al panel de Recursos Humanos
+    </a>
+    </div>
+    <div class="mx-2">
+      <a href="{% url 'empleos:lista_empleos' %}" class="btn btn-warning btn-sm">
+        <i class="fa-solid fa-screwdriver-wrench mx-1"></i> Cambiar a la lista pública
+      </a>
+    </div>
+  </div>
   <!-- Header con botón Atrás -->
   <header class="mb-4 position-relative">
-    <!-- Botón Atrás alineado a la izquierda -->
-    <a href="{% url 'empleos:panel_RRHH' %}" class="btn btn-primary lista-gestion-btn-atras">
-      <i class="fas fa-arrow-left me-2"></i> Volver
-    </a>
-  
     <!-- Título centrado -->
     <div class="text-center px-5"> <!-- Añade padding horizontal para evitar superposición -->
       <h1 class="display-4">Gestión de Vacantes</h1>

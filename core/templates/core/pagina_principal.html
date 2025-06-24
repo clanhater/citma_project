@@ -36,6 +36,8 @@
       </div>
     </div>
   </div>
+{% if para_que_no_aparezca_esta_seccion %}
+
   <!-- Separador Zigzag -->
   <div class="custom-shape-divider-bottom-1742914160">
     <svg
@@ -53,6 +55,7 @@
 </header>
 
 <!-- Sección de Actividades Rectoras -->
+
 <section id="activities-section" class="py-5 bg-lighter">
   <div class="container">
     <!-- Encabezado de la Sección -->
@@ -64,7 +67,7 @@
       Impulsando el desarrollo sostenible en ciencia, medio ambiente y gestión
       documental.
     </p>
-
+    
     <!-- Tarjetas de Actividades -->
     <div class="row g-4">
       <!-- Tarjeta Ciencia -->
@@ -72,7 +75,7 @@
         <div
           class="card border-0 shadow-sm h-100 text-center p-4 activity-card"
           style="--activity-color: #0a309f; --activity-light: #e6f0ff"
-        >
+          >
           <i class="fas fa-atom fa-3x activity-icon"></i>
           <h3 class="card-title">Ciencia, Tecnología e Innovación</h3>
           <p class="card-text">
@@ -90,20 +93,20 @@
               >Indicadores <i class="fas fa-arrow-right"></i
             ></a>
             <a
-              href="#incentivos-ciencia"
-              class="btn btn-outline-primary btn-sm activity-button"
-              >Incentivos <i class="fas fa-arrow-right"></i
-            ></a>
+            href="#incentivos-ciencia"
+            class="btn btn-outline-primary btn-sm activity-button"
+            >Incentivos <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Tarjeta Medio Ambiente -->
-      <div class="col-md-4">
+        
+        <!-- Tarjeta Medio Ambiente -->
+        <div class="col-md-4">
         <div
           class="card border-0 shadow-sm h-100 text-center p-4 activity-card"
           style="--activity-color: #179040; --activity-light: #e6f7e6"
-        >
+          >
           <i class="fas fa-tree fa-3x activity-icon"></i>
           <h3 class="card-title">Medio Ambiente</h3>
           <p class="card-text">
@@ -119,18 +122,18 @@
               href="#indicadores-ambiente"
               class="btn btn-outline-success btn-sm activity-button"
               >Indicadores <i class="fas fa-arrow-right"></i
-            ></a>
-            <a
+                ></a>
+                <a
               href="#incentivos-ambiente"
               class="btn btn-outline-success btn-sm activity-button"
               >Incentivos <i class="fas fa-arrow-right"></i
-            ></a>
+                ></a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Tarjeta Gestión Documental -->
-      <div class="col-md-4">
+          <!-- Tarjeta Gestión Documental -->
+          <div class="col-md-4">
         <div
           class="card border-0 shadow-sm h-100 text-center p-4 activity-card"
           style="--activity-color: #9e9ea0; --activity-light: #f7f7f7"
@@ -142,20 +145,20 @@
           </p>
           <div class="d-flex flex-column gap-2 mt-3">
             <a
-              href="#programas-gestion"
+            href="#programas-gestion"
               class="btn btn-outline-secondary btn-sm activity-button"
               >Programas <i class="fas fa-arrow-right"></i
-            ></a>
-            <a
-              href="#indicadores-gestion"
+                ></a>
+                <a
+                href="#indicadores-gestion"
               class="btn btn-outline-secondary btn-sm activity-button"
               >Indicadores <i class="fas fa-arrow-right"></i
-            ></a>
-            <a
-              href="#incentivos-gestion"
-              class="btn btn-outline-secondary btn-sm activity-button"
+                ></a>
+                <a
+                href="#incentivos-gestion"
+                class="btn btn-outline-secondary btn-sm activity-button"
               >Incentivos <i class="fas fa-arrow-right"></i
-            ></a>
+                ></a>
           </div>
         </div>
       </div>
@@ -164,19 +167,20 @@
   <!-- Separador Zigzag -->
   <div class="custom-shape-divider-bottom-1742914160">
     <svg
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="none"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1200 120"
+    preserveAspectRatio="none"
     >
       <path
         d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
         class="shape-fill2"
-      ></path>
-    </svg>
+        ></path>
+      </svg>
   </div>
 </section>
 
+{% endif %}
 <!-- Sección de Noticias -->
 <section id="noticias-section" class="py-5" style="background-color: #e6f7e6; position: relative">
   <div class="container">
@@ -352,7 +356,7 @@
     </p>
 
     <!-- Contenedor de Tarjetas -->
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
       {% for servicio in servicios %}
       <div class="col-12 col-md-6 col-lg-{{ servicios|length|div:3|floatformat:'0' }}">
         <div class="card h-100 border-0 shadow rounded-3 overflow-hidden text-center" style="background-color:rgb(237, 237, 238)">

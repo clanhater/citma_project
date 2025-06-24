@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required   
 
 
 from .models import Post
 from .forms import ComentarioForm, PostForm
 
-
+@login_required
 def crear_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -15,11 +15,6 @@ def crear_post(request):
     else:
         form = PostForm()
     return render(request, 'blog_noticias/crear_noticia.html', {'form': form})
-
-
-def post_list(request):
-    posts = Post.objects.order_by('-created_at')
-    return render(request, 'blog/post_list.html', {'posts': posts})
 
 
 def detalle_post(request, pk):
@@ -45,6 +40,7 @@ def detalle_post(request, pk):
         'form': form,  # Pasar el formulario combinado
     })
 
+@login_required
 def gestion_posts(request):
     noticias = Post.objects.all()
     return render(request, "blog_noticias/lista_post.html", {'noticias':noticias})
