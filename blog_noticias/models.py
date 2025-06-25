@@ -16,8 +16,16 @@ class Post(models.Model):
     hora_publicacion = models.TimeField(default=timezone.now)
     imagen = models.ImageField(upload_to='noticias/')
     activo = models.BooleanField(default=True)
-
+    vistas = models.IntegerField(default=0)
     content = RichTextUploadingField()
+
+    @property
+    def comentarios_publicados(self):
+        return self.comentarios.filter(activo=True)
+    
+    @property
+    def comentarios_ocultos(self):
+        return self.comentarios.filter(activo=False)
 
     def __str__(self):
         return self.titulo
@@ -32,6 +40,7 @@ class Comentario(models.Model):
     fecha_creacion = models.DateField(auto_now_add=True)  # Fecha de creación automática
     hora_creacion = models.TimeField(auto_now_add=True)  # Hora de creación automática
     padre = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='respuestas')
+    activo = models.BooleanField(default=False)
 
     def __str__(self):
         if self.texto:

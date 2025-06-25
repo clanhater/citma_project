@@ -14,11 +14,8 @@ const formulario = document.getElementById('formulario')
 
   export function getSomeError() {
     const errorNombre = getErrorNombre(nombre.value);
-    console.log(errorNombre)
     const errorCorreo = getErrorCorreo(correo.value);
-    console.log(errorCorreo)
     const errorEstrellas = estrellas.value < 1? "Añade una calificacion" : null;
-    console.log(errorEstrellas)
 
     let errorMsg;
     console.log(estrellas.value)
@@ -61,12 +58,19 @@ const formulario = document.getElementById('formulario')
   })
 
   submit.addEventListener('click', (e) => {
-    console.log('HOLA??')
     const errorMsg = getSomeError();
-    console.log(errorMsg)
+    console.log(submit.dataset.captchaResuelto!=="true")
+    
+    console.log("Errores del formulario", errorMsg)
     if (errorMsg){
       e.preventDefault();
+    } else if(submit.dataset.captchaResuelto!=="true") {
+      console.log("Entrado a lo del captcha")
+      showError("Debes resolver el CAPTCHA")
+      e.preventDefault();
     }
+    console.log("Final del metodo")
+
   })
 
 export function showError(msg) {

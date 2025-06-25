@@ -89,124 +89,21 @@
     </div>
     
   <!-- Sección de Comentarios -->
-  <div class="mt-5">
+   <hr>
+  <div class="mt-5 d-flex">
     <h3 class="mb-4">
-      Comentarios y Calificaciones ({{ noticia.comentarios.count }})
-    </h3>
-    <button id="scroll-to-form" class="btn btn-outline-primary mb-4">
-      Dejar un Comentario
+      Hay {{ noticia.comentarios_publicados.count }} comentarios y Calificaciones
+      <a href="{% url 'blog_noticias:comentarios' noticia.id %}">
+        <button id="scroll-to-form" class="btn btn-outline-primary mb-4 mx-4" 
+        style="padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.3rem;">
+          Ir a los comentarios
     </button>
-
-    <!-- Lista de Comentarios -->
-    <div id="comentarios">
-      {% for comentario in comentarios %}
-      <!-- Contenedor de Comentario -->
-      <div class="card mb-3 position-relative">
-        <!-- Calificación en la Esquina Superior Derecha -->
-        {% if comentario.estrellas %}
-        <div class="position-absolute top-0 end-0 p-2 text-white rounded-pill" style="font-size: 1.5rem;">
-          {% for i in "x"|rjust:comentario.estrellas %}
-          <span class="star-filled">&#9733;</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-
-        <div class="card-body">
-          <p><strong>{{ comentario.nombre }}</strong></p>
-          {% if comentario.texto %}
-          <p>{{ comentario.texto }}</p>
-          {% endif %}
-          <small class="text-muted">
-            Publicado el {{ comentario.fecha_creacion }} a las {{ comentario.hora_creacion }}
-          </small>
-          <button
-            class="btn btn-sm btn-outline-primary mt-2"
-            onclick="mostrarRespuestaForm({{ comentario.id }})"
-          >
-            Responder
-          </button>
-
-          <!-- Formulario de Respuesta -->
-          <div
-            id="respuesta-form-{{ comentario.id }}"
-            style="display: none"
-            class="mt-3 ms-4"
-          >
-            <form method="post" class="card p-3 shadow-sm">
-              {% csrf_token %}
-              <input
-                type="hidden"
-                name="padre"
-                value="{{ comentario.id }}"
-              />
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <input
-                    type="text"
-                    name="nombre"
-                    class="form-control"
-                    placeholder="Tu nombre"
-                    required
-                  />
-                </div>
-                <div class="col-md-6">
-                  <input
-                    type="email"
-                    name="correo"
-                    class="form-control"
-                    placeholder="tu@email.com"
-                    required
-                  />
-                </div>
-                <div class="col-12">
-                  <textarea
-                    name="texto"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Escribe tu respuesta..."
-                    required
-                  ></textarea>
-                </div>
-                <div class="col-12 text-end">
-                  <button type="submit" class="btn btn-primary">
-                    Enviar Respuesta
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Respuestas -->
-        <div class="ms-4">
-          {% for respuesta in comentario.respuestas.all %}
-          <div
-            class="card mb-2"
-            style="background-color: #f8f9fa; border-left: 4px solid #0d6efd"
-          >
-            <div class="card-body">
-              <p><strong>{{ respuesta.nombre }}</strong></p>
-              {% if respuesta.texto %}
-              <p>{{ respuesta.texto }}</p>
-              {% endif %} {% if respuesta.estrellas %}
-              <p><strong>Calificación:</strong> {{ respuesta.estrellas }}/5</p>
-              {% endif %}
-              <small class="text-muted">
-                Publicado el {{ respuesta.fecha_creacion }} a las {{ respuesta.hora_creacion }}
-              </small>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-      {% empty %}
-      <p class="text-muted">
-        No hay comentarios o calificaciones para esta noticia.
-      </p>
-      {% endfor %}
-    </div>
+  </a>
   </div>
-
+{% if no_mostrar_esto %}
   <!-- Formulario de Comentario y Calificación -->
   <div id="formulario-comentario" class="mt-5">
     <h3 class="text-center mb-4">¡Danos tu opinión!</h3>
@@ -254,12 +151,23 @@
           <button id="boton_envio" type="submit" class="btn btn-primary btn-lg">
             Enviar Opinión
           </button>
+          {{form.recaptcha}}
+          <script>
+            // Habilita el botón solo cuando el captcha se resuelve
+            const submit = document.getElementById('boton_envio');
+            submit.addEventListener('click', (e) => {
+              const captcha_resuelto = (grecaptcha && grecaptcha.getResponse().length > 0)
+              submit.dataset.captchaResuelto = captcha_resuelto
+               // ya del resto se encarga el javascript de esta pagina
+            })
+        </script>
         </div>
       </div>
     </form>
   </div>
-
   <script type="module" src="{% static 'javascript/limpiar_comentario.js' %}" ></script>
   <script type="module" src="{% static 'javascript/comentario.js' %}"></script>
-  {% endblock %}
+  {% endif %}
+
 </div>
+  {% endblock %}

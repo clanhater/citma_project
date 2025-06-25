@@ -25,6 +25,13 @@ SECRET_KEY = "django-insecure-m!(%g9bo!fzl$y$ohucghe893%_9=ir-9-f8ezojz45^00b++(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if DEBUG:
+    RECAPTCHA_TESTING = True  # Ignora la validación real
+
+#claves de captcha, se deben cambiar en despliegue
+# RECAPTCHA_PUBLIC_KEY = "123"
+# RECAPTCHA_PRIVATE_KEY = "123"
+SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error'] # desactiva la alerta de que esta en modo test
 
 ALLOWED_HOSTS = []
 
@@ -42,9 +49,11 @@ INSTALLED_APPS = [
     "nosotros",
     "empleos",
     "atencion",
-    'ckeditor',
-    'ckeditor_uploader',
     "blog_noticias",
+
+    'django_recaptcha',
+    'ckeditor_uploader',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

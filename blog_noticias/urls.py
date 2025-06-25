@@ -8,10 +8,13 @@ app_name = 'blog_noticias'
 
 urlpatterns = [
     path('crear/', views.crear_post, name='crear'),
-    path('leer/<int:pk>/', views.detalle_post, name='leer'),
+    path('<int:pk>/', views.detalle_post, name='leer'),
+    path('comentarios/<int:pk>/', views.comentarios_noticia, name="comentarios"),
     path('gestionar/', views.gestion_posts, name="gestion"),
-    path('editar/<int:pk>/', views.editar_noticia, name="editar"),
-    path('ocultar/<int:pk>/', views.toggle_estado, name='toggle_estado'),
+    path('<int:pk>/editar/', views.editar_noticia, name="editar"),
+    path('<int:pk>/ocultar/', views.toggle_estado, name='toggle_estado'),
+    path('<int:pk>/eliminar/', views.eliminar_noticia, name='eliminar'),
+    path('<int:pk>/moderar/', views.moderar_comentarios, name='moderar'),
 ]
 
 if settings.DEBUG:

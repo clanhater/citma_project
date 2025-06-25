@@ -272,7 +272,7 @@
 .star-rating .star {
   color: #ccc; /* Color inicial (gris claro) */
   transition: color 0.3s ease;
-  font-size: 4rem;
+  font-size: 2.5rem;
 }
 
 .star-rating .star.selected,

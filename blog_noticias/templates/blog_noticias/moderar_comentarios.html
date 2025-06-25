@@ -1,0 +1,193 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2>
+        <i class="fas fa-comments me-2"></i>Moderación de Comentarios
+      </h2>
+      <div class="d-flex flex-wrap gap-2 my-3">
+        <a href="{% url 'blog_noticias:gestion' %}" class="btn btn-sm btn-secondary">
+          <i class="fas fa-arrow-left me-1"></i> Volver a la lista
+        </a>
+        <a href="{% url 'blog_noticias:editar' noticia.id %}" class="btn btn-sm btn-warning">
+          <i class="fas fa-edit me-1"></i> Editar Noticia
+        </a>
+        <a href="{% url 'blog_noticias:leer' noticia.id %}" class="btn btn-sm btn-primary">
+          <i class="fas fa-eye me-1"></i> Ver Noticia
+        </a>
+        
+        <!-- Botón Comentarios -->
+        <a href="{% url 'blog_noticias:comentarios' noticia.id %}" class="btn btn-sm btn-info position-relative">
+          <i class="fas fa-comments me-1"></i> Ir a la vista publica
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card mb-4">
+    <div class="card-body py-2">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="btn-group" role="group">
+            <a href="?estado=pendientes&orden={{ filtro_orden }}" 
+               class="btn btn-sm {% if filtro_estado == 'pendientes' %}btn-danger{% else %}btn-outline-danger{% endif %}">
+              <i class="fas fa-comment-slash me-1"></i> Pendientes ({{ contadores.pendientes }})
+            </a>
+            <a href="?estado=publicados&orden={{ filtro_orden }}" 
+               class="btn btn-sm {% if filtro_estado == 'publicados' %}btn-success{% else %}btn-outline-success{% endif %}">
+              <i class="fas fa-comment-check me-1"></i> Publicados ({{ contadores.publicados }})
+            </a>
+            <a href="?estado=todos&orden={{ filtro_orden }}" 
+               class="btn btn-sm {% if filtro_estado == 'todos' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+              <i class="fas fa-comments me-1"></i> Todos ({{ contadores.total }})
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0">
+          <div class="btn-group" role="group">
+            <a href="?estado={{ filtro_estado }}&orden=recientes" 
+               class="btn btn-sm {% if filtro_orden == 'recientes' %}btn-info{% else %}btn-outline-info{% endif %}">
+              <i class="fas fa-clock-rotate-left me-1"></i> Recientes
+            </a>
+            <a href="?estado={{ filtro_estado }}&orden=antiguos" 
+               class="btn btn-sm {% if filtro_orden == 'antiguos' %}btn-info{% else %}btn-outline-info{% endif %}">
+              <i class="fas fa-history me-1"></i> Antiguos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Comentarios -->
+  <div class="card">
+    <div class="card-body p-0">
+      {% if comentarios %}
+      <div class="list-group list-group-flush">
+        {% for comentario in comentarios %}
+        <div class="list-group-item {% if not comentario.activo %}bg-light{% endif %}" id="comentario-{{ comentario.id }}">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+              <h6 class="mb-1">
+                {{ comentario.nombre }} 
+                <small class="text-muted ms-2">{{ comentario.correo }}</small>
+              </h6>
+              {% if comentario.padre %}
+                <p class="text-muted">En respuesta a <i>{{comentario.padre.nombre}}</i>, {% if comentario.padre.activo %}Publicado{% else %}No Publicado{% endif %}</p>
+              {% endif %}
+              <small class="text-muted">
+                <i class="fas fa-calendar-alt me-1"></i>
+                {% if comentario.fecha_creacion %}
+                  {{ comentario.fecha_creacion|date:"d/m/Y" }} a las {{ comentario.hora_creacion|time:"H:i" }}
+                {% else %}
+                  Fecha no disponible
+                {% endif %}
+              </small>
+            </div>
+            <span class="badge bg-{% if comentario.activo %}success{% else %}danger{% endif %}">
+              {% if comentario.activo %}Publicado{% else %}Pendiente{% endif %}
+            </span>
+          </div>
+          
+          <p class="mb-3">{{ comentario.texto }}</p>
+          
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              {% if comentario.estrellas %}
+              <div class="text-warning small">
+                {% for i in "12345" %}
+                  {% if forloop.counter <= comentario.estrellas %}
+                    <i class="fas fa-star"></i>
+                  {% else %}
+                    <i class="far fa-star"></i>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+            <div class="btn-group">
+              {% if not comentario.activo %}
+              <button class="btn btn-sm btn-success btn-accion" 
+                      data-comentario-id="{{ comentario.id }}" 
+                      data-accion="aprobar">
+                <i class="fas fa-check me-1"></i> Aprobar
+              </button>
+              {% endif %}
+              <button class="btn btn-sm btn-danger btn-accion" 
+                      data-comentario-id="{{ comentario.id }}" 
+                      data-accion="eliminar">
+                <i class="fas fa-trash-alt me-1"></i> Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="text-center py-5">
+        <i class="fas fa-comment-slash fa-3x text-muted mb-3"></i>
+        <h5>No hay comentarios {% if filtro_estado == 'pendientes' %}pendientes{% elif filtro_estado == 'publicados' %}publicados{% endif %}</h5>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript para acciones AJAX -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-accion').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const comentarioId = this.dataset.comentarioId;
+            const accion = this.dataset.accion;
+            const comentarioElement = document.getElementById(`comentario-${comentarioId}`);
+            
+            fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: `comentario_id=${comentarioId}&accion=${accion}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.eliminado) {
+                        comentarioElement.remove();
+                    } else if (data.nuevo_estado === 'publicado') {
+                        const badge = comentarioElement.querySelector('.badge');
+                        badge.classList.remove('bg-danger');
+                        badge.classList.add('bg-success');
+                        badge.textContent = 'Publicado';
+                        
+                        const btnAprobar = comentarioElement.querySelector('[data-accion="aprobar"]');
+                        if (btnAprobar) btnAprobar.remove();
+                    }
+                    
+                    // Actualizar contadores en los filtros (opcional)
+                    // Puedes implementar esta parte si necesitas actualización en tiempo real
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+});
+</script>
+
+<style>
+.list-group-item {
+    transition: all 0.3s ease;
+    padding: 1.25rem;
+}
+.btn-accion {
+    min-width: 100px;
+}
+</style>
+{% endblock %}

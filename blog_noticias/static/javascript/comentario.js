@@ -1,64 +1,87 @@
 import { getSomeError } from "./limpiar_comentario.js";
 
-// Desplazamiento al formulario
-document
-.getElementById("scroll-to-form")
-.addEventListener("click", function () {
-  const formulario = document.getElementById("formulario-comentario");
-  formulario.scrollIntoView({ behavior: "smooth" });
+
+// Función para resetear a modo comentario normal
+function resetearFormulario() {
+  document.querySelector('input[name="padre"]').value = '';
+  document.querySelector('#form-title').textContent = 'Deja tu comentario';
+}
+
+// Función para activar el modo respuesta
+function activarModoRespuesta(comentarioId, autor) {
+  // 1. Establecer el comentario padre
+  document.querySelector('input[name="padre"]').value = comentarioId;
+  
+  // 2. Actualizar el título y añadir botón cancelar
+  const formTitle = document.querySelector('#form-title');
+  formTitle.innerHTML = `
+      Respondiendo a <strong>${autor}</strong>
+      <button id="cancelar-respuesta" class="btn btn-sm btn-outline-danger ms-2 my-1" style="padding: 5px;">
+          <i class="fas fa-times"></i> Cancelar
+      </button>
+  `;
+  
+  // 3. Desplazar al formulario (opcional)
+  formTitle.scrollIntoView({ behavior: 'smooth' });
+  
+  // 4. Manejar el evento de cancelar
+  document.getElementById('cancelar-respuesta').addEventListener('click', resetearFormulario);
+}
+
+
+
+// Eventos para los botones responder
+document.querySelectorAll('.btn-responder').forEach(btn => {
+  btn.addEventListener('click', function() {
+      activarModoRespuesta(
+          this.dataset.id, 
+          this.dataset.author // Asegúrate de incluir data-author="Nombre" en el HTML
+      );
+  });
 });
 
-// Mostrar/Ocultar Formulario de Respuesta
-function mostrarRespuestaForm(comentarioId) {
-const form = document.getElementById(`respuesta-form-${comentarioId}`);
-if (form.style.display === "none") {
-  form.style.display = "block";
-} else {
-  form.style.display = "none";
-}
-}
+
 
 // Interacción con las estrellas
 const stars = document.querySelectorAll(".star");
 const estrellasInput = document.getElementById("id_estrellas");
 
 stars.forEach((star) => {
-star.addEventListener("click", () => {
-  const value = star.getAttribute("data-value");
-  estrellasInput.value = value;
+  star.addEventListener("click", () => {
+    const value = star.getAttribute("data-value");
+    estrellasInput.value = value;
+    getSomeError();
 
-  getSomeError();
-
-  // Resaltar las estrellas seleccionadas
-  stars.forEach((s, index) => {
-    if (index < value) {
-      s.classList.add("selected");
-    } else {
-      s.classList.remove("selected");
-    }
+    // Resaltar las estrellas seleccionadas
+    stars.forEach((s, index) => {
+      if (index < value) {
+        s.classList.add("selected");
+      } else {
+        s.classList.remove("selected");
+      }
+    });
   });
-});
 
-star.addEventListener("mouseover", () => {
-  const value = star.getAttribute("data-value");
-  stars.forEach((s, index) => {
-    if (index < value) {
-      s.style.color = "#ffc107"; // Amarillo para estrellas seleccionadas
-    } else {
-      s.style.color = "#ccc"; // Gris para estrellas no seleccionadas
-    }
+  star.addEventListener("mouseover", () => {
+    const value = star.getAttribute("data-value");
+    stars.forEach((s, index) => {
+      if (index < value) {
+        s.style.color = "#ffc107"; // Amarillo para estrellas seleccionadas
+      } else {
+        s.style.color = "#ccc"; // Gris para estrellas no seleccionadas
+      }
+    });
   });
-});
 
-star.addEventListener("mouseout", () => {
-  stars.forEach((s, index) => {
-    if (index < estrellasInput.value) {
-      s.style.color = "#ffc107"; // Mantener amarillo para estrellas seleccionadas
-    } else {
-      s.style.color = "#ccc"; // Gris para estrellas no seleccionadas
-    }
+  star.addEventListener("mouseout", () => {
+    stars.forEach((s, index) => {
+      if (index < estrellasInput.value) {
+        s.style.color = "#ffc107"; // Mantener amarillo para estrellas seleccionadas
+      } else {
+        s.style.color = "#ccc"; // Gris para estrellas no seleccionadas
+      }
+    });
   });
-});
 });
 
 // Obtener la URL actual de la página

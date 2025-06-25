@@ -23,48 +23,121 @@
 
   <div class="row">
     {% for noticia in noticias %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 card2" style="max-height: 600px">
-          <div class="position-relative">
-            <img
-              src="{{ noticia.imagen.url }}"
-              alt="{{ noticia.titulo }}"
-              class="card-img-top"
-              style="height: 250px; object-fit: cover"
-            />
-            <span class="badge bg-primary position-absolute top-0 end-0 m-2">
-              {{ noticia.categoria }}
+<div class="col-md-4 mb-4">
+  <div class="card h-100 card2">
+    <!-- Cabecera con imagen y badges -->
+    <div class="position-relative">
+      <img src="{{ noticia.imagen.url }}" class="card-img-top img-cover">
+      <span class="badge bg-primary position-absolute top-0 end-0 m-2">
+        {{ noticia.categoria }}
+      </span>
+      {% if not noticia.activo %}
+      <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+        <i class="fas fa-eye-slash"></i> OCULTO
+      </span>
+      {% endif %}
+    </div>
+
+    <!-- Cuerpo de la tarjeta -->
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">{{ noticia.titulo }}</h5>
+      <p class="card-text small text-muted">{{ noticia.descripcion }}</p>
+      
+      <!-- Estadísticas de comentarios -->
+      <div class="alert alert-light py-2 px-3 small mb-3">
+        <div class="d-flex justify-content-between">
+          <span><i class="fas fa-comment me-1"></i> 
+            <span class="fw-bold">{{ noticia.comentarios_publicados.count }}</span> publicados
+          </span>
+          <span><i class="fas fa-comment-slash me-1"></i> 
+            <span class="fw-bold text-danger">{{ noticia.comentarios_ocultos.count }}</span> por moderar
+          </span>
+          <!-- <span><i class="fas fa-eye me-1"></i> 
+            <span class="fw-bold">{{ noticia.visitas }}</span> vistas
+          </span> -->
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="mt-auto">
+        <div class="d-flex flex-wrap gap-2 mb-2">
+          <a href="{% url 'blog_noticias:leer' noticia.id %}" class="btn btn-sm btn-outline-primary flex-grow-1">
+            <i class="fas fa-eye"></i> Ver
+          </a>
+          <a href="{% url 'blog_noticias:editar' noticia.id %}" class="btn btn-sm btn-outline-warning flex-grow-1">
+            <i class="fas fa-edit"></i> Editar
+          </a>
+          <a href="{% url 'blog_noticias:moderar' noticia.id %}" class="btn btn-sm btn-outline-info flex-grow-1 position-relative">
+            <i class="fas fa-comments"></i> Moderar
+            {% if noticia.comentarios_ocultos.count > 0 %}
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ noticia.comentarios_ocultos.count }}
             </span>
-          </div>
-          <div class="card-body d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="card-title">{{ noticia.titulo }}</h3>
-              <p class="card-text small">{{ noticia.descripcion }}</p>
-              <div class="flex-md-row">
-                <a href="{% url 'blog_noticias:leer' noticia.id %}" class="btn btn-primary btn-sm mt-3">Ver publicación</a>
-                <a href="{% url 'blog_noticias:editar' noticia.id %}" class="btn btn-primary btn-sm mt-3">Editar</a>
-              </div>
-            </div>
-            <hr class="my-2" />
-            <div class="d-flex justify-content-between align-items-center small">
-              <small class="text-muted">
-                Publicado el {{ noticia.fecha_publicacion|date:"d/m/Y" }}
-              </small>
-              <form method="post" action="{% url 'blog_noticias:toggle_estado' noticia.id %}">
-                {% csrf_token %}
+            {% endif %}
+          </a>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center border-top pt-2">
+          <small class="text-muted">
+            {{ noticia.fecha_publicacion|date:"d/m/Y" }}
+          </small>
+          <div class="btn-group">
+            <form method="post" action="{% url 'blog_noticias:toggle_estado' noticia.id %}" class="me-1">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm {% if noticia.activo %}btn-outline-danger{% else %}btn-outline-success{% endif %}">
                 {% if noticia.activo %}
-                  <button class="btn btn-warning btn-sm">Ocultar</button>
+                  <i class="fas fa-eye-slash"></i>
                 {% else %}
-                  <button class="btn btn-secondary btn-sm">Mostrar</button>
+                  <i class="fas fa-eye"></i>
                 {% endif %}
-              </form>
-            </div>
+              </button>
+            </form>
+            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ noticia.id }}">
+              <i class="fas fa-trash-alt"></i>
+            </button>
           </div>
         </div>
       </div>
-    {% empty %}
-      <p>No hay noticias creadas.</p>
-    {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Eliminación -->
+<div class="modal fade" id="deleteModal{{ noticia.id }}" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Confirmar Eliminación</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de eliminar permanentemente esta noticia?</p>
+        <p class="fw-bold">"{{ noticia.titulo }}"</p>
+        <p class="small text-muted">Esta acción no se puede deshacer y eliminará todos los comentarios asociados.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form method="post" action="{% url 'blog_noticias:eliminar' noticia.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">
+            <i class="fas fa-trash-alt me-1"></i> Eliminar Definitivamente
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% empty %}
+<div class="col-12">
+  <div class="alert alert-info text-center py-4">
+    <i class="fas fa-info-circle fa-2x mb-3"></i>
+    <h5>No hay noticias creadas</h5>
+    <a href="{% url 'blog_noticias:crear' %}" class="btn btn-primary mt-2">
+      <i class="fas fa-plus-circle"></i> Crear Primera Noticia
+    </a>
+  </div>
+</div>
+{% endfor %}
   </div>
 </div>
 {% endblock %}
